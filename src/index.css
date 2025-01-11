@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 30% 13%;
+    --background-gradient: linear-gradient(
+      297.53deg,
+      hsl(240, 3.5%, 16.3%, 0.6) 1.07%,
+      hsl(210, 19.2%, 21%, 0.6) 55.24%
+    );
+    --white: 240 5 96;
+    --muted: 240 5 65;
+    --section-title: 223 41 10;
+    --section-back-title: 209 20 21;
+    --btn-primary: 209 98 42;
+    --btn-primary-hover: 209 98 37;
+    --btn-secondary: 208 20 34;
+    --btn-secondary-hover: 208 20 29;
+    --blue: 209 98 42;
+    --yellow: 53 100 50;
+  }
+}

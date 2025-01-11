@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 const RootLayout = () => {
   return (
-    <main>
+    <main className="bg-background min-h-screen">
       <Header />
       <Outlet />
       <Footer />
