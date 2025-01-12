@@ -49,7 +49,7 @@ const Footer = () => {
 
   return (
     <footer className="container rounded-3xl mt-8 lg:mt-[72px] mb-6 lg:mb-12">
-      <div className="bg-background-gradient px-0 py-4 md:px-24 md:py-10 rounded-3xl space-y-9">
+      <div className="bg-background-gradient px-0 py-4 md:px-24 md:py-10 rounded-3xl space-y-9 border border-dark-blue">
         <div className="flex flex-col lg:flex-row items-center justify-between space-x-0 lg:space-x-12 space-y-6 lg:space-y-0">
           {/* Left Side */}
           <div className="flex flex-col items-center lg:items-start px-6 lg:w-1/2 space-y-6">
