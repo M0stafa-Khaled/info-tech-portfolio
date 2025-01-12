@@ -30,19 +30,19 @@ const Footer = () => {
       to: "/",
     },
     {
-      name: "About",
+      name: "About Us",
       to: "/about",
     },
     {
-      name: "Services",
+      name: "Our Services",
       to: "/services",
     },
     {
-      name: "Projects",
+      name: "Our Projects",
       to: "/projects",
     },
     {
-      name: "Contact",
+      name: "Contact Us",
       to: "/contact",
     },
   ];
@@ -93,16 +93,17 @@ const Footer = () => {
             >
               Links
             </Typography>
-            <div className="space-y-2 text-lg">
-              {navLinks.map((navLink) => (
+            <nav className="space-y-2 text-lg">
+              {navLinks.map((navLink, idx) => (
                 <Link
+                  key={idx}
                   to={navLink.to}
                   className="flex text-muted justify-center items-center lg:justify-start"
                 >
                   {navLink.name}
                 </Link>
               ))}
-            </div>
+            </nav>
           </div>
         </div>
         {/* Line */}
