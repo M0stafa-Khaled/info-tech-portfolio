@@ -15,8 +15,8 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="container pt-12">
-      <div className="container">
+    <header className="container pt-6 lg:pt-12 fixed w-full right-0 top-0 left-0 z-50">
+      <nav className="container">
         <div className="bg-dark flex flex-wrap items-center justify-between px-4 py-3 border border-dark-blue rounded-2xl">
           <div className="flex items-center justify-between w-full">
             <Link
@@ -41,14 +41,15 @@ const Header = () => {
               )}
             </IconButton>
           </div>
+          {/* Mobile menu */}
           <Collapse open={openNav} className="block lg:hidden">
-            <div className="container mx-auto">
+            <div className="mx-auto">
               <NavList />
             </div>
           </Collapse>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 
