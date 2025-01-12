@@ -11,6 +11,7 @@
       hsl(210, 19.2%, 21%, 0.6) 55.24%
     );
     --white: 240 5 96;
+    --dark: 222 40 10;
     --muted: 240 5 65;
     --section-title: 223 41 10;
     --section-back-title: 209 20 21;
@@ -18,7 +19,28 @@
     --btn-primary-hover: 209 98 37;
     --btn-secondary: 208 20 34;
     --btn-secondary-hover: 208 20 29;
+    --dark-blue: 209 20 21;
     --blue: 209 98 42;
     --yellow: 53 100 50;
   }
+}
+
+body {
+  body {
+    @apply font-sans bg-background;
+  }
+  background-color: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--dark-blue));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
 }

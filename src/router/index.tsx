@@ -14,12 +14,21 @@ const routes = createRoutesFromElements(
       <Route path="about" element={<About />} />
       <Route path="projects" element={<Projects />} />
       <Route path="services" element={<Services />} />
-      <Route path="contact-us" element={<ContactUs />} />
+      <Route path="contact" element={<ContactUs />} />
     </Route>
     <Route path="*" element={<NotFound />} />
   </>
 );
 
-const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes, {
+  basename: "/",
+  future: {
+    v7_fetcherPersist: true,
+    v7_normalizeFormMethod: true,
+    v7_partialHydration: true,
+    v7_relativeSplatPath: true,
+    v7_skipActionErrorRevalidation: true,
+  },
+});
 
 export default router;
