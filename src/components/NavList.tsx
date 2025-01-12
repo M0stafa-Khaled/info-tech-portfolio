@@ -19,22 +19,22 @@ const NavList = () => {
       icon: <HomeIcon />,
     },
     {
-      name: "About",
+      name: "About Us",
       to: "/about",
       icon: <AboutIcon />,
     },
     {
-      name: "Services",
+      name: "Our Services",
       to: "/services",
       icon: <ServicesIcon />,
     },
     {
-      name: "Projects",
+      name: "Our Projects",
       to: "/projects",
       icon: <ProjectsIcon />,
     },
     {
-      name: "Contact",
+      name: "Contact Us",
       to: "/contact",
       icon: <ContactIcon />,
     },
