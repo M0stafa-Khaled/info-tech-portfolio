@@ -3,6 +3,7 @@ import { IconButton, Collapse } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { IoClose, IoMenu } from "react-icons/io5";
 import NavList from "./NavList";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const [openNav, setOpenNav] = React.useState(false);
@@ -23,7 +24,7 @@ const Header = () => {
               to="/"
               className="text-white cursor-pointer font-medium text-2xl"
             >
-              Info Tech
+              <img src={logo} alt="logo" className="w-full h-8" />
             </Link>
             <div className="hidden lg:block">
               <NavList />

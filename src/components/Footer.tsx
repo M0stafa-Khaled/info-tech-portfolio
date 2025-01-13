@@ -3,6 +3,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
 import SocialLinkIcon from "./SocialLinkIcon";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Footer = () => {
   const socialLinks = [
@@ -53,12 +54,12 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between space-x-0 lg:space-x-12 space-y-6 lg:space-y-0">
           {/* Left Side */}
           <div className="flex flex-col items-center lg:items-start px-6 lg:w-1/2 space-y-6">
-            <Typography
-              variant="h5"
+            <Link
+              to={"/"}
               className="capitalize font-medium text-white text-3xl"
             >
-              Info Tech
-            </Typography>
+              <img src={logo} alt="logo" className="w-full h-8" />
+            </Link>
             <Typography
               variant="paragraph"
               className="text-muted text-center lg:text-left text-lg"
@@ -116,11 +117,10 @@ const Footer = () => {
             variant="paragraph"
             className="text-muted text-center text-base lg:text-lg"
           >
-            {new Date().getFullYear()} &copy; All rights reserved Info Tech |
-            Made by DOMAIN
+            {new Date().getFullYear()} &copy; All rights reserved Info Tech
           </Typography>
           <Link to={"/"} className="text-white ml-1">
-            Info Tech
+            <img src={logo} alt="logo" className="w-full h-8" />
           </Link>
         </div>
       </div>
