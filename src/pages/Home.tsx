@@ -1,5 +1,13 @@
+import BgImage from "../components/BgImage";
+import Hero from "../components/home/Hero";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <BgImage />
+      <Hero />
+    </>
+  );
 };
 
 export default Home;
