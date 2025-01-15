@@ -5,3 +5,11 @@ export interface IService {
   description: string;
   img: string;
 }
+
+export interface IProject {
+  id: number;
+  title: string;
+  description: string;
+  img: string;
+  link: string;
+}
