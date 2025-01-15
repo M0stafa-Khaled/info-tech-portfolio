@@ -2,7 +2,6 @@ import { IProject } from "../../interfaces";
 import SectionTitle from "./SectionTitle";
 import projectImg from "../../assets/project-img.png";
 import ProjectCard from "./ProjectCard";
-import service from "../../assets/service-coding.png";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
@@ -38,14 +37,14 @@ const OurProjects = () => {
       title: "solar panelts system planets  web",
       description:
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
-      img: service,
+      img: projectImg,
       link: "",
     },
   ];
   return (
     <section className="container">
       <SectionTitle title="Our Projects" />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 lg:gap-y-9 gap-x-[72px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 lg:gap-y-9 lg:gap-x-11 xl:gap-x-[72px]">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
