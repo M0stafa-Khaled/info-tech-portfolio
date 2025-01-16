@@ -1,10 +1,10 @@
 import { IProject } from "../../interfaces";
 import SectionTitle from "./SectionTitle";
 import projectImg from "../../assets/project-img.png";
-import ProjectCard from "./ProjectCard";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
+import ProjectCard from "../ProjectCard";
 
 const OurProjects = () => {
   const projects: IProject[] = [
@@ -14,7 +14,7 @@ const OurProjects = () => {
       description:
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
       img: projectImg,
-      link: "",
+      url: "",
       category: "frontend",
     },
     {
@@ -23,7 +23,7 @@ const OurProjects = () => {
       description:
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
       img: projectImg,
-      link: "",
+      url: "",
       category: "frontend",
     },
     {
@@ -32,7 +32,7 @@ const OurProjects = () => {
       description:
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
       img: projectImg,
-      link: "",
+      url: "",
       category: "ui/ux",
     },
     {
@@ -41,7 +41,7 @@ const OurProjects = () => {
       description:
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
       img: projectImg,
-      link: "",
+      url: "",
       category: "ui/ux",
     },
   ];

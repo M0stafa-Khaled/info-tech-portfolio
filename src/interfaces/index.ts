@@ -11,7 +11,7 @@ export interface IProject {
   title: string;
   description: string;
   img: string;
-  link: string;
+  url: string;
   category: string;
 }
 export interface IOpinion {
