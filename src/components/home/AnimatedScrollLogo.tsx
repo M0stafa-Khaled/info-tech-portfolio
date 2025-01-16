@@ -11,12 +11,6 @@ import reactRouter from "../../assets/tech-react-router.png";
 import mongodb from "../../assets/tech-mongodb.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import "swiper/css/bundle";
-import "swiper/css";
-
-// Import Swiper styles
-import "swiper/css/bundle";
-import "swiper/css";
 
 const logos = [
   reactIcon,
