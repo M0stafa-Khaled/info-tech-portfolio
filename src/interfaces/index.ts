@@ -13,3 +13,10 @@ export interface IProject {
   img: string;
   link: string;
 }
+export interface IOpinion {
+  img: string;
+  rating: number;
+  description: string;
+  name: string;
+  job: string;
+}
