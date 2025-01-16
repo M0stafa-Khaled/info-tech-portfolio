@@ -18,7 +18,7 @@ const buttonGradientStyle = {
 
 const Hero = () => {
   return (
-    <section className="container flex flex-col items-center justify-center py-10 lg:py-14">
+    <section className="container flex flex-col items-center justify-center gap-y-6 min-h-[calc(100vh-70px)] lg:min-h-[calc(100vh-78px)]">
       <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-x-16 w-full">
         <div className="w-full lg:w-1/2 max-w-[500px] space-y-4">
           <h1
@@ -43,7 +43,7 @@ const Hero = () => {
           />
         </div>
       </div>
-      <div className="mt-6">
+      <div>
         <Button
           style={buttonGradientStyle}
           variant="gradient"
