@@ -15,6 +15,7 @@ const OurProjects = () => {
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
       img: projectImg,
       link: "",
+      category: "frontend",
     },
     {
       id: 2,
@@ -23,6 +24,7 @@ const OurProjects = () => {
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
       img: projectImg,
       link: "",
+      category: "frontend",
     },
     {
       id: 3,
@@ -31,6 +33,7 @@ const OurProjects = () => {
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
       img: projectImg,
       link: "",
+      category: "ui/ux",
     },
     {
       id: 4,
@@ -39,6 +42,7 @@ const OurProjects = () => {
         "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
       img: projectImg,
       link: "",
+      category: "ui/ux",
     },
   ];
   return (

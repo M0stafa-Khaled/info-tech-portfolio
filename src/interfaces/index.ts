@@ -12,6 +12,7 @@ export interface IProject {
   description: string;
   img: string;
   link: string;
+  category: string;
 }
 export interface IOpinion {
   img: string;
