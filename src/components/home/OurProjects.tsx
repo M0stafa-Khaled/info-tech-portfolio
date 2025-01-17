@@ -48,7 +48,7 @@ const OurProjects = () => {
   return (
     <section className="container">
       <SectionTitle title="Our Projects" />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 lg:gap-y-9 lg:gap-x-11 xl:gap-x-[72px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}

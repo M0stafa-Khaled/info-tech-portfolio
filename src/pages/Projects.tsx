@@ -129,7 +129,7 @@ const Projects = () => {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 lg:gap-y-9 lg:gap-x-11 xl:gap-x-[72px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-6 lg:gap-y-9 gap-x-6">
           {filteredProjects.map((project: IProject) => (
             <ProjectCard key={project.id} project={project} />
           ))}
