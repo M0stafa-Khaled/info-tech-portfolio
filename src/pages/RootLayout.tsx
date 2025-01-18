@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 
 const RootLayout = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative overflow-hidden">
       <Header />
-      <div className="pt-20 lg:pt-28">
+      <div className="pt-[70px] lg:pt-[78px]">
         <Outlet />
       </div>
       <Footer />
