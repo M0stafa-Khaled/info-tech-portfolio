@@ -1,8 +1,9 @@
 import SectionTitle from "./SectionTitle";
-import aboutImage from "../../assets/home-about.png";
+import aboutImage from "../../assets/home-about.json";
 import { CgArrowTopRightO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import Lottie from "lottie-react";
 const AboutUs = () => {
   return (
     <section className="container">
@@ -33,9 +34,9 @@ const AboutUs = () => {
             </div>
             {/* Image */}
             <div className="w-full flex justify-center items-center">
-              <img
-                src={aboutImage}
-                alt="about us"
+              <Lottie
+                animationData={aboutImage}
+                loop={true}
                 className="w-full max-w-sm lg:max-w-md"
               />
             </div>
