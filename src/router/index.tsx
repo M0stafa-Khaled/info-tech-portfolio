@@ -6,6 +6,7 @@ import {
 import RootLayout from "../pages/RootLayout";
 import { About, ContactUs, Home, Projects, Services } from "../pages";
 import NotFound from "../pages/NotFound";
+import Project from "../pages/Project";
 
 const routes = createRoutesFromElements(
   <>
@@ -13,6 +14,7 @@ const routes = createRoutesFromElements(
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="projects" element={<Projects />} />
+      <Route path="projects/:id" element={<Project />} />
       <Route path="services" element={<Services />} />
       <Route path="contact" element={<ContactUs />} />
     </Route>
