@@ -103,7 +103,7 @@ const Services: React.FC = () => {
                   lorem ipsum dolor sit amet orm ipsuma dolo rlorem ipsum dolor
                   sit amet orm ipsuma dolor amet sitorem ipsum
                 </p>
-                <Button className="capitalize w-fit mx-auto lg:mx-0 bg-btn-primary hover:bg-btn-primary-hover text-white font-normal text-lg rounded-xl px-3 py-2">
+                <Button className="capitalize w-fit mx-auto lg:mx-0 bg-btn-primary hover:bg-btn-primary-hover text-white font-normal text-lg px-3 py-2">
                   Service request
                 </Button>
               </div>
