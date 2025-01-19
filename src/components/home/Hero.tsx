@@ -1,8 +1,7 @@
 import { Button, Typography } from "@material-tailwind/react";
-import heroImg from "../../assets/hero.json";
+import heroImg from "../../assets/hero.png";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
-import Lottie from "lottie-react";
 
 const h1Style = {
   background:
@@ -37,11 +36,7 @@ const Hero = () => {
           </Typography>
         </div>
         <div className="flex justify-center">
-          <Lottie
-            animationData={heroImg}
-            loop={true}
-            className="w-full max-w-sm lg:max-w-md h-full"
-          />
+          <img src={heroImg} className="w-full max-w-md h-full" />
         </div>
       </div>
       <div>
