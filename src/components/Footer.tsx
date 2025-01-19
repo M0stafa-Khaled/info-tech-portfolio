@@ -27,23 +27,23 @@ const Footer = () => {
 
   const navLinks = [
     {
-      name: "Home",
+      name: "الصفحة الرئيسية",
       to: "/",
     },
     {
-      name: "About Us",
+      name: "معلومات عنا",
       to: "/about",
     },
     {
-      name: "Our Services",
+      name: "خدماتنا",
       to: "/services",
     },
     {
-      name: "Our Projects",
+      name: "مشاريعنا",
       to: "/projects",
     },
     {
-      name: "Contact Us",
+      name: "اتصل بنا",
       to: "/contact",
     },
   ];
@@ -51,7 +51,7 @@ const Footer = () => {
   return (
     <footer className="container rounded-3xl mt-8 lg:mt-[72px] mb-6 lg:mb-12">
       <div className="bg-background-gradient px-0 py-4 md:px-24 md:py-10 rounded-3xl space-y-9 border border-dark-blue">
-        <div className="flex flex-col lg:flex-row items-center justify-between space-x-0 lg:space-x-12 space-y-6 lg:space-y-0">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-y-6 lg:gap-y-0">
           {/* Left Side */}
           <div className="flex flex-col items-center lg:items-start px-3 md:px-6 lg:w-1/2 space-y-6">
             <Link
@@ -60,19 +60,16 @@ const Footer = () => {
             >
               <img src={logo} alt="logo" className="w-full h-8" />
             </Link>
-            <Typography
-              variant="paragraph"
-              className="text-muted text-center lg:text-left text-lg"
-            >
-              A software development company that provides comprehensive
-              services in the field of technological software and design.
-            </Typography>
+            <p className="text-muted text-center lg:text-start leading-relaxed lg:text-lg">
+              شركة تطوير برمجيات متخصصة في تقديم خدمات شاملة في مجال البرمجيات
+              والتصميم التكنولوجي.
+            </p>
             <div>
               <Typography
                 variant="h3"
-                className="text-white text-2xl font-normal text-center lg:text-left"
+                className="text-white text-2xl font-normal text-center lg:text-right"
               >
-                Follow us
+                تابعنا
               </Typography>
               <div className="mt-6 flex justify-center items-center flex-wrap gap-x-6 gap-y-2">
                 {socialLinks.map((social, idx) => (
@@ -87,19 +84,16 @@ const Footer = () => {
           </div>
 
           {/* Right Side */}
-          <div className="flex flex-col items-center lg:items-start lg:w-1/2 space-y-6">
-            <Typography
-              variant="h3"
-              className="text-white text-2xl font-normal"
-            >
-              Links
+          <div className="flex flex-col items-center lg:items-start  lg:w-1/2 gap-y-6">
+            <Typography variant="h3" className="text-white text-xl font-normal">
+              روابط سريعة
             </Typography>
             <nav className="space-y-2 text-lg">
               {navLinks.map((navLink, idx) => (
                 <Link
                   key={idx}
                   to={navLink.to}
-                  className="flex text-muted justify-center items-center lg:justify-start"
+                  className="flex text-base text-muted justify-center items-center lg:justify-start transition-all duration-300 hover:text-white"
                 >
                   {navLink.name}
                 </Link>
@@ -117,9 +111,9 @@ const Footer = () => {
             variant="paragraph"
             className="text-muted text-center text-base lg:text-lg"
           >
-            {new Date().getFullYear()} &copy; All rights reserved Info Tech
+            جميع الحقوق محفوظة &copy; {new Date().getFullYear()}
           </Typography>
-          <Link to={"/"} className="text-white ml-1">
+          <Link to={"/"} className="text-white mr-1">
             <img src={logo} alt="logo" className="w-full h-8" />
           </Link>
         </div>

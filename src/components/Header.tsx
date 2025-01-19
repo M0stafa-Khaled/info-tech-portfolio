@@ -20,12 +20,6 @@ const Header = () => {
       <nav className="container">
         <div className="bg-dark flex flex-wrap items-center justify-between px-4 py-3 border border-dark-blue rounded-2xl">
           <div className="flex items-center justify-between w-full">
-            <Link
-              to="/"
-              className="text-white cursor-pointer font-medium text-2xl"
-            >
-              <img src={logo} alt="logo" className="w-full h-8" />
-            </Link>
             <div className="hidden lg:block">
               <NavList />
             </div>
@@ -41,6 +35,12 @@ const Header = () => {
                 <IoMenu size={36} className="text-white" />
               )}
             </IconButton>
+            <Link
+              to="/"
+              className="text-white cursor-pointer font-medium text-2xl"
+            >
+              <img src={logo} alt="logo" className="w-full h-8" />
+            </Link>
           </div>
           {/* Mobile menu */}
           <Collapse open={openNav} className="block lg:hidden">

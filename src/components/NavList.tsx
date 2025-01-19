@@ -14,27 +14,27 @@ const NavList = () => {
   }
   const links: ILink[] = [
     {
-      name: "Home",
+      name: "الصفحة الرئيسية",
       to: "/",
       icon: <HomeIcon />,
     },
     {
-      name: "About Us",
+      name: "معلومات عنا",
       to: "/about",
       icon: <AboutIcon />,
     },
     {
-      name: "Our Services",
+      name: "خدماتنا",
       to: "/services",
       icon: <ServicesIcon />,
     },
     {
-      name: "Our Projects",
+      name: "مشاريعنا",
       to: "/projects",
       icon: <ProjectsIcon />,
     },
     {
-      name: "Contact Us",
+      name: "اتصل بنا",
       to: "/contact",
       icon: <ContactIcon />,
     },
@@ -51,12 +51,12 @@ const NavList = () => {
             to={link.to}
             className={({ isActive }) =>
               isActive
-                ? "text-white flex items-center text-base md:p-0"
-                : "text-muted flex items-center text-base md:p-0 hover:text-white transition-all duration-300 ease-in-out"
+                ? "text-white flex items-center text-base md:p-0 gap-[10px]"
+                : "text-muted flex items-center text-base md:p-0 gap-[10px] hover:text-white transition-all duration-300 ease-in-out"
             }
             aria-current="page"
           >
-            <span className="mr-[10px]">{link.icon}</span>
+            <span>{link.icon}</span>
             <span>{link.name}</span>
           </NavLink>
         </li>

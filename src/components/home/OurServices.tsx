@@ -12,33 +12,33 @@ import { IService } from "../../interfaces";
 const OurServices = () => {
   const services: IService[] = [
     {
-      title: "Web Development",
+      title: "تطوير الويب",
       description:
-        "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolo rlorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum",
+        "نقدم خدمات تطوير الويب المتكاملة باستخدام أحدث التقنيات والأدوات. نصمم مواقع ويب متجاوبة وسريعة وآمنة تلبي احتياجات عملك بدقة عالية.",
       img: serviceCoding,
     },
     {
-      title: "Designing",
+      title: "التصميم",
       description:
-        "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolo rlorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum",
+        "نوفر حلول تصميم إبداعية وعصرية تجذب انتباه العملاء. نركز على التصميم الجذاب والوظيفي الذي يعكس هوية علامتك التجارية.",
       img: serviceDesign,
     },
     {
-      title: "software engineering",
+      title: "هندسة البرمجيات",
       description:
-        "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolo rlorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum",
+        "نقدم استشارات وحلول هندسة برمجية متكاملة. نساعدك في تطوير تطبيقات مبتكرة وفعالة تلبي متطلبات عملك بكفاءة.",
       img: serviceSoftware,
     },
     {
-      title: "Hosting",
+      title: "الاستضافة",
       description:
-        "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolo rlorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum",
+        "نوفر خدمات استضافة موثوقة وآمنة مع أداء عالي. نضمن لك استضافة سريعة ومستقرة لمواقعك وتطبيقاتك.",
       img: serviceHosting,
     },
   ];
   return (
     <section className="container">
-      <SectionTitle title="Our Services" />
+      <SectionTitle title="خدماتنا" />
       {/* Services Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {services.map((service, idx) => (
@@ -51,7 +51,7 @@ const OurServices = () => {
             to={"/services"}
             className="px-8 sm:px-24 h-[56px] flex justify-center items-center gap-x-3 text-white text-lg font-medium normal-case"
           >
-            Show more
+            عرض المزيد
             <span>
               <CgArrowTopRightO className="h-5 w-5 text-white" size={20} />
             </span>

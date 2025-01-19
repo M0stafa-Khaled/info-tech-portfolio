@@ -7,7 +7,7 @@ export const filterProjectsByCategory = ({
   projects: IProject[];
   category: string;
 }): IProject[] => {
-  if (category === "all") return projects;
+  if (category === "الكل") return projects;
 
   return projects.filter((project) => project.category === category);
 };

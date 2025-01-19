@@ -27,7 +27,7 @@
 
 body {
   body {
-    @apply font-sans bg-background;
+    @apply font-sans;
   }
   background-color: hsl(var(--background));
 }

@@ -16,7 +16,7 @@ module.exports = withMT({
     },
     extend: {
       fontFamily: {
-        sans: ["Poppins", "ui-sans-serif", "system-ui"],
+        sans: ['Alexandria', 'ui-sans-serif', 'system-ui'],
       },
       colors: {
         white: "hsl(var(--white))",

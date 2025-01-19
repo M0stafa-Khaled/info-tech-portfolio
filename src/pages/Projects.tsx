@@ -6,100 +6,105 @@ import projectImg from "../assets/project-img.png";
 import { filterProjectsByCategory } from "../utils/filterProjectsByCategory";
 
 const Projects = () => {
-  const categories = ["all", "frontend", "ui&ux", "software engineering"];
-  const [filter, setFilter] = useState<string>("all");
+  const categories = [
+    "الكل",
+    "واجهة أمامية",
+    "تصميم واجهة المستخدم",
+    "هندسة البرمجيات",
+  ];
+  const [filter, setFilter] = useState<string>("الكل");
 
   const filteredProjects = useMemo(() => {
     const projectsData: IProject[] = [
       {
         id: 1,
-        title: "solar panelts system planets  web",
+        title: "نظام الألواح الشمسية للكواكب",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "مشروع متكامل لتصميم نظام إدارة وتتبع الألواح الشمسية باستخدام أحدث التقنيات والحلول البرمجية المبتكرة.",
         img: projectImg,
         url: "",
-        category: "frontend",
+        category: "واجهة أمامية",
       },
       {
         id: 2,
-        title: "solar panelts system planets  web",
+        title: "تطبيق إدارة المشاريع الرقمية",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "حل برمجي متطور لإدارة المشاريع الرقمية يوفر واجهة مستخدم سلسة وسهلة الاستخدام.",
         img: projectImg,
         url: "",
-        category: "ui&ux",
+        category: "تصميم واجهة المستخدم",
       },
       {
         id: 3,
-        title: "solar panelts system planets  web",
+        title: "منصة التعلم الإلكتروني",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "منصة تعليمية ذكية تجمع بين أحدث تقنيات التعلم عن بعد وتصميم تفاعلي متميز.",
         img: projectImg,
         url: "",
-        category: "software engineering",
+        category: "هندسة البرمجيات",
       },
       {
         id: 4,
-        title: "solar panelts system planets  web",
+        title: "تطبيق الصحة الذكي",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "تطبيق شامل لمتابعة الحالة الصحية وتقديم استشارات طبية عن بعد.",
         img: projectImg,
         url: "",
-        category: "frontend",
+        category: "واجهة أمامية",
       },
       {
         id: 5,
-        title: "solar panelts system planets  web",
+        title: "متجر إلكتروني متكامل",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "حل متكامل للتجارة الإلكترونية مع تصميم جذاب وتجربة مستخدم فريدة.",
         img: projectImg,
         url: "",
-        category: "ui&ux",
+        category: "تصميم واجهة المستخدم",
       },
       {
         id: 6,
-        title: "solar panelts system planets  web",
+        title: "نظام إدارة الموارد البشرية",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "برنامج متطور لإدارة شؤون الموظفين وأتمتة العمليات التنظيمية.",
         img: projectImg,
         url: "",
-        category: "software engineering",
+        category: "هندسة البرمجيات",
       },
       {
         id: 7,
-        title: "solar panelts system planets  web",
+        title: "تطبيق النقل الذكي",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "حل مبتكر لتتبع وإدارة وسائل النقل العامة بواجهة مستخدم سلسة.",
         img: projectImg,
         url: "",
-        category: "frontend",
+        category: "واجهة أمامية",
       },
       {
         id: 8,
-        title: "solar panelts system planets  web",
+        title: "لوحة تحكم للتحليلات",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "أداة متقدمة لتصور البيانات وتحليل المؤشرات بتصميم احترافي.",
         img: projectImg,
         url: "",
-        category: "ui&ux",
+        category: "تصميم واجهة المستخدم",
       },
       {
         id: 9,
-        title: "solar panelts system planets  web",
+        title: "تطبيق إدارة المهام",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "أداة فعالة لتنظيم المهام والمشاريع مع واجهة مستخدم سهلة وبديهية.",
         img: projectImg,
         url: "",
-        category: "frontend",
+        category: "واجهة أمامية",
       },
       {
         id: 10,
-        title: "solar panelts system planets  web",
+        title: "منصة التواصل المؤسسي",
         description:
-          "lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma dolor",
+          "حل متكامل للتواصل الداخلي وإدارة فرق العمل بتقنيات متطورة.",
         img: projectImg,
         url: "",
-        category: "software engineering",
+        category: "هندسة البرمجيات",
       },
     ];
     return filterProjectsByCategory({

@@ -3,37 +3,34 @@ import aboutImage from "../../assets/home-about.png";
 import { CgArrowTopRightO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+
 const AboutUs = () => {
   return (
     <section className="container">
-      <SectionTitle title="About Us" />
+      <SectionTitle title="معلومات عنا" />
       <div className="bg-background-gradient py-7 lg:py-14 px-6 lg:px-24 rounded-2xl lg:rounded-[36px]">
         <div className="flex flex-col justify-center items-center gap-y-4 lg:gap-y-9">
           <div className="flex flex-col-reverse xl:flex-row gap-x-9 gap-y-6">
             {/* Text */}
-            <div className="w-full flex flex-col gap-y-2 lg:gap-y-4">
+            <div className="w-full flex flex-col items-center lg:items-start justify-center gap-y-2 lg:gap-y-4 text-right">
               <h2 className="text-white capitalize text-2xl lg:text-[42px]">
-                info tech
+                Info Tech
               </h2>
-              <p className="text-muted text-sm lg:text-lg">
-                lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum
-                lorem ipsum dolor sit amet orm ipsuma dolo rlorem ipsum dolor
-                sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor
-                sit amet orm ipsuma dolor lorem ipsum dolor sit amet orm ipsuma
-                dolor amet sitorem ipsum lorem ipsum dolor sit amet orm ipsuma
-                dolor lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem
-                ipsum lorem ipsum dolor sit amet orm ipsuma dolorlorem ipsum
-                dolor sit amet orm ipsuma dolor amet sitorem ipsum lorem ipsum
-                dolor sit amet orm ipsuma dolor
+              <p className="text-muted text-center lg:text-start text-base lg:text-lg leading-relaxed">
+                نحن فريق من المبدعين التقنيين الذين يحولون التحديات التكنولوجية
+                إلى فرص استثنائية. كل عضو في فريقنا يمتلك شغفًا فريدًا للابتكار،
+                حيث نجمع بين الخبرة العميقة والإبداع الجريء لصناعة حلول رقمية
+                متميزة. نؤمن بأن التكنولوجيا ليست مجرد أكواد، بل هي لغة التغيير
+                والإلهام.
               </p>
             </div>
-            {/* Line */}
             <div className="flex justify-center items-center">
-              <hr className="h-[1px] w-2/3 xl:h-2/3  xl:w-[1px] bg-muted rounded-2xl" />
+              <hr className="h-[1px] w-2/3 xl:h-2/3 xl:w-[1px] bg-muted rounded-2xl" />
             </div>
             {/* Image */}
             <div className="w-full flex justify-center items-center">
               <img src={aboutImage} className="w-full max-w-sm lg:max-w-md" />
+              {/* Line */}
             </div>
           </div>
           {/* Buttons */}
@@ -43,7 +40,7 @@ const AboutUs = () => {
                 to={"/about"}
                 className="px-3 sm:px-6 py-4 flex justify-center items-center gap-x-3 text-white text-sm xl:text-lg font-medium normal-case"
               >
-                More details about the team{" "}
+                المزيد من التفاصيل عن الفريق
                 <span>
                   <CgArrowTopRightO className="h-5 w-5 text-white" size={20} />
                 </span>
@@ -54,7 +51,7 @@ const AboutUs = () => {
                 to={"/contact"}
                 className="px-3 sm:px-6 py-4 flex justify-center items-center gap-x-3 text-white text-sm xl:text-lg font-medium normal-case"
               >
-                Contact us{" "}
+                اتصل بنا
                 <span>
                   <CgArrowTopRightO className="h-5 w-5 text-white" size={20} />
                 </span>

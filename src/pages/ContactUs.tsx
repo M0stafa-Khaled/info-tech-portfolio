@@ -14,21 +14,21 @@ const ContactUs = () => {
     <section className="container">
       <BgImage />
       <div className="text-center my-9 lg:mt-[72px] text-white">
-        <h1 className="text-4xl font-bold">Contact Us</h1>
+        <h1 className="text-4xl font-bold">اتصل بنا</h1>
         <p className="text-lg p-4 text-muted">
-          Any question or remarks? Just write us a message!
+          أي سؤال أو ملاحظة؟ فقط اكتب لنا رسالة!
         </p>
       </div>
       <div className="bg-background-gradient rounded-2xl lg:rounded-3xl text-white w-full py-6 px-4 lg:px-6">
         <div className="flex flex-col xl:flex-row gap-x-12 xl:gap-x-16 gap-y-12">
-          {/* Left Card */}
+          {/* Contact Info */}
           <div className="bg-dark space-y-4 w-auto lg:min-w-max py-4 px-4 md:px-6 rounded-2xl">
             <div className="px-4 py-3 space-y-2">
               <h3 className="text-xl md:text-[28px] font-semibold">
-                Contact Information
+                معلومات الاتصال
               </h3>
               <p className="text-muted md:text-lg">
-                You can contact us using this information
+                يمكنك التواصل معنا باستخدام هذه المعلومات
               </p>
             </div>
             <div className="px-4 py-3 space-y-5">
@@ -36,24 +36,24 @@ const ContactUs = () => {
                 <span>
                   <FaPhone size={24} />
                 </span>
-                <span>+123 456 789</span>
+                <span>+966 50 123 4567</span>
               </div>
               <div className="flex items-center gap-3 text-sm md:text-lg">
                 <span>
                   <FaEnvelope size={24} />
                 </span>
-                <span>demo@gmail.com</span>
+                <span>info@infotech.eg</span>
               </div>
               <div className="flex items-center gap-3 text-sm md:text-lg">
                 <span>
                   <FaMapMarkerAlt size={24} />
                 </span>
-                <span>123 Dartmouth Street, Boston.</span>
+                <span>القاهرة, مصر</span>
               </div>
             </div>
           </div>
 
-          {/* Middle Card */}
+          {/* From */}
           <form
             className="w-full rounded-lg flex flex-col gap-y-6"
             onSubmit={(e) => e.preventDefault()}
@@ -64,7 +64,7 @@ const ContactUs = () => {
               <div className="flex flex-col md:flex-row gap-4">
                 <Input
                   variant="standard"
-                  label="First Name"
+                  label="الاسم الأول"
                   className="text-white !border-muted focus:!border-muted after:!bg-muted min-w-fit"
                   labelProps={{
                     className:
@@ -74,7 +74,7 @@ const ContactUs = () => {
 
                 <Input
                   variant="standard"
-                  label="Last Name"
+                  label="اسم العائلة"
                   className="text-white !border-muted"
                   labelProps={{
                     className:
@@ -86,7 +86,7 @@ const ContactUs = () => {
               <div className="flex flex-col md:flex-row gap-4">
                 <Input
                   variant="standard"
-                  label="Email"
+                  label="البريد الإلكتروني"
                   className="text-white !border-muted"
                   labelProps={{
                     className:
@@ -96,7 +96,7 @@ const ContactUs = () => {
 
                 <Input
                   variant="standard"
-                  label="Phone"
+                  label="رقم الهاتف"
                   className="text-white !border-muted"
                   labelProps={{
                     className:
@@ -108,9 +108,9 @@ const ContactUs = () => {
 
             {/* Options */}
             <div>
-              <p className="mb-4 text-lg">Select Options</p>
+              <p className="mb-4 text-lg">اختر الموضوع</p>
               <div className="flex justify-between flex-wrap gap-3 ">
-                {["General", "Technical", "Feedback", "Other"].map(
+                {["استفسار عام", "دعم فني", "اقتراحات", "أخرى"].map(
                   (option, index) => (
                     <div key={index} className="flex gap-8 min-w-36">
                       <Radio
@@ -133,10 +133,11 @@ const ContactUs = () => {
                 )}
               </div>
             </div>
+            {/* Message */}
             <div>
               <Textarea
                 variant="standard"
-                label="Message"
+                label="الرسالة"
                 className="text-white !border-muted h-[50px]"
                 labelProps={{
                   className:
@@ -150,7 +151,7 @@ const ContactUs = () => {
                 type="submit"
                 className="w-full lg:w-[200px] normal-case py-4 bg-dark text-white text-base font-normal rounded-xl"
               >
-                Send Message
+                إرسال الرسالة
               </Button>
             </div>
           </form>

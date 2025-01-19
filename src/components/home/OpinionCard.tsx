@@ -15,7 +15,7 @@ const OpinionCard = ({
         <img
           src={img}
           alt={name}
-          className="2xl:max-w-40  max-w-36 object-cover"
+          className="2xl:max-w-40 max-w-36 object-cover"
         />
       </div>
       <div className="flex flex-col justify-center gap-y-2">
@@ -28,13 +28,13 @@ const OpinionCard = ({
             />
           ))}
         </div>
-        <p className="text-center lg:text-start text-muted text-xl">
+        <p className="text-center lg:text-right text-muted text-xl">
           {description}
         </p>
-        <h3 className="text-center lg:text-start text-white text-2xl font-medium">
+        <h3 className="text-center lg:text-right text-white text-2xl font-medium">
           {name}
         </h3>
-        <h5 className="text-center lg:text-start text-muted">{job}</h5>
+        <h5 className="text-center lg:text-right text-muted">{job}</h5>
       </div>
     </div>
   );

@@ -9,45 +9,65 @@ import coloringImage from "../assets/service-coloring.png";
 import contentImage from "../assets/service-content-creation.png";
 import BgImage from "../components/BgImage";
 import { Button } from "@material-tailwind/react";
+
 interface ICard {
   image: string;
   title: string;
+  description: string;
 }
+
 const Services: React.FC = () => {
   const services: ICard[] = [
     {
       image: designingImage,
-      title: "Designing",
+      title: "التصميم الرقمي",
+      description:
+        "نصمم هويات بصرية متميزة وواجهات مستخدم جذابة تعكس جوهر علامتك التجارية وتجذب انتباه العملاء.",
     },
     {
       image: codingImage,
-      title: "Coding",
+      title: "البرمجة",
+      description:
+        "نطور حلولًا برمجية متكاملة باستخدام أحدث التقنيات، مع التركيز على الأداء العالي والموثوقية.",
     },
     {
       image: hostingImage,
-      title: "Hosting",
+      title: "الاستضافة",
+      description:
+        "خدمات استضافة آمنة وموثوقة مع أداء عالي وتوفر مستمر لمواقعك وتطبيقاتك الرقمية.",
     },
     {
       image: softwareImage,
-      title: "Software engineering",
+      title: "هندسة البرمجيات",
+      description:
+        "نقدم حلولًا برمجية معقدة باستخدام أفضل الممارسات الهندسية لتلبية احتياجات عملك المتطورة.",
     },
     {
       image: socialImage,
-      title: "Social media",
+      title: "التسويق الرقمي",
+      description:
+        "استراتيجيات تسويق متكاملة تساعدك على الوصول إلى جمهورك المستهدف عبر منصات متعددة.",
     },
     {
       image: coloringImage,
-      title: "Software engineering",
+      title: "تصميم الهوية البصرية",
+      description:
+        "نبتكر تصميمات لهوية بصرية متميزة تعكس شخصية علامتك التجارية وتميزها في السوق.",
     },
     {
       image: contentImage,
-      title: "Software engineering",
+      title: "إنتاج المحتوى",
+      description:
+        "محتوى رقمي جذاب ومؤثر يروي قصة علامتك التجارية ويجذب جمهورك المستهدف.",
     },
     {
       image: responsiveImage,
-      title: "Responsive design",
+      title: "التصميم سريع الاستجابة",
+      description:
+        "تصميمات متجاوبة تعمل بكفاءة على جميع الأجهزة والشاشات، مع تجربة مستخدم سلسة.",
     },
   ];
+
   return (
     <>
       <BgImage />
@@ -57,22 +77,23 @@ const Services: React.FC = () => {
           {/* Text */}
           <div className="w-full">
             <h2 className="text-3xl text-center lg:text-start font-bold mb-2 text-white">
-              Our Services
+              خدماتنا
             </h2>
-            <p className="text-muted leading-relaxed text-center lg:text-start">
-              lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum
-              lorem ipsum dolor sit amet orm ipsuma dolo rlorem ipsum dolor sit
-              amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit
-              amet orm ipsuma dolor amet sitorem ipsum lorem ipsum dolor sit
-              amet orm ipsuma dolo rlorem ipsum dolor sit amet orm ipsuma dolor
-              amet sitorem ipsum
+            <p className="text-muted text-lg leading-relaxed text-center lg:text-start">
+              في عالم يتغير بسرعة الضوء، نحن في إنفو تك نُحيل الأحلام الرقمية
+              إلى حقائق مُبهرة. نحن مهندسو المستحيل، نرسم مستقبل الأعمال بلغة
+              الإبداع والتكنولوجيا. كل بكسل، كل سطر كود، كل تصميم هو قصة إلهام
+              تنتظر أن تُروى. نمضي أبعد من مجرد تقديم الخدمات - نحن نخلق عوالم
+              رقمية تتنفس الابتكار وتنبض بالحياة. من رؤية خاطفة إلى إنجاز مُذهل،
+              نحولك من مجرد عميل إلى شريك في رحلة التحول الرقمي الأكثر إثارة.
+              دعنا نكتب معًا فصل النجاح التالي في عالم التكنولوجيا.
             </p>
           </div>
           {/* Image Section */}
-          <div className="flex justify-center w-full">
+          <div className="w-full flex justify-center">
             <img
               src={servicesImage}
-              alt="ServiceImage"
+              alt="خدمات إنفو تك"
               className="w-full h-full max-w-md"
             />
           </div>
@@ -97,14 +118,12 @@ const Services: React.FC = () => {
                 </h3>
               </div>
               {/* Text */}
-              <div className="w-full flex flex-col justify-center lg:justify-end gap-y-4 text-center lg:text-start">
-                <p className="text-muted">
-                  lorem ipsum dolor sit amet orm ipsuma dolor amet sitorem ipsum
-                  lorem ipsum dolor sit amet orm ipsuma dolo rlorem ipsum dolor
-                  sit amet orm ipsuma dolor amet sitorem ipsum
+              <div className="w-full flex flex-col lg:justify-evenly gap-y-4 text-center lg:text-right">
+                <p className="text-white/80 leading-relaxed">
+                  {service.description}
                 </p>
                 <Button className="capitalize w-fit mx-auto lg:mx-0 bg-btn-primary hover:bg-btn-primary-hover text-white font-normal text-lg px-3 py-2">
-                  Service request
+                  طلب الخدمة
                 </Button>
               </div>
             </div>
