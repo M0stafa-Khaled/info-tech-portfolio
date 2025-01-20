@@ -13,7 +13,11 @@ import { useRef } from "react";
 
 const OurServices = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 0.2,
+    margin: "250px 0px 250px 0px",
+  });
 
   const services: IService[] = [
     {

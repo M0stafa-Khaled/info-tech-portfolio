@@ -10,7 +10,11 @@ import { useRef } from "react";
 
 const OurProjects = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 0.2,
+    margin: "250px 0px 250px 0px",
+  });
 
   const projects: IProject[] = [
     {
@@ -81,6 +85,22 @@ const OurProjects = () => {
       },
     }),
   };
+
+  const buttonVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className="container" ref={ref}>
       <motion.div
@@ -91,18 +111,26 @@ const OurProjects = () => {
         <SectionTitle title="مشاريعنا" />
       </motion.div>
       <motion.div
+        key="projects-grid"
         className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
         {projects.map((project, idx) => (
-          <motion.div custom={idx} variants={cardVariants}>
+          <motion.div
+            key={`project-${project.id}`}
+            custom={idx}
+            variants={cardVariants}
+          >
             <ProjectCard project={project} />
           </motion.div>
         ))}
       </motion.div>
-      <div
+      <motion.div
         className="flex justify-center mt-[18px] lg:mt-[36px]"
+        variants={buttonVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
       >
         <Button className="lg:w-fit bg-btn-secondary hover:bg-btn-secondary-hover rounded-xl">
           <Link
@@ -115,7 +143,7 @@ const OurProjects = () => {
             </span>
           </Link>
         </Button>
-      </div>
+      </motion.div>
     </section>
   );
 };
