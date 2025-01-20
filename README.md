@@ -1,50 +1,142 @@
-# React + TypeScript + Vite
+# Info-Tech Portfolio Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+Info-Tech is a modern, responsive web application built using React, TypeScript, and Vite. It serves as a comprehensive portfolio showcasing technical skills, projects, and professional information.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+info-tech/
+│
+├── config files
+│   ├── eslint.config.js       # ESLint configuration
+│   ├── tailwind.config.js     # Tailwind CSS configuration
+│   ├── tsconfig.json          # TypeScript configuration
+│   └── vite.config.ts         # Vite build configuration
+│
+├── src/
+│   ├── App.tsx                # Main application component
+│   ├── main.tsx               # Application entry point
+│   ├── index.css              # Global styles
+│   ├── vite-env.d.ts          # Vite environment types
+│   │
+│   ├── api/                   # API service handlers
+│   │   └── auth.ts            # Authentication API calls
+│   │
+│   ├── app/                   # Application state management
+│   │   ├── store.ts           # Redux store configuration
+│   │   └── features/          # Redux feature slices
+│   │       └── auth/
+│   │           └── authSlice.tsx  # Authentication Redux slice
+│   │
+│   ├── assets/                # Static assets
+│   │   └── images/            # Project images
+│   │      ├── logo.png
+│   │      ├── hero.png
+│   │      └── ... (various project and service images)
+│   │
+│   ├── components/            # Reusable React components
+│   │   ├── BgImage.tsx        # Background image component
+│   │   ├── Footer.tsx         # Site footer
+│   │   ├── Header.tsx         # Site header
+│   │   ├── NavList.tsx        # Navigation list
+│   │   ├── ProjectCard.tsx    # Project display card
+│   │   │
+│   │   ├── auth/
+│   │   │   └── ProtectedRoute.tsx  # Route protection component
+│   │   │
+│   │   ├── home/              # Home page specific components
+│   │   │   ├── Hero.tsx
+│   │   │   ├── AboutUs.tsx
+│   │   │   ├── OurProjects.tsx
+│   │   │   ├── OurServices.tsx
+│   │   │   ├── CustomerOpinions.tsx
+│   │   │   └── ServiceCard.tsx
+│   │   │
+│   │   ├── svg/               # SVG icon components
+│   │   │
+│   │   └── ui/                # Base UI components
+│   │
+│   ├── config/                # Configuration files
+│   │   └── axios.config.ts    # Axios HTTP client configuration
+│   │
+│   ├── interfaces/            # TypeScript interfaces
+│   │   └── ... (type definitions)
+│   │
+│   ├── layout/                # Layout components
+│   │   ├── RootLayout.tsx     # Main application layout
+│   │   ├── AdminDashboardLayout.tsx  # Admin dashboard layout
+│   │   └── EmployeeDashboardLayout.tsx  # Employee dashboard layout
+│   │
+│   ├── pages/                 # Page-level components
+│   │   ├── public/            # Public pages
+│   │   │
+│   │   ├── auth/              # Authentication pages
+│   │   │   ├── Login.tsx
+│   │   │   └── Register.tsx
+│   │   │
+│   │   └── dashboard/         # Dashboard pages
+│   │       └── ... (admin, employee dashboards)
+│   │
+│   ├── router/                # Routing configuration
+│   │   └── index.tsx          # Main router setup
+│   │
+│   ├── utils/                 # Utility functions
+│   │
+│   └── validations/           # Form validation schemas
+│      └── ... (Zod validation schemas)
+│
+├── .env                       # Environment variables
+└── package.json               # Project dependencies and scripts
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Technology Stack
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Core Technologies
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **React 18.3.1**: Modern JavaScript library for building user interfaces
+- **TypeScript 5.6.2**: Typed superset of JavaScript for enhanced developer experience
+- **Vite 6.0.1**: Next-generation frontend tooling for fast development and build
+
+### State Management
+
+- **Redux Toolkit 2.5.0**: Efficient state management
+- **React Query 5.64.2**: Data fetching and server-state management
+
+### Form Handling
+
+- **React Hook Form 7.54.2**: Performant, flexible form validation
+- **Zod 3.24.1**: TypeScript-first schema validation
+
+### Routing
+
+- **React Router DOM 6.28.0**: Declarative routing for React applications
+
+### Styling
+
+- **Tailwind CSS 3.4.17**: Utility-first CSS framework
+
+### Additional Libraries
+
+- **Axios 1.7.9**: Promise-based HTTP client
+- **Swiper 11.2.1**: Modern mobile touch slider
+- **React Icons 5.4.0**: Popular icon library
+- **React Toastify 11.0.3**: Notification library
+
+## Routes
+
+- Public Routes: Home, About, Projects, Services, Contact
+- Authentication: Login, Register
+- Protected Routes: Admin Dashboard, Employee Dashboard
+
+## Environment Configuration
+
+- Uses `.env` for environment variables
+- API endpoint configured via `VITE_API_URL`
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start development server: `npm run dev`
