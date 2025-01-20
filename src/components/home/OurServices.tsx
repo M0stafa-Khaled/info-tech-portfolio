@@ -14,7 +14,7 @@ import { useRef } from "react";
 const OurServices = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
-    once: false,
+    once: true,
     amount: 0.2,
     margin: "250px 0px 250px 0px",
   });

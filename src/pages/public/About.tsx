@@ -40,17 +40,17 @@ const About = () => {
   const teamSectionRef = useRef(null);
   const titleRef = useRef(null);
   const isAboutInView = useInView(aboutSectionRef, {
-    once: false,
+    once: true,
     amount: 0.2,
     margin: "450px 0px 0px 0px",
   });
   const isTitleInView = useInView(titleRef, {
-    once: false,
+    once: true,
     amount: 0.2,
   });
 
   const isTeamInView = useInView(teamSectionRef, {
-    once: false,
+    once: true,
     amount: 0.2,
     margin: "350px 0px 350px 0px",
   });

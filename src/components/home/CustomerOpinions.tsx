@@ -10,7 +10,7 @@ import { useRef } from "react";
 const CustomerOpinions = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
-    once: false,
+    once: true,
     amount: 0.2,
   });
 
