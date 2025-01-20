@@ -9,6 +9,8 @@ import coloringImage from "../../assets/service-coloring.png";
 import contentImage from "../../assets/service-content-creation.png";
 import BgImage from "../../components/BgImage";
 import Button from "../../components/ui/Button";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 interface ICard {
   image: string;
@@ -17,6 +19,62 @@ interface ICard {
 }
 
 const Services: React.FC = () => {
+  const introRef = useRef(null);
+  const cardsRef = useRef(null);
+
+  const isIntroInView = useInView(introRef, { once: true, amount: 0.2 });
+  const isCardsInView = useInView(cardsRef, {
+    once: true,
+    amount: 0.2,
+    margin: "350px 0px 450px 0px",
+  });
+
+  const textVariants = {
+    hidden: {
+      opacity: 0,
+      x: 100, // Animate from right
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const imageVariants = {
+    hidden: {
+      opacity: 0,
+      x: -100, // Animate from left
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.4,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   const services: ICard[] = [
     {
       image: designingImage,
@@ -72,10 +130,18 @@ const Services: React.FC = () => {
     <>
       <BgImage />
       <div className="container pt-10 lg:pt-14">
-        {/* Main Section */}
-        <div className="flex flex-col-reverse lg:flex-row items-center mb-10 bg-background-gradient rounded-2xl lg:rounded-3xl py-4 px-8 lg:py-4">
+        {/* Intro Section */}
+        <motion.div
+          ref={introRef}
+          className="flex flex-col-reverse lg:flex-row items-center mb-10 bg-background-gradient rounded-2xl lg:rounded-3xl py-4 px-8 lg:py-4"
+        >
           {/* Text */}
-          <div className="w-full">
+          <motion.div
+            variants={textVariants}
+            initial="hidden"
+            animate={isIntroInView ? "visible" : "hidden"}
+            className="w-full"
+          >
             <h2 className="text-3xl text-center lg:text-start font-bold mb-2 text-white">
               خدماتنا
             </h2>
@@ -88,22 +154,34 @@ const Services: React.FC = () => {
               نحولك من مجرد عميل إلى شريك في رحلة التحول الرقمي الأكثر إثارة.
               دعنا نكتب معًا فصل النجاح التالي في عالم التكنولوجيا.
             </p>
-          </div>
+          </motion.div>
           {/* Image Section */}
-          <div className="w-full flex justify-center">
+          <motion.div
+            variants={imageVariants}
+            initial="hidden"
+            animate={isIntroInView ? "visible" : "hidden"}
+            className="w-full flex justify-center"
+          >
             <img
               loading="lazy"
               src={servicesImage}
               alt="خدمات إنفو تك"
               className="w-full h-full max-w-md"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Cards Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-9">
+        <motion.div
+          ref={cardsRef}
+          initial="hidden"
+          animate={isCardsInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-9"
+        >
           {services.map((service, idx) => (
-            <div
+            <motion.div
+              variants={cardVariants}
+              custom={idx}
               key={idx}
               className="flex flex-col lg:flex-row gap-2 bg-background-gradient p-4 rounded-2xl lg:rounded-2xl shadow-lg"
             >
@@ -131,9 +209,9 @@ const Services: React.FC = () => {
                   طلب الخدمة
                 </Button>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </>
   );
