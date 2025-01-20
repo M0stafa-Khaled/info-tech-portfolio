@@ -16,6 +16,8 @@ import tailwindcss from "../../assets/tech-tailwindcss.png";
 import nodejs from "../../assets/tech-nodejs.png";
 import postgresql from "../../assets/tech-potgresql.png";
 import mongodb from "../../assets/tech-mongodb.png";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface ITeamMember {
   name: string;
@@ -34,6 +36,24 @@ interface ITeamMember {
 }
 
 const About = () => {
+  const aboutSectionRef = useRef(null);
+  const teamSectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const isAboutInView = useInView(aboutSectionRef, {
+    once: false,
+    amount: 0.2,
+    margin: "450px 0px 0px 0px",
+  });
+  const isTitleInView = useInView(titleRef, {
+    once: false,
+    amount: 0.2,
+  });
+
+  const isTeamInView = useInView(teamSectionRef, {
+    once: false,
+    amount: 0.2,
+    margin: "350px 0px 350px 0px",
+  });
   const teamMembers: ITeamMember[] = [
     {
       name: "مصطفى خالد",
@@ -162,6 +182,98 @@ const About = () => {
       cv: "",
     },
   ];
+
+  const lineVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const imageVariants = {
+    hidden: {
+      opacity: 0,
+      x: -100, // Animate from left
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const textVariants = {
+    hidden: {
+      opacity: 0,
+      x: 100, // Animate from right
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const buttonVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: {
+      opacity: 0,
+      y: -50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.4,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   return (
     <div className="container">
       <BgImage />
@@ -169,7 +281,13 @@ const About = () => {
         <div className="flex flex-col justify-center items-center gap-y-4 lg:gap-y-8">
           <div className="flex flex-col-reverse xl:flex-row gap-x-9 gap-y-6">
             {/* Text */}
-            <div className="w-full flex flex-col items-center xl:items-start justify-center gap-y-2 lg:gap-y-4 text-right">
+            <motion.div
+              ref={aboutSectionRef}
+              variants={textVariants}
+              initial="hidden"
+              animate={isAboutInView ? "visible" : "hidden"}
+              className="w-full flex flex-col items-center xl:items-start justify-center gap-y-2 lg:gap-y-4 text-right"
+            >
               <h2 className="text-white capitalize text-2xl lg:text-[42px]">
                 Info Tech
               </h2>
@@ -184,50 +302,81 @@ const About = () => {
                 نؤمن بقوة التعاون والتفكير خارج الصندوق، ونسعى دائمًا لإحداث
                 تأثير إيجابي من خلال الحلول التكنولوجية المبتكرة التي نقدمها.
               </p>
-            </div>
-            <div className="flex justify-center items-center">
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              animate={isAboutInView ? "visible" : "hidden"}
+              className="flex justify-center items-center"
+              variants={lineVariants}
+            >
               <hr className="h-[1px] w-2/3 xl:h-2/3 xl:w-[1px] bg-muted rounded-2xl" />
-            </div>
+            </motion.div>
             {/* Image */}
-            <div className="w-full flex justify-center items-center">
+            <motion.div
+              ref={aboutSectionRef}
+              initial="hidden"
+              animate={isAboutInView ? "visible" : "hidden"}
+              variants={imageVariants}
+              className="w-full flex justify-center items-center"
+            >
               <img
                 loading="lazy"
                 src={aboutImage}
                 className="w-full max-w-sm lg:max-w-sm"
               />
-              {/* Line */}
-            </div>
+            </motion.div>
           </div>
           {/* Button */}
-          <Button
-            primary
-            className="rounded-xl w-[200px] md:w-[350px] bg-btn-primary hover:bg-btn-primary-hover"
+          <motion.div
+            initial="hidden"
+            animate={isAboutInView ? "visible" : "hidden"}
+            variants={buttonVariants}
           >
-            <Link
-              to={"/contact"}
-              className="px-3 sm:px-6 py-4 flex justify-center items-center gap-x-3 text-white text-sm xl:text-lg font-medium normal-case"
+            <Button
+              primary
+              className="rounded-xl w-[200px] md:w-[350px] bg-btn-primary hover:bg-btn-primary-hover"
             >
-              اتصل بنا
-              <span>
-                <CgArrowTopRightO className="h-5 w-5 text-white" size={20} />
-              </span>
-            </Link>
-          </Button>
+              <Link
+                to={"/contact"}
+                className="px-3 sm:px-6 py-4 flex justify-center items-center gap-x-3 text-white text-sm xl:text-lg font-medium normal-case"
+              >
+                اتصل بنا
+                <span>
+                  <CgArrowTopRightO className="h-5 w-5 text-white" size={20} />
+                </span>
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
-      <SectionTitle
-        title="فريق العمل"
-        titleBackFontSizeBack="text-[36px] md:text-[72px] lg:text-[96px]"
-      />
-      <section>
+      {/* Title */}
+      <motion.div
+        ref={titleRef}
+        variants={titleVariants}
+        initial="hidden"
+        animate={isTitleInView ? "visible" : "hidden"}
+      >
+        <SectionTitle
+          title="فريق العمل"
+          titleBackFontSizeBack="text-[36px] md:text-[72px] lg:text-[96px]"
+        />
+      </motion.div>
+      {/* Team Cards */}
+      <motion.section
+        ref={teamSectionRef}
+        initial="hidden"
+        animate={isTeamInView ? "visible" : "hidden"}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {teamMembers.map(
             (
               { name, description, role, image, links, technologies, cv },
               idx
             ) => (
-              <div
+              <motion.div
                 key={idx}
+                custom={idx}
+                variants={cardVariants}
                 className="bg-background-gradient py-4 px-6 rounded-2xl lg:rounded-3xl space-y-4"
               >
                 <div className="flex flex-col justify-between w-full h-full">
@@ -248,7 +397,7 @@ const About = () => {
                     {description}
                   </p>
                   <div className="">
-                    {/* Technologies Skilles */}
+                    {/* Technologies Skills */}
                     <div className="flex justify-center lg:justify-start items-center flex-wrap gap-x-2 mt-2">
                       {technologies.map((tech, idx) => (
                         <div
@@ -293,11 +442,11 @@ const About = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )
           )}
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
