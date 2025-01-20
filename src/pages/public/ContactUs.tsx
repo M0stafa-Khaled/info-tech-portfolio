@@ -5,21 +5,77 @@ import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import Label from "../../components/ui/Label";
 import Textarea from "../../components/ui/Textarea";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const ContactUs = () => {
+  const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
+
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const subjectVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 10
+      }
+    }
+  };
+
   return (
-    <section className="container">
+    <motion.section 
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="container"
+    >
       <BgImage />
-      <div className="text-center my-9 lg:mt-[72px] text-white">
+      <motion.div 
+        variants={itemVariants}
+        className="text-center my-9 lg:mt-[72px] text-white"
+      >
         <h1 className="text-4xl font-bold">اتصل بنا</h1>
         <p className="text-lg p-4 text-muted">
           أي سؤال أو ملاحظة؟ فقط اكتب لنا رسالة!
         </p>
-      </div>
-      <div className="bg-background-gradient rounded-2xl lg:rounded-3xl text-white w-full py-6 px-4 lg:px-6">
+      </motion.div>
+      <motion.div 
+        variants={itemVariants}
+        className="bg-background-gradient rounded-2xl lg:rounded-3xl text-white w-full py-6 px-4 lg:px-6"
+      >
         <div className="flex flex-col xl:flex-row gap-x-12 xl:gap-x-16 gap-y-12">
           {/* Contact Info */}
-          <div className="bg-dark space-y-4 w-auto lg:min-w-max py-4 px-4 md:px-6 rounded-2xl">
+          <motion.div 
+            variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+            className="bg-dark space-y-4 w-auto lg:min-w-max py-4 px-4 md:px-6 rounded-2xl"
+          >
             <div className="px-4 py-3 space-y-2">
               <h3 className="text-xl md:text-[28px] font-semibold">
                 معلومات الاتصال
@@ -29,74 +85,97 @@ const ContactUs = () => {
               </p>
             </div>
             <div className="px-4 py-3 space-y-5">
-              <div className="flex items-center gap-3 text-sm md:text-lg">
-                <span>
-                  <FaPhone size={24} />
-                </span>
-                <span>+966 50 123 4567</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm md:text-lg">
-                <span>
-                  <FaEnvelope size={24} />
-                </span>
-                <span>info@infotech.eg</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm md:text-lg">
-                <span>
-                  <FaMapMarkerAlt size={24} />
-                </span>
-                <span>القاهرة, مصر</span>
-              </div>
+              {[
+                { icon: <FaPhone size={24} />, text: "+966 50 123 4567" },
+                { icon: <FaEnvelope size={24} />, text: "info@infotech.eg" },
+                { icon: <FaMapMarkerAlt size={24} />, text: "القاهرة, مصر" }
+              ].map((contact, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ 
+                    delay: index * 0.2,
+                    type: "spring",
+                    stiffness: 300
+                  }}
+                  className="flex items-center gap-3 text-sm md:text-lg"
+                >
+                  <span>{contact.icon}</span>
+                  <span>{contact.text}</span>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* From */}
-          <form
+          {/* Form */}
+          <motion.form
+            variants={itemVariants}
             className="w-full rounded-lg flex flex-col gap-y-6"
             onSubmit={(e) => e.preventDefault()}
           >
             {/* Inputs */}
-            <div className="flex flex-col gap-6">
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-col gap-6"
+            >
               {/* Inputs Row 1 */}
               <div className="flex flex-col md:flex-row gap-4">
-                <div className="relative w-full min-w-[200px] h-11">
-                  <Input />
-                  <Label>الاسم الاول</Label>
-                </div>
-                <div className="relative w-full min-w-[200px] h-11">
-                  <Input />
-                  <Label>الاسم الثاني</Label>
-                </div>
+                {[
+                  { label: "الاسم الاول", key: "firstName" },
+                  { label: "الاسم الثاني", key: "lastName" }
+                ].map((input) => (
+                  <motion.div 
+                    key={input.key}
+                    variants={itemVariants}
+                    className="relative w-full min-w-[200px] h-11"
+                  >
+                    <Input />
+                    <Label>{input.label}</Label>
+                  </motion.div>
+                ))}
               </div>
               {/* Inputs Row 2 */}
               <div className="flex flex-col md:flex-row gap-4">
-                <div className="relative w-full min-w-[200px] h-11">
-                  <Input />
-                  <Label>البريد الالكتروني</Label>
-                </div>
-                <div className="relative w-full min-w-[200px] h-11">
-                  <Input />
-                  <Label>رقم الهاتف</Label>
-                </div>
+                {[
+                  { label: "البريد الالكتروني", key: "email" },
+                  { label: "رقم الهاتف", key: "phone" }
+                ].map((input) => (
+                  <motion.div 
+                    key={input.key}
+                    variants={itemVariants}
+                    className="relative w-full min-w-[200px] h-11"
+                  >
+                    <Input />
+                    <Label>{input.label}</Label>
+                  </motion.div>
+                ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Options */}
-            <div>
+            <motion.div variants={itemVariants}>
               <p className="mb-4 text-lg">اختر الموضوع</p>
               <div className="flex justify-between flex-wrap gap-3 ">
                 {["استفسار عام", "دعم فني", "اقتراحات", "أخرى"].map(
                   (option, index) => (
-                    <div key={index} className="flex gap-8 min-w-36">
+                    <motion.div 
+                      key={index}
+                      variants={subjectVariants}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex gap-8 min-w-36"
+                    >
                       <div className="inline-flex items-center">
                         <label className="relative flex items-center cursor-pointer p-3 rounded-full">
                           <input
-                            onChange={(e) => console.log(e.target.value)}
+                            onChange={(e) => setSelectedSubject(e.target.value)}
                             name="subject"
                             type="radio"
                             id={`subject-${index}`}
                             className="peer relative appearance-none w-5 h-5 border rounded-full cursor-pointer before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-2/4 before:left-2/4 before:-translate-y-2/4 before:-translate-x-2/4 before:opacity-0 before:transition-opacity border-white bg-white p-0 transition-all hover:before:opacity-0"
                             value={option}
+                            checked={selectedSubject === option}
                           />
                           <span className="absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity">
                             <FiCheck size={14} className="text-gray-900" />
@@ -111,31 +190,33 @@ const ContactUs = () => {
                           </p>
                         </label>
                       </div>
-                    </div>
+                    </motion.div>
                   )
                 )}
               </div>
-            </div>
+            </motion.div>
+
             {/* Message */}
-            <div>
+            <motion.div variants={itemVariants}>
               <div className="relative w-full min-w-[200px]">
                 <Textarea />
                 <Label>الرسالة</Label>
               </div>
-            </div>
+            </motion.div>
+
             {/* Submit */}
-            <div>
+            <motion.div variants={itemVariants}>
               <Button
                 type="submit"
                 className="w-full lg:w-[200px] normal-case py-4 bg-dark text-white text-base font-normal rounded-xl"
               >
                 إرسال الرسالة
               </Button>
-            </div>
-          </form>
+            </motion.div>
+          </motion.form>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

@@ -1,10 +1,36 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { IProject } from "../../interfaces";
 import projectImg from "../../assets/project-img.png";
 import { filterProjectsByCategory } from "../../utils/filterProjectsByCategory";
 import BgImage from "../../components/BgImage";
 import ProjectCard from "../../components/ProjectCard";
+import { motion, useInView } from "framer-motion";
+
 const Projects = () => {
+  const projectsRef = useRef(null);
+
+  const isProjectsInView = useInView(projectsRef, {
+    once: true,
+    amount: 0.2,
+    margin: "350px 0px 600px 0px",
+  });
+
+  const projectVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.4,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   const categories = [
     "الكل",
     "واجهة أمامية",
@@ -113,9 +139,10 @@ const Projects = () => {
   }, [filter]);
 
   return (
-    <div>
+    <>
       <BgImage />
       <div className="container">
+        {/* Categories */}
         <div className="flex justify-center items-center mt-9 lg:mt-[72px] mb-9">
           <div className="bg-background-gradient flex justify-center flex-wrap gap-4 rounded-2xl px-4 py-2">
             {categories.map((category) => (
@@ -133,13 +160,30 @@ const Projects = () => {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-6 lg:gap-y-9 gap-x-6">
-          {filteredProjects.map((project: IProject) => (
-            <ProjectCard key={project.id} project={project} />
+
+        {/* Projects */}
+        <motion.div
+          ref={projectsRef}
+          initial="visible"
+          animate={isProjectsInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-6 lg:gap-y-9 gap-x-6"
+        >
+          {filteredProjects.map((project: IProject, index: number) => (
+            <motion.div
+              key={project.id}
+              variants={projectVariants}
+              custom={index}
+              initial="hidden"
+              animate={"visible"}
+              whileHover={{ scale: 1.05, rotate: 1 }}
+              transition={{ type: "tween", stiffness: 300 }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </>
   );
 };
 

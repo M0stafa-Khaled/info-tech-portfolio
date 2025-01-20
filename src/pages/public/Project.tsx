@@ -12,21 +12,21 @@ import avatar from "../../assets/about-avatar.png";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
 import { FaStar } from "react-icons/fa";
+import { motion } from "framer-motion";
+interface IProjectDetails {
+  title: string;
+  description: string;
+  images: string[];
+  technologies: { name: string; icon: string }[];
+  rating: number;
+  developers: {
+    name: string;
+    avatar: string;
+    job: string;
+  }[];
+}
 
 const Project = () => {
-  interface IProjectDetails {
-    title: string;
-    description: string;
-    images: string[];
-    technologies: { name: string; icon: string }[];
-    rating: number;
-    developers: {
-      name: string;
-      avatar: string;
-      job: string;
-    }[];
-  }
-
   const projectDetails: IProjectDetails = {
     title: "منصة التعلم الإلكتروني",
     description:
@@ -75,12 +75,57 @@ const Project = () => {
     ],
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const techItemVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 10,
+      },
+    },
+  };
+
   return (
-    <div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="min-h-screen"
+    >
       <BgImage />
       <div className="container mt-9">
         {/* Image Slider */}
-        <div className="bg-background-gradient rounded-2xl lg:rounded-3xl overflow-hidden">
+        <motion.div
+          variants={itemVariants}
+          className="bg-background-gradient rounded-2xl lg:rounded-3xl overflow-hidden"
+        >
           <div className="relative group">
             <Swiper
               modules={[Autoplay, Navigation, Pagination]}
@@ -104,7 +149,10 @@ const Project = () => {
             >
               {projectDetails.images.map((image, index) => (
                 <SwiperSlide key={index}>
-                  <img
+                  <motion.img
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
                     loading="lazy"
                     src={image}
                     alt={`عرض المشروع ${index + 1}`}
@@ -158,49 +206,85 @@ const Project = () => {
               </div>
             </Swiper>
           </div>
-        </div>
+        </motion.div>
 
         {/* Project Details */}
-        <div className="py-6 px-4 lg:px-4 mt-6 lg:mt-9 space-y-4 bg-background-gradient rounded-2xl lg:rounded-3xl">
-          {/* Title */}
-          <div className="flex items-center flex-col lg:flex-row gap-x-9 gap-y-4">
+        <motion.div
+          variants={itemVariants}
+          className="py-6 px-4 lg:px-4 mt-6 lg:mt-9 space-y-4 bg-background-gradient rounded-2xl lg:rounded-3xl"
+        >
+          {/* Title and Link */}
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center flex-col lg:flex-row gap-x-9 gap-y-4"
+          >
             <h1 className="text-center lg:text-right text-xl md:text-[28px] lg:text-4xl font-medium text-white">
               {projectDetails.title}
             </h1>
-            <Link
-              to={""}
-              className="text-lg lg:text-xl text-yellow flex items-center gap-x-2 px-2 min-w-48 justify-center"
-            >
-              معاينة مباشرة{" "}
-              <span>
-                <CgArrowTopRightO className="h-5 w-5 text-yellow" size={20} />
-              </span>
-            </Link>
-          </div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                to={""}
+                className="text-lg lg:text-xl text-yellow flex items-center gap-x-2 px-2 min-w-48 justify-center"
+              >
+                معاينة مباشرة{" "}
+                <span>
+                  <CgArrowTopRightO className="h-5 w-5 text-yellow" size={20} />
+                </span>
+              </Link>
+            </motion.div>
+          </motion.div>
+
           {/* Rating */}
-          <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap gap-2 items-center justify-center lg:justify-start"
+          >
             <span className="text-muted">(٤/٥)</span>
             {[...Array(5)].map((_, index) => (
-              <FaStar
+              <motion.div
                 key={index}
-                fill={index < projectDetails.rating ? "gold" : "gray"}
-                className={`w-6 h-6 ${
-                  index < projectDetails.rating
-                    ? "text-amber-500"
-                    : "text-gray-300"
-                }`}
-              />
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{
+                  scale: 1,
+                  opacity: 1,
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    delay: index * 0.1,
+                  },
+                }}
+              >
+                <FaStar
+                  fill={index < projectDetails.rating ? "gold" : "gray"}
+                  className={`w-6 h-6 ${
+                    index < projectDetails.rating
+                      ? "text-amber-500"
+                      : "text-gray-300"
+                  }`}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+
           {/* Description */}
-          <p className="text-center lg:text-right text-muted leading-relaxed lg:text-lg">
+          <motion.p
+            variants={itemVariants}
+            className="text-center lg:text-right text-muted leading-relaxed lg:text-lg"
+          >
             {projectDetails.description}
-          </p>
+          </motion.p>
+
           {/* Technologies */}
-          <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap gap-2 justify-center lg:justify-start"
+          >
             {projectDetails.technologies.map((tech) => (
-              <div
+              <motion.div
                 key={tech.name}
+                variants={techItemVariants}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
                 className="flex items-center justify-center p-3 w-14 h-14 rounded-full border border-[#66699C]/50 shadow-md"
                 style={{
                   background:
@@ -213,19 +297,33 @@ const Project = () => {
                   alt={tech.name}
                   className="w-full h-full object-contain"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+
           {/* Developers */}
-          <div className="flex flex-col justify-center items-center lg:items-start gap-y-4">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col justify-center items-center lg:items-start gap-y-4"
+          >
             <h2 className="text-white text-2xl lg:text-3xl">طُوِّر بواسطة</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full"
+            >
               {projectDetails.developers.map(({ avatar, name, job }, idx) => (
-                <div
+                <motion.div
                   key={idx}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.03 }}
                   className="flex items-center gap-x-4 bg-dark-blue px-4 py-2 rounded-2xl w-full shadow-md"
                 >
-                  <img
+                  <motion.img
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
                     loading="lazy"
                     src={avatar}
                     alt={name}
@@ -237,13 +335,13 @@ const Project = () => {
                     </h3>
                     <span className="text-muted text-sm">{job}</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
