@@ -45,14 +45,14 @@ const NavList = () => {
       {links.map((link) => (
         <li
           key={link.name}
-          className="py-2 px-4 lg:px-0 rounded-lg hover:bg-dark-blue lg:hover:bg-transparent transition-all duration-300 ease-in-out"
+          className="rounded-lg hover:bg-dark-blue lg:hover:bg-transparent transition-all duration-300 ease-in-out"
         >
           <NavLink
             to={link.to}
             className={({ isActive }) =>
               isActive
-                ? "text-white flex items-center text-base md:p-0 gap-[10px]"
-                : "text-muted flex items-center text-base md:p-0 gap-[10px] hover:text-white transition-all duration-300 ease-in-out"
+                ? "text-white flex items-center text-base gap-[10px] py-2 px-4 lg:px-0"
+                : "text-muted flex items-center text-base gap-[10px] py-2 px-4 lg:px-0 hover:text-white transition-all duration-300 ease-in-out"
             }
             aria-current="page"
           >
