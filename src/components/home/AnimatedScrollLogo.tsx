@@ -49,6 +49,7 @@ const AnimatedScrollLogo = () => {
         {logos.map((logo, idx) => (
           <SwiperSlide key={idx} className="flex justify-center items-center">
             <img
+              loading="lazy"
               src={logo}
               alt={`Tech logo ${idx + 1}`}
               className="h-6 md:h-8 lg:h-12 object-contain"

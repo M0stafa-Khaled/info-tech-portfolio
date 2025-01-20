@@ -1,7 +1,7 @@
-import { Button } from "@material-tailwind/react";
 import heroImg from "../../assets/hero.png";
 import { FiArrowLeftCircle } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
+import Button from "../ui/Button";
 
 const buttonGradientStyle = {
   background: "linear-gradient(96.53deg, #142D6C 0%, #0F1523 43.85%)",
@@ -31,7 +31,6 @@ const Hero = () => {
       <div>
         <Button
           style={buttonGradientStyle}
-          variant="gradient"
           className="flex items-center gap-x-2 px-4 sm:px-6 md:px-9 py-2 sm:py-3 md:py-4  text-white text-sm md:text-xl border border-muted rounded-full normal-case font-medium"
           onClick={() => {
             window.scrollTo({

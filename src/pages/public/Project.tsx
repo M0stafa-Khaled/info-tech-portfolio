@@ -1,17 +1,17 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import BgImage from "../components/BgImage";
+import BgImage from "../../components/BgImage";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import projectImg from "../assets/project-img.png";
-import reactIcon from "../assets/tech-reactjs.png";
-import expressjs from "../assets/tech-express.png";
-import typescript from "../assets/tech-typescript.png";
-import tailwindcss from "../assets/tech-tailwindcss.png";
-import nodejs from "../assets/tech-nodejs.png";
-import mongodb from "../assets/tech-mongodb.png";
+import projectImg from "../../assets/project-img.png";
+import reactIcon from "../../assets/tech-reactjs.png";
+import expressjs from "../../assets/tech-express.png";
+import typescript from "../../assets/tech-typescript.png";
+import tailwindcss from "../../assets/tech-tailwindcss.png";
+import nodejs from "../../assets/tech-nodejs.png";
+import mongodb from "../../assets/tech-mongodb.png";
+import avatar from "../../assets/about-avatar.png";
 import { Link } from "react-router-dom";
-import avatar from "../assets/about-avatar.png";
 import { CgArrowTopRightO } from "react-icons/cg";
-import { Rating } from "@material-tailwind/react";
+import { FaStar } from "react-icons/fa";
 
 const Project = () => {
   interface IProjectDetails {
@@ -75,11 +75,6 @@ const Project = () => {
     ],
   };
 
-  const handleRatingChange = (value: number) => {
-    console.log(value);
-    // Send Request by user rating
-  };
-
   return (
     <div>
       <BgImage />
@@ -110,6 +105,7 @@ const Project = () => {
               {projectDetails.images.map((image, index) => (
                 <SwiperSlide key={index}>
                   <img
+                    loading="lazy"
                     src={image}
                     alt={`عرض المشروع ${index + 1}`}
                     className="max-w-full max-h-[550px] object-contain w-full h-full"
@@ -183,14 +179,18 @@ const Project = () => {
           </div>
           {/* Rating */}
           <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
-            <Rating
-              value={projectDetails.rating}
-              ratedColor="amber"
-              unratedColor="amber"
-              className="h-8 lg:h-12"
-              onChange={handleRatingChange}
-            />
             <span className="text-muted">(٤/٥)</span>
+            {[...Array(5)].map((_, index) => (
+              <FaStar
+                key={index}
+                fill={index < projectDetails.rating ? "gold" : "gray"}
+                className={`w-6 h-6 ${
+                  index < projectDetails.rating
+                    ? "text-amber-500"
+                    : "text-gray-300"
+                }`}
+              />
+            ))}
           </div>
           {/* Description */}
           <p className="text-center lg:text-right text-muted leading-relaxed lg:text-lg">
@@ -201,13 +201,14 @@ const Project = () => {
             {projectDetails.technologies.map((tech) => (
               <div
                 key={tech.name}
-                className="flex items-center justify-center p-3 w-14 h-14 rounded-full border border-[#66699C]/50"
+                className="flex items-center justify-center p-3 w-14 h-14 rounded-full border border-[#66699C]/50 shadow-md"
                 style={{
                   background:
                     "linear-gradient(103.4deg, rgba(37, 37, 37, 0.5) 16.66%, rgba(43, 45, 66, 0.5) 81.61%)",
                 }}
               >
                 <img
+                  loading="lazy"
                   src={tech.icon}
                   alt={tech.name}
                   className="w-full h-full object-contain"
@@ -225,6 +226,7 @@ const Project = () => {
                   className="flex items-center gap-x-4 bg-dark-blue px-4 py-2 rounded-2xl w-full shadow-md"
                 >
                   <img
+                    loading="lazy"
                     src={avatar}
                     alt={name}
                     className="h-14 w-14 rounded-full"

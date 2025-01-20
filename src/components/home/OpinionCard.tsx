@@ -13,6 +13,7 @@ const OpinionCard = ({
       {/* Image */}
       <div className="flex justify-center items-center">
         <img
+          loading="lazy"
           src={img}
           alt={name}
           className="2xl:max-w-40 max-w-36 object-cover"

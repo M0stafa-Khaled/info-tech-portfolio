@@ -1,4 +1,3 @@
-import { Typography } from "@material-tailwind/react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
 import SocialLinkIcon from "./SocialLinkIcon";
@@ -65,12 +64,9 @@ const Footer = () => {
               والتصميم التكنولوجي.
             </p>
             <div>
-              <Typography
-                variant="h3"
-                className="text-white text-2xl font-normal text-center lg:text-right"
-              >
+              <h3 className="text-white text-2xl font-normal text-center lg:text-right">
                 تابعنا
-              </Typography>
+              </h3>
               <div className="mt-6 flex justify-center items-center flex-wrap gap-x-6 gap-y-2">
                 {socialLinks.map((social, idx) => (
                   <SocialLinkIcon
@@ -85,9 +81,7 @@ const Footer = () => {
 
           {/* Right Side */}
           <div className="flex flex-col items-center lg:items-start  lg:w-1/2 gap-y-6">
-            <Typography variant="h3" className="text-white text-xl font-normal">
-              روابط سريعة
-            </Typography>
+            <h3 className="text-white text-xl font-normal">روابط سريعة</h3>
             <nav className="space-y-2 text-lg">
               {navLinks.map((navLink, idx) => (
                 <Link
@@ -107,14 +101,11 @@ const Footer = () => {
         </div>
         {/* Copyright */}
         <div className="flex flex-col justify-center items-center text-white px-6 gap-y-4">
-          <Typography
-            variant="paragraph"
-            className="text-muted text-center text-base lg:text-lg"
-          >
+          <p className="text-muted text-center text-base lg:text-lg">
             جميع الحقوق محفوظة &copy; {new Date().getFullYear()}
-          </Typography>
+          </p>
           <Link to={"/"} className="text-white mr-1">
-            <img src={logo} alt="logo" className="w-full h-8" />
+            <img loading="lazy" src={logo} alt="logo" className="w-full h-8" />
           </Link>
         </div>
       </div>

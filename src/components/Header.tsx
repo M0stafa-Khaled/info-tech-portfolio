@@ -1,5 +1,4 @@
 import React from "react";
-import { IconButton, Collapse } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { IoClose, IoMenu } from "react-icons/io5";
 import NavList from "./NavList";
@@ -23,18 +22,24 @@ const Header = () => {
             <div className="hidden lg:block">
               <NavList />
             </div>
-            <IconButton
-              variant="text"
-              className="h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-              ripple={false}
+            <button
+              className="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none max-w-[40px] max-h-[40px] rounded-lg text-xs h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
               onClick={() => setOpenNav(!openNav)}
             >
-              {openNav ? (
-                <IoClose size={36} className="text-white" />
-              ) : (
-                <IoMenu size={36} className="text-white" />
-              )}
-            </IconButton>
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform transition-transform duration-300 ease-in-out">
+                {openNav ? (
+                  <IoClose
+                    size={36}
+                    className="text-white transition-all duration-300"
+                  />
+                ) : (
+                  <IoMenu
+                    size={36}
+                    className="text-white transition-all duration-300"
+                  />
+                )}
+              </span>
+            </button>
             <Link
               to="/"
               className="text-white cursor-pointer font-medium text-2xl"
@@ -43,11 +48,15 @@ const Header = () => {
             </Link>
           </div>
           {/* Mobile menu */}
-          <Collapse open={openNav} className="block lg:hidden">
+          <div
+            className={`block lg:hidden w-full transition-all linear duration-700 overflow-hidden ${
+              openNav ? "max-h-screen" : "max-h-0"
+            }`}
+          >
             <div className="mx-auto">
               <NavList />
             </div>
-          </Collapse>
+          </div>
         </div>
       </nav>
     </header>

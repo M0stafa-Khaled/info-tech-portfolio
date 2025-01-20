@@ -1,4 +1,4 @@
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 import avatar from "../../assets/about-avatar.png";
 import OpinionCard from "./OpinionCard";
 import { IOpinion } from "../../interfaces";

@@ -1,14 +1,14 @@
-import servicesImage from "../assets/service.png";
-import designingImage from "../assets/service-designing.png";
-import codingImage from "../assets/service-coding.png";
-import hostingImage from "../assets/service-hosting.png";
-import softwareImage from "../assets/service-software-engineering.png";
-import socialImage from "../assets/service-social-media.png";
-import responsiveImage from "../assets/service-responsive-design.png";
-import coloringImage from "../assets/service-coloring.png";
-import contentImage from "../assets/service-content-creation.png";
-import BgImage from "../components/BgImage";
-import { Button } from "@material-tailwind/react";
+import servicesImage from "../../assets/service.png";
+import designingImage from "../../assets/service-designing.png";
+import codingImage from "../../assets/service-coding.png";
+import hostingImage from "../../assets/service-hosting.png";
+import softwareImage from "../../assets/service-software-engineering.png";
+import socialImage from "../../assets/service-social-media.png";
+import responsiveImage from "../../assets/service-responsive-design.png";
+import coloringImage from "../../assets/service-coloring.png";
+import contentImage from "../../assets/service-content-creation.png";
+import BgImage from "../../components/BgImage";
+import Button from "../../components/ui/Button";
 
 interface ICard {
   image: string;
@@ -92,6 +92,7 @@ const Services: React.FC = () => {
           {/* Image Section */}
           <div className="w-full flex justify-center">
             <img
+              loading="lazy"
               src={servicesImage}
               alt="خدمات إنفو تك"
               className="w-full h-full max-w-md"
@@ -109,6 +110,7 @@ const Services: React.FC = () => {
               {/* Image */}
               <div className="w-full flex flex-col justify-center items-center">
                 <img
+                  loading="lazy"
                   src={service.image}
                   alt={service.title}
                   className="w-72 h-52 object-contain"
@@ -118,11 +120,14 @@ const Services: React.FC = () => {
                 </h3>
               </div>
               {/* Text */}
-              <div className="w-full flex flex-col lg:justify-evenly gap-y-4 text-center lg:text-right">
+              <div className="w-full flex flex-col lg:justify-evenly gap-y-4 text-center lg:text-right rounded-">
                 <p className="text-white/80 leading-relaxed">
                   {service.description}
                 </p>
-                <Button className="capitalize w-fit mx-auto lg:mx-0 bg-btn-primary hover:bg-btn-primary-hover text-white font-normal text-lg px-3 py-2">
+                <Button
+                  primary
+                  className="capitalize w-fit mx-auto lg:mx-0 bg-btn-primary hover:bg-btn-primary-hover text-white font-normal text-lg px-3 py-2 rounded-xl"
+                >
                   طلب الخدمة
                 </Button>
               </div>

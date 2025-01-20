@@ -9,10 +9,11 @@ const ProjectCard = ({
 }) => {
   return (
     <div className="bg-background-gradient flex p-3 lg:p-4 rounded-2xl lg:rounded-3xl shadow-sm border border-dark-blue group">
-      <div className="flex flex-col justify-between gap-3">
+      <div className="flex flex-col justify-between gap-3 w-full">
         <div className="bg-[#000F22]/40 rounded-2xl lg:rounded-3xl overflow-hidden pt-2 shadow-md">
           <div className="h-56 sm:h-64 md:h-72 flex justify-center items-center ">
             <img
+              loading="lazy"
               src={img}
               alt={title}
               className="w-full md:max-w-md h-full object-cover rounded-t-2xl lg:rounded-t-3xl transition-transform duration-300 group-hover:scale-105"
@@ -27,7 +28,7 @@ const ProjectCard = ({
             {description}
           </p>
         </div>
-        <div className="flex flex-col 2xl:flex-row justify-between md:justify-center md:gap-x-4 gap-y-2 lg:justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between md:justify-center md:gap-x-4 gap-y-2 lg:justify-between items-center">
           <Link
             to={`/projects/${id}`}
             className="flex items-center gap-x-3 px-2 text-blue"

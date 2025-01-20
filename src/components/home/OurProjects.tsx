@@ -1,7 +1,7 @@
 import { IProject } from "../../interfaces";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 import projectImg from "../../assets/project-img.png";
-import Button from "./Button";
+import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
 import ProjectCard from "../ProjectCard";
@@ -54,7 +54,7 @@ const OurProjects = () => {
         ))}
       </div>
       <div className="flex justify-center mt-[18px] lg:mt-[36px]">
-        <Button className="lg:w-fit">
+        <Button className="lg:w-fit bg-btn-secondary hover:bg-btn-secondary-hover rounded-xl">
           <Link
             to={"/projects"}
             className="px-8 sm:px-24 h-[56px] flex justify-center items-center gap-x-3 text-white text-lg font-medium normal-case"

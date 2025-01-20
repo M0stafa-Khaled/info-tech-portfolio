@@ -1,10 +1,9 @@
-import { useState, useMemo } from "react";
-import BgImage from "../components/BgImage";
-import ProjectCard from "../components/ProjectCard";
-import { IProject } from "../interfaces";
-import projectImg from "../assets/project-img.png";
-import { filterProjectsByCategory } from "../utils/filterProjectsByCategory";
-
+import { useMemo, useState } from "react";
+import { IProject } from "../../interfaces";
+import projectImg from "../../assets/project-img.png";
+import { filterProjectsByCategory } from "../../utils/filterProjectsByCategory";
+import BgImage from "../../components/BgImage";
+import ProjectCard from "../../components/ProjectCard";
 const Projects = () => {
   const categories = [
     "الكل",
