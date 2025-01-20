@@ -5,8 +5,13 @@ import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
 import ProjectCard from "../ProjectCard";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const OurProjects = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
+
   const projects: IProject[] = [
     {
       id: 1,
@@ -45,15 +50,60 @@ const OurProjects = () => {
       category: "تصميم واجهة المستخدم",
     },
   ];
+
+  const titleVariants = {
+    hidden: {
+      opacity: 0,
+      y: -50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.4,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
   return (
-    <section className="container">
-      <SectionTitle title="مشاريعنا" />
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+    <section className="container" ref={ref}>
+      <motion.div
+        variants={titleVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        <SectionTitle title="مشاريعنا" />
+      </motion.div>
+      <motion.div
+        className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6"
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        {projects.map((project, idx) => (
+          <motion.div custom={idx} variants={cardVariants}>
+            <ProjectCard project={project} />
+          </motion.div>
         ))}
-      </div>
-      <div className="flex justify-center mt-[18px] lg:mt-[36px]">
+      </motion.div>
+      <div
+        className="flex justify-center mt-[18px] lg:mt-[36px]"
+      >
         <Button className="lg:w-fit bg-btn-secondary hover:bg-btn-secondary-hover rounded-xl">
           <Link
             to={"/projects"}

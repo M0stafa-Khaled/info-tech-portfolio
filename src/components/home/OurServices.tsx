@@ -8,8 +8,13 @@ import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
 import { IService } from "../../interfaces";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const OurServices = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
+
   const services: IService[] = [
     {
       title: "تطوير الويب",
@@ -36,16 +41,80 @@ const OurServices = () => {
       img: serviceHosting,
     },
   ];
+
+  const titleVariants = {
+    hidden: {
+      opacity: 0,
+      y: -50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.4,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
+
+  const buttonVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section className="container">
-      <SectionTitle title="خدماتنا" />
+    <section className="container" ref={ref}>
+      <motion.div
+        variants={titleVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        <SectionTitle title="خدماتنا" />
+      </motion.div>
       {/* Services Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <motion.div
+        className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6"
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
         {services.map((service, idx) => (
-          <ServiceCard key={idx} service={service} />
+          <motion.div key={idx} custom={idx} variants={cardVariants}>
+            <ServiceCard service={service} />
+          </motion.div>
         ))}
-      </div>
-      <div className="flex justify-center mt-[18px] lg:mt-[36px]">
+      </motion.div>
+      <motion.div
+        className="flex justify-center mt-[18px] lg:mt-[36px]"
+        variants={buttonVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
         <Button className="lg:w-fit bg-btn-secondary hover:bg-btn-secondary-hover rounded-xl">
           <Link
             to={"/services"}
@@ -57,7 +126,7 @@ const OurServices = () => {
             </span>
           </Link>
         </Button>
-      </div>
+      </motion.div>
     </section>
   );
 };

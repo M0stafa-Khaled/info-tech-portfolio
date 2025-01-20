@@ -4,8 +4,13 @@ import OpinionCard from "./OpinionCard";
 import { IOpinion } from "../../interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const CustomerOpinions = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
+
   const Opinions: IOpinion[] = [
     {
       img: avatar,
@@ -49,53 +54,95 @@ const CustomerOpinions = () => {
     },
   ];
 
+  const titleVariants = {
+    hidden: {
+      opacity: 0,
+      y: -50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const swiperVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section className="customer-opinions-section">
+    <section className="customer-opinions-section" ref={ref}>
       <div className="container">
-        <SectionTitle
-          title="آراء العملاء"
-          titleFontSize="text-[24px] md:text-[36px] lg:text-[54px]"
-          titleBackFontSizeBack="text-[26px] md:text-[48px] lg:text-[64px]"
-        />
+        <motion.div
+          variants={titleVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <SectionTitle
+            title="آراء العملاء"
+            titleFontSize="text-[24px] md:text-[36px] lg:text-[54px]"
+            titleBackFontSizeBack="text-[26px] md:text-[48px] lg:text-[64px]"
+          />
+        </motion.div>
       </div>
       {/* Cards */}
-      <Swiper
-        modules={[Autoplay]}
-        spaceBetween={16}
-        slidesPerView={1.2}
-        centeredSlides={true}
-        loop={true}
-        breakpoints={{
-          640: {
-            slidesPerView: 1.6,
-            spaceBetween: 24,
-          },
-          768: {
-            slidesPerView: 1.6,
-            spaceBetween: 36,
-          },
-          960: {
-            slidesPerView: 1.6,
-            spaceBetween: 36,
-          },
-        }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        speed={1000}
-        className="[&>.swiper-wrapper]:items-center"
+      <motion.div
+        variants={swiperVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
       >
-        {Opinions.map((opinion, index) => (
-          <SwiperSlide
-            key={index}
-            className="flex justify-center items-center h-full"
-          >
-            <OpinionCard opinion={opinion} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={16}
+          slidesPerView={1.2}
+          centeredSlides={true}
+          loop={true}
+          breakpoints={{
+            640: {
+              slidesPerView: 1.6,
+              spaceBetween: 24,
+            },
+            768: {
+              slidesPerView: 1.6,
+              spaceBetween: 36,
+            },
+            960: {
+              slidesPerView: 1.6,
+              spaceBetween: 36,
+            },
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          speed={1000}
+          className="[&>.swiper-wrapper]:items-center"
+        >
+          {Opinions.map((opinion, index) => (
+            <SwiperSlide
+              key={index}
+              className="flex justify-center items-center h-full"
+            >
+              <OpinionCard opinion={opinion} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </motion.div>
     </section>
   );
 };
