@@ -45,6 +45,10 @@ body {
   background: hsl(var(--background));
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px;
+}
+
 /* Arrow animation in Hero Section, Home Page */
 .arrowOne {
   animation: ArrowDown 2s infinite;

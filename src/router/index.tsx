@@ -14,6 +14,14 @@ import {
   EmployeeDashboardLayout,
   RootLayout,
 } from "../layout";
+import {
+  AppearanceAdminDashboard,
+  ContactsAdminDashboard,
+  HomeAdminDashboard,
+  SettingsAdminDashboard,
+  UsersAdminDashboard,
+} from "../pages/dashboard/admin";
+import ProjectsAdminDashboard from "../pages/dashboard/admin/ProjectsAdminDashboard";
 
 const routes = createRoutesFromElements(
   <>
@@ -33,24 +41,26 @@ const routes = createRoutesFromElements(
     <Route
       path="/dashboard/admin"
       element={
-        <ProtectedRoute requiredRole="admin">
-          <AdminDashboardLayout />
-        </ProtectedRoute>
+        // <ProtectedRoute requiredRole="admin">
+        <AdminDashboardLayout />
+        // </ProtectedRoute>
       }
     >
-      <Route index element={<h1>لوحة تحكم الأدمن</h1>} />
-      <Route path="users" element={<div>لوحة تحكم المستخدمين</div>} />
-      <Route path="settings" element={<div>لوحة تحكم الاعدادات</div>} />
+      <Route index element={<HomeAdminDashboard />} />
+      <Route path="users" element={<UsersAdminDashboard />} />
+      <Route path="projects" element={<ProjectsAdminDashboard />} />
+      <Route path="contacts" element={<ContactsAdminDashboard />} />
+      <Route path="settings" element={<SettingsAdminDashboard />} />
+      <Route path="appearance" element={<AppearanceAdminDashboard />} />
     </Route>
 
     {/* Employee Dashboard */}
-
     <Route
       path="/dashboard/employee"
       element={
-        <ProtectedRoute requiredRole="employee">
-          <EmployeeDashboardLayout />
-        </ProtectedRoute>
+        // <ProtectedRoute requiredRole="employee">
+        <EmployeeDashboardLayout />
+        // </ProtectedRoute>
       }
     >
       <Route index element={<h1>لوحة تحكم الموظف</h1>} />

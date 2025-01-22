@@ -21,3 +21,8 @@ export interface IOpinion {
   name: string;
   job: string;
 }
+
+export interface INavLinkDashboard {
+  name: string;
+  path: string;
+}
