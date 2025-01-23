@@ -17,7 +17,7 @@ const UserCard: React.FC<UserProps> = ({
 }) => {
   return (
     <>
-      <div className="bg-gray-800 text-white p-4 rounded-lg shadow-md">
+      <div className="bg-gray-900 text-white p-4 rounded-lg shadow-md">
         <div className="flex flex-col items-start">
           <div className="w-20 h-20  rounded-full mb-4 bg-white p-1 m-auto">
             <img src={image} className=""/>
