@@ -1,0 +1,47 @@
+import React from "react";
+interface UserProps {
+  name: string;
+  job: string;
+  role: string;
+  image:string;
+  editUser: () => void;
+  deleteUser: () => void;
+}
+const UserCard: React.FC<UserProps> = ({
+  name,
+  job,
+  role,
+  image,
+  editUser,
+  deleteUser,
+}) => {
+  return (
+    <>
+      <div className="bg-gray-800 text-white p-4 rounded-lg shadow-md">
+        <div className="flex flex-col items-start">
+          <div className="w-20 h-20  rounded-full mb-4 bg-white p-1 m-auto">
+            <img src={image} className=""/>
+          </div>
+          <h3><span className="me-5 text-xs text-gray-500">الاسم:</span>{name}</h3>
+          <p className="text-sm my-2"><span className="text-xs text-gray-500 me-3">الوظيفة:</span>{job}</p>
+          <p className="text-sm"><span className="text-xs text-gray-500 me-8">الدور:</span>{role}</p>
+        </div>
+        <div className="mt-4 flex justify-between">
+          <button
+            className="bg-red-500 text-white py-1 px-4 rounded-lg"
+            onClick={deleteUser}
+          >
+            حذف
+          </button>
+          <button
+            className=" bg-btn-primary text-white py-1 px-4 rounded-lg"
+            onClick={editUser}
+          >
+            تعديل
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
+export default UserCard;
