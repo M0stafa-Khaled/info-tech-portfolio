@@ -1,5 +1,6 @@
+import MessagesList from "../../../components/dashboard/messages/MessagesList";
 const ContactsAdminDashboard = () => {
-  return <div>ContactsAdminDashboard</div>;
+  return <MessagesList/>;
 };
 
 export default ContactsAdminDashboard;

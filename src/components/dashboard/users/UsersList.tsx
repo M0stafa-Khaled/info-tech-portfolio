@@ -1,16 +1,16 @@
 import React from "react";
 import UserCard from "./UserCard";
-import userImage from '../../../assets/about-avatar.png'
+import userImage from '../../../assets/user.png'
 
 const users = [
-  { id: 1, name: " محمد أسامة", job: "رجل أعمال", role: "أدمن" ,image:userImage},
-  { id: 2, name: " محمد أسامة", job: "رجل أعمال", role: "أدمن" ,image:userImage },
-  { id: 3, name: " محمد أسامة", job: "رجل أعمال", role: "أدمن" ,image:userImage},
-  { id: 4, name: " محمد أسامة", job: "رجل أعمال", role: "أدمن" ,image:userImage},
-  { id: 5, name: " محمد أسامة", job: "رجل أعمال", role: "أدمن" ,image:userImage},
-  { id: 6, name: " محمد أسامة", job: "رجل أعمال", role: "أدمن" ,image:userImage },
-  { id: 7, name: " محمد أسامة", job: "رجل أعمال", role: "أدمن" ,image:userImage},
-  { id: 8, name: " محمد أسامة", job: "رجل أعمال", role: "أدمن" ,image:userImage},
+  { id: 1, name: " احمد عبسي", job: "رجل اعمال", role: "ادمن" ,image:userImage},
+  { id: 2, name: " احمد عبسي", job: "رجل اعمال", role: "ادمن" ,image:userImage },
+  { id: 3, name: " احمد عبسي", job: "رجل اعمال", role: "ادمن" ,image:userImage},
+  { id: 4, name: " احمد عبسي", job: "رجل اعمال", role: "ادمن" ,image:userImage},
+  { id: 5, name: " احمد عبسي", job: "رجل اعمال", role: "ادمن" ,image:userImage},
+  { id: 6, name: " احمد عبسي", job: "رجل اعمال", role: "ادمن" ,image:userImage },
+  { id: 7, name: " احمد عبسي", job: "رجل اعمال", role: "ادمن" ,image:userImage},
+  { id: 8, name: " احمد عبسي", job: "رجل اعمال", role: "ادمن" ,image:userImage},
 ];
 const UsersList: React.FC = () => {
   const handleEdit = (id: number) => {
@@ -22,7 +22,7 @@ const UsersList: React.FC = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5">
         {users.map((user) => (
           <UserCard
             key={user.id}
