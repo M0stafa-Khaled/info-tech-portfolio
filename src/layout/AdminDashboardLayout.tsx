@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/dashboard/Sidebar";
-import DASHBOARD_NAV_LINKS from "../constant/dashboardNavLinks";
+import { DASHBOARD_NAV_LINKS } from "../constant";
 import Navbar from "../components/dashboard/Navbar";
 
 const AdminDashboardLayout = () => {

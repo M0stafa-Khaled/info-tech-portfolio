@@ -26,3 +26,8 @@ export interface INavLinkDashboard {
   name: string;
   path: string;
 }
+export interface ILoginFormInput {
+  name: "email" | "password";
+  type: string;
+  label: string;
+}
