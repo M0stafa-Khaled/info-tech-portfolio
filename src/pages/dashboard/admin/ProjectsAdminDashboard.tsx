@@ -96,7 +96,7 @@ const ProjectsAdminDashboard = () => {
   return (
     <div className="my-9">
       <h2 className="text-3xl font-medium text-white">إدارة المشاريع</h2>
-      <div className="mt-9 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="mt-9 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4">
         {/* Projects Cards */}
         {projectsData.map((project) => (
           <ProjectCard key={project.id} project={project} />
