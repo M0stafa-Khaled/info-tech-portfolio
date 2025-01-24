@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Modal from "../../ui/Modal";
 import Button from "../../ui/Button";
 import { Link } from "react-router-dom";
+import Modal from "../../shared/Modal";
 interface UserProps {
   name: string;
   job: string;
