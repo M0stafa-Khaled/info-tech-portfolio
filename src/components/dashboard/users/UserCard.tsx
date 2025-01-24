@@ -17,7 +17,7 @@ const UserCard: React.FC<UserProps> = ({
 }) => {
   return (
     <>
-      <div className="bg-gray-900 text-white p-4 rounded-lg shadow-md border border-dark-blue">
+      <div className="bg-dark text-white p-4 rounded-lg shadow-md border border-dark-blue">
         <div className="flex flex-col items-start gap-y-2">
           <div className="w-20 h-20  rounded-full mb-4  p-1 m-auto">
             <img src={image} className=""/>
@@ -28,13 +28,13 @@ const UserCard: React.FC<UserProps> = ({
         </div>
         <div className="mt-4 flex flex-col gap-4 md:flex-row">
           <button
-            className="bg-red-500 text-white py-1 px-4 rounded-full w-full text-base"
+            className="bg-danger hover:bg-danger-hover text-white py-1 px-4 rounded-full w-full text-base"
             onClick={deleteUser}
           >
             حذف
           </button>
           <button
-            className=" bg-btn-primary text-white py-1 px-4 rounded-full w-full text-base"
+            className=" bg-btn-primary hover:bg-btn-primary-hover text-white py-1 px-4 rounded-full w-full text-base"
             onClick={editUser}
           >
             تعديل

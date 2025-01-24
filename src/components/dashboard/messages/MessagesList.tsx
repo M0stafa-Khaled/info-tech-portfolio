@@ -36,7 +36,7 @@ const MessagesList: React.FC = () => {
   };
 
   return (
-    <div className="p-8 bg-gray-900 min-h-screen">
+    <div className="p-8 min-h-screen">
       <h1 className="text-white text-3xl  mb-8">الرسائل</h1>
       {messages.map((message) => (
         <MessageCard
