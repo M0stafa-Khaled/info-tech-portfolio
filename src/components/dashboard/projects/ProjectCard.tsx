@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { IProject } from "../../interfaces";
-import Button from "../ui/Button";
+import { IProject } from "../../../interfaces";
+import Button from "../../ui/Button";
 import { useState } from "react";
-import Modal from "../ui/Modal";
+import Modal from "../../ui/Modal";
 
 interface IProps {
   project: IProject;

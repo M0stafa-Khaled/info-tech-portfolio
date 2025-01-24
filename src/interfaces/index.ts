@@ -31,3 +31,9 @@ export interface ILoginFormInput {
   type: string;
   label: string;
 }
+
+export interface IAddProjectFormInput {
+  name: string;
+  type: string;
+  label: string;
+}
