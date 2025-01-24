@@ -4,9 +4,10 @@ import projectImg from "../../assets/project-img.png";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
-import ProjectCard from "../ProjectCard";
+import ProjectCard from "../projects/ProjectCard";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { titleVariants } from "../../animations";
 
 const OurProjects = () => {
   const ref = useRef(null);
@@ -22,53 +23,50 @@ const OurProjects = () => {
       title: "نظام الألواح الشمسية للكواكب",
       description:
         "مشروع متكامل لتصميم وتطوير نظام إدارة وتتبع الألواح الشمسية للكواكب، يوفر حلولاً مبتكرة للطاقة المتجددة.",
-      img: projectImg,
+      images: [projectImg],
       url: "",
       category: "واجهة المستخدم",
+      developers: [],
+      rating: 5,
+      technologies: [],
     },
     {
       id: 2,
       title: "تطبيق إدارة المشاريع الذكية",
       description:
         "تطبيق متقدم لإدارة المشاريع يجمع بين سهولة الاستخدام والكفاءة العالية، مصمم لتبسيط عمليات التخطيط والتنفيذ.",
-      img: projectImg,
+      images: [projectImg],
       url: "",
       category: "واجهة المستخدم",
+      developers: [],
+      rating: 5,
+      technologies: [],
     },
     {
       id: 3,
       title: "منصة التعلم الإلكتروني التفاعلية",
       description:
         "منصة تعليمية متطورة تقدم تجربة تعلم فريدة مع واجهة مستخدم سلسة وتصميم جذاب يناسب مختلف الأعمار.",
-      img: projectImg,
+      images: [projectImg],
       url: "",
       category: "تصميم واجهة المستخدم",
+      developers: [],
+      rating: 5,
+      technologies: [],
     },
     {
       id: 4,
       title: "تطبيق الصحة الذكي",
       description:
         "تطبيق شامل لتتبع الحالة الصحية ومراقبة اللياقة البدنية مع تصميم عصري وتجربة مستخدم مميزة.",
-      img: projectImg,
+      images: [projectImg],
       url: "",
       category: "تصميم واجهة المستخدم",
+      developers: [],
+      rating: 5,
+      technologies: [],
     },
   ];
-
-  const titleVariants = {
-    hidden: {
-      opacity: 0,
-      y: -50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
 
   const cardVariants = {
     hidden: {

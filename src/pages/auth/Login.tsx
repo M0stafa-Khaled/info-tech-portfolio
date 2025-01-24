@@ -7,9 +7,10 @@ import { z } from "zod";
 import loginSchema from "../../validations/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LOGIN_FORM_INPUTS } from "../../constant";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -22,14 +23,16 @@ const Login = () => {
     },
   });
 
-  const onSubmit = (_data: z.infer<typeof loginSchema>) => {};
+  const onSubmit = (_data: z.infer<typeof loginSchema>) => {
+    navigate("/dashboard/admin");
+  };
 
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-y-6">
       <div className="w-full lg:w-1/2 flex items-center justify-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="container max-w-md lg:max-w-full lg:w-full space-y-6"
+          className="container max-w-md lg:max-w-full lg:w-full space-y-9"
         >
           {LOGIN_FORM_INPUTS.map((input, idx) => (
             <div>
@@ -46,7 +49,7 @@ const Login = () => {
           ))}
           <Button
             type="submit"
-            className="bg-btn-primary w-full py-4 lg:py-6 rounded-xl text-white text-xl focus:outline-none !mt-8"
+            className="bg-btn-primary w-full py-4 lg:py-6 rounded-xl text-white text-xl focus:outline-none !mt-12"
           >
             تسجيل الدخول
           </Button>

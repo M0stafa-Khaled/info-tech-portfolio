@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
-import { IProject } from "../interfaces";
+import { IProject } from "../../interfaces";
 
 const ProjectCard = ({
-  project: { id, title, description, img, url },
+  project: { id, title, description, images, url },
 }: {
   project: IProject;
 }) => {
@@ -14,7 +14,7 @@ const ProjectCard = ({
           <div className="h-56 sm:h-64 md:h-72 flex justify-center items-center ">
             <img
               loading="lazy"
-              src={img}
+              src={images[0]}
               alt={title}
               className="w-full md:max-w-md h-full object-cover rounded-t-2xl lg:rounded-t-3xl transition-transform duration-300 group-hover:scale-105"
             />

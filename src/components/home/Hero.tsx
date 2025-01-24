@@ -4,59 +4,19 @@ import { SlArrowDown } from "react-icons/sl";
 import Button from "../ui/Button";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const buttonGradientStyle = {
-  background: "linear-gradient(96.53deg, #142D6C 0%, #0F1523 43.85%)",
-};
+import {
+  bottomVariants,
+  containerVariants,
+  imageVariants,
+  textVariants,
+} from "../../animations";
 
 const Hero = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const textVariants = {
-    hidden: { x: 100, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { x: -100, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const bottomVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
+  const buttonGradientStyle = {
+    background: "linear-gradient(96.53deg, #142D6C 0%, #0F1523 43.85%)",
   };
 
   return (
