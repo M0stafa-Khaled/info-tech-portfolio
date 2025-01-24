@@ -16,7 +16,6 @@ import {
 } from "../layout";
 import {
   AddProjectAdminDashboard,
-  AppearanceAdminDashboard,
   ContactsAdminDashboard,
   EditProjectAdminDashboard,
   HomeAdminDashboard,
@@ -55,7 +54,6 @@ const routes = createRoutesFromElements(
       <Route path="projects/add" element={<AddProjectAdminDashboard />} />
       <Route path="contacts" element={<ContactsAdminDashboard />} />
       <Route path="settings" element={<SettingsAdminDashboard />} />
-      <Route path="appearance" element={<AppearanceAdminDashboard />} />
     </Route>
 
     {/* Employee Dashboard */}

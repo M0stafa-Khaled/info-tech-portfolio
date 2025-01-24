@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { titleVariants } from "../../animations";
 
 const CustomerOpinions = () => {
   const ref = useRef(null);
@@ -56,21 +57,6 @@ const CustomerOpinions = () => {
       job: "مؤسس الشركة",
     },
   ];
-
-  const titleVariants = {
-    hidden: {
-      opacity: 0,
-      y: -50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
 
   const swiperVariants = {
     hidden: {

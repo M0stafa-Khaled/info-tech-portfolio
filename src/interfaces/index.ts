@@ -10,9 +10,16 @@ export interface IProject {
   id: number;
   title: string;
   description: string;
-  img: string;
+  images: string[];
   url: string;
   category: string;
+  technologies: string[];
+  rating: number;
+  developers: {
+    name: string;
+    avatar: string;
+    job: string;
+  }[];
 }
 export interface IOpinion {
   img: string;
@@ -20,6 +27,19 @@ export interface IOpinion {
   description: string;
   name: string;
   job: string;
+}
+
+export interface ITeamMember {
+  name: string;
+  job: string;
+  description: string;
+  image: string;
+  skills: string[];
+  links: {
+    icon: React.ReactNode;
+    link: string;
+  }[];
+  cv: string;
 }
 
 export interface INavLinkDashboard {

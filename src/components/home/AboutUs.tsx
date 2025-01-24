@@ -5,6 +5,12 @@ import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import {
+  buttonVariants,
+  imageVariants,
+  textVariants,
+  titleVariants,
+} from "../../animations";
 
 const AboutUs = () => {
   const ref = useRef(null);
@@ -13,66 +19,6 @@ const AboutUs = () => {
     amount: 0.2,
     margin: "0px 0px 250px 0px",
   });
-
-  const textVariants = {
-    hidden: {
-      opacity: 0,
-      x: 100,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const imageVariants = {
-    hidden: {
-      opacity: 0,
-      x: -100,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const buttonsVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const titleVariants = {
-    hidden: {
-      opacity: 0,
-      y: -50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
 
   return (
     <section className="container" ref={ref}>
@@ -124,7 +70,7 @@ const AboutUs = () => {
           {/* Buttons */}
           <motion.div
             className="flex flex-col lg:flex-row justify-between gap-y-4 gap-x-[72px] max-w-xs lg:max-w-full"
-            variants={buttonsVariants}
+            variants={buttonVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >

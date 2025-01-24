@@ -1,5 +1,5 @@
 import SectionTitle from "../SectionTitle";
-import ServiceCard from "./ServiceCard";
+import HomeServiceCard from "./HomeServiceCard";
 import serviceCoding from "../../assets/service-coding.png";
 import serviceDesign from "../../assets/service-designing.png";
 import serviceSoftware from "../../assets/service-software-engineering.png";
@@ -10,6 +10,7 @@ import { CgArrowTopRightO } from "react-icons/cg";
 import { IService } from "../../interfaces";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { buttonVariants, cardVariants, titleVariants } from "../../animations";
 
 const OurServices = () => {
   const ref = useRef(null);
@@ -46,52 +47,6 @@ const OurServices = () => {
     },
   ];
 
-  const titleVariants = {
-    hidden: {
-      opacity: 0,
-      y: -50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: index * 0.4,
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    }),
-  };
-
-  const buttonVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <section className="container" ref={ref}>
       <motion.div
@@ -108,8 +63,8 @@ const OurServices = () => {
         animate={isInView ? "visible" : "hidden"}
       >
         {services.map((service, idx) => (
-          <motion.div key={idx} custom={idx} variants={cardVariants}>
-            <ServiceCard service={service} />
+          <motion.div key={idx} variants={cardVariants}>
+            <HomeServiceCard service={service} />
           </motion.div>
         ))}
       </motion.div>
