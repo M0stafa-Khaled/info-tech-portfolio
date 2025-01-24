@@ -32,7 +32,7 @@ export const DASHBOARD_NAV_LINKS: INavLinkDashboard[] = [
 ];
 
 export const LOGIN_FORM_INPUTS: ILoginFormInput[] = [
-  { label: "البريد الالكتروني", type: "email", name: "email" },
+  { label: "البريد الالكتروني", type: "text", name: "email" },
   { label: "كلمة المرور", type: "password", name: "password" },
 ];
 
