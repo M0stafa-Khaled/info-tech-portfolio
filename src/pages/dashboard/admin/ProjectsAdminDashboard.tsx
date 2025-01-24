@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import projectImg from "../../../assets/project-img.png";
-import ProjectCard from "../../../components/dashboard/ProjectCard";
+import ProjectCard from "../../../components/dashboard/projects/ProjectCard";
+import Button from "../../../components/ui/Button";
 import { IProject } from "../../../interfaces";
 
 const ProjectsAdminDashboard = () => {
@@ -95,7 +97,14 @@ const ProjectsAdminDashboard = () => {
   ];
   return (
     <div className="my-9">
-      <h2 className="text-3xl font-medium text-white">إدارة المشاريع</h2>
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <h2 className="text-3xl font-medium text-white">إدارة المشاريع</h2>
+        <Button className="bg-btn-primary hover:bg-btn-primary-hover py-3 px-6 rounded-full text-white">
+          <Link to={"add"} className="py-3">
+            إضافة مشروع
+          </Link>
+        </Button>{" "}
+      </div>
       <div className="mt-9 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4">
         {/* Projects Cards */}
         {projectsData.map((project) => (
