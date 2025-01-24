@@ -1,45 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "../../ui/Modal";
+import Button from "../../ui/Button";
+import { Link } from "react-router-dom";
 interface UserProps {
   name: string;
   job: string;
   role: string;
-  image:string;
-  editUser: () => void;
-  deleteUser: () => void;
+  image: string;
 }
-const UserCard: React.FC<UserProps> = ({
-  name,
-  job,
-  role,
-  image,
-  editUser,
-  deleteUser,
-}) => {
+
+const UserCard: React.FC<UserProps> = ({ name, job, role, image }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <div className="bg-dark text-white p-4 rounded-lg shadow-md border border-dark-blue">
-        <div className="flex flex-col items-start gap-y-2">
-          <div className="w-20 h-20  rounded-full mb-4  p-1 m-auto">
-            <img src={image} className=""/>
+      <div className="bg-dark text-white p-4 rounded-2xl shadow-md border border-dark-blue">
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col items-start gap-y-2">
+            <div className="w-20 h-20  rounded-full mb-4 p-1 m-auto">
+              <img
+                src={image}
+                className="w-full h-full rounded-full object-cover"
+              />
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-muted w-14 block">الاسم:</span>
+              {name}
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-muted w-14 block">الوظيفة:</span>
+              {job}
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-muted w-14 block">الدور:</span>
+              {role}
+            </div>
           </div>
-          <h3><span className="me-5 text-xs text-gray-500">الاسم:</span>{name}</h3>
-          <p className="text-sm"><span className="text-xs text-gray-500 me-3">الوظيفة:</span>{job}</p>
-          <p className="text-sm"><span className="text-xs text-gray-500 me-8">الدور:</span>{role}</p>
+          <div className="w-full flex flex-col sm:flex-row justify-between gap-4">
+            <Button className="bg-btn-primary hover:bg-btn-primary-hover w-full py-3 rounded-full text-white">
+              <Link to={``} className="py-3">
+                تعديل
+              </Link>
+            </Button>
+            <Button
+              onClick={() => setIsOpen(true)}
+              className="bg-danger hover:bg-danger-hover w-full rounded-full py-3 text-white"
+            >
+              حذف
+            </Button>
+          </div>
         </div>
-        <div className="mt-4 flex flex-col gap-4 md:flex-row">
-          <button
-            className="bg-danger hover:bg-danger-hover text-white py-1 px-4 rounded-full w-full text-base"
-            onClick={deleteUser}
-          >
-            حذف
-          </button>
-          <button
-            className=" bg-btn-primary hover:bg-btn-primary-hover text-white py-1 px-4 rounded-full w-full text-base"
-            onClick={editUser}
-          >
-            تعديل
-          </button>
-        </div>
+        <Modal
+          isOpen={isOpen}
+          closeModal={() => setIsOpen(false)}
+          title="حذف المستخدم"
+          description="هل انت متاكد من حذف المستخدم؟"
+        >
+          <div className="flex flex-col gap-y-3">
+            <Button className="border border-danger hover:bg-danger-hover w-fll rounded-xl text-danger hover:text-white py-4">
+              حذف
+            </Button>
+            <Button
+              onClick={() => setIsOpen(false)}
+              className="border border-btn-primary hover:bg-btn-primary-hover w-full rounded-xl text-blue hover:text-white py-4"
+            >
+              إلغاء
+            </Button>
+          </div>
+        </Modal>
       </div>
     </>
   );

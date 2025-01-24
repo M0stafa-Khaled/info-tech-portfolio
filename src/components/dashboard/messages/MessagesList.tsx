@@ -1,24 +1,27 @@
 import React from "react";
 import MessageCard from "./MessageCard";
-import userImage from "../../../assets/user-msg-img.png"
+import userImage from "../../../assets/user-msg-img.png";
 const messages = [
   {
     id: 1,
     userName: "عبدالله محمد",
     userImage: userImage,
-    message: "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق",
+    message:
+      "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق",
   },
   {
     id: 2,
     userName: "عبدالله محمد",
     userImage: userImage,
-    message: "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق"
+    message:
+      "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق",
   },
   {
     id: 3,
     userName: "عبدالله محمد",
     userImage: userImage,
-    message: "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق",
+    message:
+      "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق",
   },
 ];
 
@@ -36,8 +39,7 @@ const MessagesList: React.FC = () => {
   };
 
   return (
-    <div className="p-8 min-h-screen">
-      <h1 className="text-white text-3xl  mb-8">الرسائل</h1>
+    <div className="mt-9">
       {messages.map((message) => (
         <MessageCard
           key={message.id}
