@@ -1,6 +1,6 @@
-import { INavLinkDashboard } from "../interfaces";
+import { ILoginFormInput, INavLinkDashboard } from "../interfaces";
 
-const DASHBOARD_NAV_LINKS: INavLinkDashboard[] = [
+export const DASHBOARD_NAV_LINKS: INavLinkDashboard[] = [
   {
     name: "الصفحة الرئيسية",
     path: "/dashboard/admin",
@@ -27,4 +27,7 @@ const DASHBOARD_NAV_LINKS: INavLinkDashboard[] = [
   },
 ];
 
-export default DASHBOARD_NAV_LINKS;
+export const LOGIN_FORM_INPUTS: ILoginFormInput[] = [
+  { label: "البريد الالكتروني", type: "email", name: "email" },
+  { label: "كلمة المرور", type: "password", name: "password" },
+];

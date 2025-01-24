@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/dashboard/Sidebar";
-import DASHBOARD_NAV_LINKS from "../constant/dashboardNavLinks";
+import { DASHBOARD_NAV_LINKS } from "../constant";
 import Navbar from "../components/dashboard/Navbar";
 
 const AdminDashboardLayout = () => {
@@ -12,7 +12,7 @@ const AdminDashboardLayout = () => {
       <main className="flex flex-1 h-full overflow-hidden bg-background">
         <div className="container h-full overflow-y-auto custom-scrollbar">
           <Navbar links={DASHBOARD_NAV_LINKS} />
-          <div className="pt-[70px] lg:pt-10">
+          <div className="pt-[70px] lg:pt-0">
             <Outlet />
           </div>
         </div>

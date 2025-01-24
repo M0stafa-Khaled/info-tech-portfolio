@@ -27,6 +27,8 @@ export default {
         "btn-primary-hover": "hsl(var(--btn-primary-hover))",
         "btn-secondary": "hsl(var(--btn-secondary))",
         "btn-secondary-hover": "hsl(var(--btn-secondary-hover))",
+        danger: "hsl(var(--danger))",
+        "danger-hover": "hsl(var(--danger-hover))",
         blue: "hsl(var(--blue))",
         "dark-blue": "hsl(var(--dark-blue))",
         yellow: "hsl(var(--yellow))",
