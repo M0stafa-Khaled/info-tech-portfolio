@@ -12,9 +12,9 @@ interface IProps {
 const Sidebar = ({ links }: IProps) => {
   const activeLink = useLocation().pathname.split("/").pop();
   return (
-    <aside className="hidden lg:block h-full overflow-hidden bg-dark">
+    <aside className="hidden lg:block h-full overflow-hidden bg-dark border-l border-dark-blue">
       <div className="h-full min-w-[300px] overflow-y-auto custom-scrollbar py-9 flex flex-col justify-between">
-        <div className="space-y-6">
+        <div className="space-y-9">
           {/* Logo */}
           <div className="flex justify-center items-center">
             <img src={logo} alt="logo" className="max-w-56" />
