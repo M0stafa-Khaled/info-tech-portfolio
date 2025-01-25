@@ -7,7 +7,7 @@ import { About, ContactUs, Home, Projects, Services } from "../pages/public";
 import NotFound from "../pages/NotFound";
 import Project from "../pages/public/Project";
 import Unauthorized from "../pages/Unauthorized";
-import { Login, Register } from "../pages/auth";
+import { Login } from "../pages/auth";
 // import ProtectedRoute from "../components/auth/ProtectedRoute";
 import {
   AdminDashboardLayout,
@@ -35,8 +35,7 @@ const routes = createRoutesFromElements(
       <Route path="contact" element={<ContactUs />} />
     </Route>
     {/* Auth */}
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
+    <Route path="/admin" element={<Login />} />
 
     {/* Admin Dashboard */}
     <Route
