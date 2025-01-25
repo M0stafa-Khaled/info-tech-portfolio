@@ -28,15 +28,15 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-y-6">
+    <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-y-14">
       <div className="w-full lg:w-1/2 flex items-center justify-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="container max-w-md lg:max-w-full lg:w-full space-y-9"
         >
           {LOGIN_FORM_INPUTS.map((input, idx) => (
-            <div>
-              <div key={idx} className="relative w-full min-w-[200px] h-11">
+            <div key={idx}>
+              <div className="relative w-full min-w-[200px] h-11">
                 <Input type={input.type} {...register(input.name)} />
                 <Label>{input.label}</Label>
               </div>
@@ -56,7 +56,7 @@ const Login = () => {
         </form>
       </div>
       <div className="container flex justify-center items-center w-full lg:w-1/2 lg:min-h-screen lg:border-r border-dark-blue lg:bg-background-gradient">
-        <img src={logo} alt="logo" className="max-w-full" />
+        <img src={logo} alt="logo" className="max-w-full w-60 lg:w-72" />
       </div>
     </div>
   );
