@@ -17,7 +17,7 @@ const ProtectedRoute = ({
   const token = CookieService.getToken(); // * Get token from cookies
 
   if (!token || !isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/admin" replace />;
   }
 
   if (role !== requiredRole) {

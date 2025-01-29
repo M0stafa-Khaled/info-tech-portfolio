@@ -16,13 +16,14 @@ import {
 } from "../layout";
 import {
   AddProjectAdminDashboard,
+  Categories,
   ContactsAdminDashboard,
   EditProjectAdminDashboard,
   HomeAdminDashboard,
+  ProjectsAdminDashboard,
   SettingsAdminDashboard,
   UsersAdminDashboard,
 } from "../pages/dashboard/admin";
-import ProjectsAdminDashboard from "../pages/dashboard/admin/ProjectsAdminDashboard";
 
 const routes = createRoutesFromElements(
   <>
@@ -39,7 +40,7 @@ const routes = createRoutesFromElements(
 
     {/* Admin Dashboard */}
     <Route
-      path="/dashboard/admin"
+      path="/dashboard/admin/"
       element={
         // <ProtectedRoute requiredRole="admin">
         <AdminDashboardLayout />
@@ -47,6 +48,7 @@ const routes = createRoutesFromElements(
       }
     >
       <Route index element={<HomeAdminDashboard />} />
+      <Route path="categories" element={<Categories />} />
       <Route path="users" element={<UsersAdminDashboard />} />
       <Route path="projects" element={<ProjectsAdminDashboard />} />
       <Route path="projects/:id" element={<EditProjectAdminDashboard />} />
