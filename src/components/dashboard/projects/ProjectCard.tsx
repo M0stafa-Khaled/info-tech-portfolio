@@ -3,6 +3,8 @@ import { IProject } from "../../../interfaces";
 import Button from "../../ui/Button";
 import { useState } from "react";
 import Modal from "../../shared/Modal";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { Badge } from "keep-react";
 
 interface IProps {
   project: IProject;
@@ -21,11 +23,36 @@ const ProjectCard = ({ project }: IProps) => {
           />
         </div>
         <div className="space-y-4">
-          <div>
-            <h3 className="text-center text-lg text-white font-medium">
-              {project.title}
-            </h3>
+          <div className="space-y-1">
+            <div className="flex justify-center items-center gap-2">
+              {project.hidden ? (
+                <span>
+                  <FiEyeOff className="text-danger animate-pulse" size={20} />
+                </span>
+              ) : (
+                <span>
+                  <FiEye
+                    className="text-success-500 animate-bounce"
+                    size={20}
+                  />
+                </span>
+              )}
+              <h3 className="text-center text-lg line-clamp-1 text-white font-medium">
+                {project.title}
+              </h3>
+            </div>
+            <p className="text-sm text-center text-muted line-clamp-2">
+              {project.description}
+            </p>
+            <Badge
+              variant="base"
+              color="primary"
+              className="!mt-2 text-primary-500 bg-primary-900 hover:bg-primary-900 hover:text-primary-500"
+            >
+              {project.category}
+            </Badge>
           </div>
+
           {/* Action buttons */}
           <div className="w-full flex flex-col sm:flex-row justify-between gap-4">
             <Button className="bg-btn-primary hover:bg-btn-primary-hover w-full text-white rounded-full">

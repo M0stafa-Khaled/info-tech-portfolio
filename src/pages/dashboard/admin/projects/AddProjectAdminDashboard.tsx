@@ -1,4 +1,4 @@
-import ProjectForm from "../../../components/dashboard/projects/ProjectForm";
+import ProjectForm from "../../../../components/dashboard/projects/ProjectForm";
 
 const AddProjectAdminDashboard = () => {
   return (

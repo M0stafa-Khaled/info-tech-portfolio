@@ -13,8 +13,11 @@ export interface IProject {
   images: string[];
   url: string;
   category: string;
+  hidden: boolean;
   technologies: string[];
+
   rating: number;
+  // ! not use in real data
   developers: {
     name: string;
     avatar: string;

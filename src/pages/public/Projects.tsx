@@ -1,11 +1,11 @@
 import { useMemo, useRef, useState } from "react";
 import { IProject } from "../../interfaces";
-import { filterProjectsByCategory } from "../../utils/filterProjectsByCategory";
 import BgImage from "../../components/BgImage";
 import ProjectCard from "../../components/projects/ProjectCard";
 import { motion, useInView } from "framer-motion";
 import { CATEGORIES, PROJECTS } from "../../constant";
 import { cardVariants } from "../../animations";
+import filterProjects from "../../utils/filterProjects";
 
 const Projects = () => {
   const projectsRef = useRef(null);
@@ -18,9 +18,10 @@ const Projects = () => {
   const [filter, setFilter] = useState<string>("الكل");
 
   const filteredProjects = useMemo(() => {
-    return filterProjectsByCategory({
+    return filterProjects({
       projects: PROJECTS,
-      category: filter,
+      filter: filter,
+      typeOfFilter: "category",
     });
   }, [filter]);
 
@@ -31,9 +32,19 @@ const Projects = () => {
         {/* Categories */}
         <div className="flex justify-center items-center mt-9 lg:mt-[72px] mb-9">
           <div className="bg-background-gradient flex justify-center flex-wrap gap-4 rounded-2xl px-4 py-2">
+            <span
+              className={`text-white text-center font-medium lg:text-lg capitalize p-2 cursor-pointer rounded-lg transition-all duration-300 ease-in-out ${
+                filter === "الكل" ? "bg-dark" : "bg-dark-blue"
+              }`}
+              onClick={() => {
+                setFilter("الكل");
+              }}
+            >
+              الكل
+            </span>
             {CATEGORIES.map((category) => (
               <span
-                key={category.value}
+                key={category.label}
                 className={`text-white text-center font-medium lg:text-lg capitalize p-2 cursor-pointer rounded-lg transition-all duration-300 ease-in-out ${
                   filter === category.label ? "bg-dark" : "bg-dark-blue"
                 }`}

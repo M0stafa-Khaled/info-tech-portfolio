@@ -1,5 +1,5 @@
-import ProjectForm from "../../../components/dashboard/projects/ProjectForm";
-import { CATEGORIES } from "../../../constant";
+import ProjectForm from "../../../../components/dashboard/projects/ProjectForm";
+import { CATEGORIES } from "../../../../constant";
 
 const EditProjectAdminDashboard = () => {
   const project = {
