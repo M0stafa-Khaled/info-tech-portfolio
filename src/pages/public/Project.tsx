@@ -15,6 +15,7 @@ const Project = () => {
     description:
       "منصة تعليمية ذكية تجمع بين أحدث تقنيات التعلم عن بعد وتصميم تفاعلي متميز.",
     category: "واجهة أمامية",
+    hidden: false,
     images: [projectImg, projectImg, projectImg, projectImg],
     technologies: [
       "react",
