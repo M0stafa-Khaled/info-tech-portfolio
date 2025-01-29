@@ -32,6 +32,7 @@ const authSlice = createSlice({
       state.role = null;
       // Remove the token and role from cookies
       CookieService.clearAllCookies();
+      window.location.replace("/admin");
     },
   },
 });
