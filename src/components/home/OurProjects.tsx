@@ -1,13 +1,12 @@
-import { IProject } from "../../interfaces";
 import SectionTitle from "../SectionTitle";
-import projectImg from "../../assets/project-img.png";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
 import ProjectCard from "../projects/ProjectCard";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { titleVariants } from "../../animations";
+import { buttonVariants, cardVariants, titleVariants } from "../../animations";
+import { PROJECTS } from "../../constant";
 
 const OurProjects = () => {
   const ref = useRef(null);
@@ -16,88 +15,6 @@ const OurProjects = () => {
     amount: 0.2,
     margin: "250px 0px 250px 0px",
   });
-
-  const projects: IProject[] = [
-    {
-      id: 1,
-      title: "نظام الألواح الشمسية للكواكب",
-      description:
-        "مشروع متكامل لتصميم وتطوير نظام إدارة وتتبع الألواح الشمسية للكواكب، يوفر حلولاً مبتكرة للطاقة المتجددة.",
-      images: [projectImg],
-      url: "",
-      category: "واجهة المستخدم",
-      developers: [],
-      rating: 5,
-      technologies: [],
-    },
-    {
-      id: 2,
-      title: "تطبيق إدارة المشاريع الذكية",
-      description:
-        "تطبيق متقدم لإدارة المشاريع يجمع بين سهولة الاستخدام والكفاءة العالية، مصمم لتبسيط عمليات التخطيط والتنفيذ.",
-      images: [projectImg],
-      url: "",
-      category: "واجهة المستخدم",
-      developers: [],
-      rating: 5,
-      technologies: [],
-    },
-    {
-      id: 3,
-      title: "منصة التعلم الإلكتروني التفاعلية",
-      description:
-        "منصة تعليمية متطورة تقدم تجربة تعلم فريدة مع واجهة مستخدم سلسة وتصميم جذاب يناسب مختلف الأعمار.",
-      images: [projectImg],
-      url: "",
-      category: "تصميم واجهة المستخدم",
-      developers: [],
-      rating: 5,
-      technologies: [],
-    },
-    {
-      id: 4,
-      title: "تطبيق الصحة الذكي",
-      description:
-        "تطبيق شامل لتتبع الحالة الصحية ومراقبة اللياقة البدنية مع تصميم عصري وتجربة مستخدم مميزة.",
-      images: [projectImg],
-      url: "",
-      category: "تصميم واجهة المستخدم",
-      developers: [],
-      rating: 5,
-      technologies: [],
-    },
-  ];
-
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: index * 0.4,
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    }),
-  };
-
-  const buttonVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
 
   return (
     <section className="container" ref={ref}>
@@ -114,7 +31,7 @@ const OurProjects = () => {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        {projects.map((project, idx) => (
+        {PROJECTS.map((project, idx) => (
           <motion.div
             key={`project-${project.id}`}
             custom={idx}
