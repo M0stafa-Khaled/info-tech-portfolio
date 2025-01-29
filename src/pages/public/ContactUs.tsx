@@ -7,34 +7,12 @@ import Label from "../../components/ui/Label";
 import Textarea from "../../components/ui/Textarea";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { cardVariants, containerVariants } from "../../animations";
 
 const ContactUs = () => {
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
 
   // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
-
   const subjectVariants = {
     hidden: { scale: 0.8, opacity: 0 },
     visible: {
@@ -43,21 +21,21 @@ const ContactUs = () => {
       transition: {
         type: "spring",
         stiffness: 300,
-        damping: 10
-      }
-    }
+        damping: 10,
+      },
+    },
   };
 
   return (
-    <motion.section 
+    <motion.section
       initial="hidden"
       animate="visible"
       variants={containerVariants}
       className="container"
     >
       <BgImage />
-      <motion.div 
-        variants={itemVariants}
+      <motion.div
+        variants={cardVariants}
         className="text-center my-9 lg:mt-[72px] text-white"
       >
         <h1 className="text-4xl font-bold">اتصل بنا</h1>
@@ -65,14 +43,14 @@ const ContactUs = () => {
           أي سؤال أو ملاحظة؟ فقط اكتب لنا رسالة!
         </p>
       </motion.div>
-      <motion.div 
-        variants={itemVariants}
+      <motion.div
+        variants={cardVariants}
         className="bg-background-gradient rounded-2xl lg:rounded-3xl text-white w-full py-6 px-4 lg:px-6"
       >
         <div className="flex flex-col xl:flex-row gap-x-12 xl:gap-x-16 gap-y-12">
           {/* Contact Info */}
-          <motion.div 
-            variants={itemVariants}
+          <motion.div
+            variants={cardVariants}
             whileHover={{ scale: 1.02 }}
             className="bg-dark space-y-4 w-auto lg:min-w-max py-4 px-4 md:px-6 rounded-2xl"
           >
@@ -88,16 +66,16 @@ const ContactUs = () => {
               {[
                 { icon: <FaPhone size={24} />, text: "+966 50 123 4567" },
                 { icon: <FaEnvelope size={24} />, text: "info@infotech.eg" },
-                { icon: <FaMapMarkerAlt size={24} />, text: "القاهرة, مصر" }
+                { icon: <FaMapMarkerAlt size={24} />, text: "القاهرة, مصر" },
               ].map((contact, index) => (
                 <motion.div
                   key={index}
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ 
+                  transition={{
                     delay: index * 0.2,
                     type: "spring",
-                    stiffness: 300
+                    stiffness: 300,
                   }}
                   className="flex items-center gap-3 text-sm md:text-lg"
                 >
@@ -110,24 +88,21 @@ const ContactUs = () => {
 
           {/* Form */}
           <motion.form
-            variants={itemVariants}
+            variants={cardVariants}
             className="w-full rounded-lg flex flex-col gap-y-6"
             onSubmit={(e) => e.preventDefault()}
           >
             {/* Inputs */}
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-col gap-6"
-            >
+            <motion.div variants={cardVariants} className="flex flex-col gap-6">
               {/* Inputs Row 1 */}
               <div className="flex flex-col md:flex-row gap-4">
                 {[
                   { label: "الاسم الاول", key: "firstName" },
-                  { label: "الاسم الثاني", key: "lastName" }
+                  { label: "الاسم الثاني", key: "lastName" },
                 ].map((input) => (
-                  <motion.div 
+                  <motion.div
                     key={input.key}
-                    variants={itemVariants}
+                    variants={cardVariants}
                     className="relative w-full min-w-[200px] h-11"
                   >
                     <Input />
@@ -139,11 +114,11 @@ const ContactUs = () => {
               <div className="flex flex-col md:flex-row gap-4">
                 {[
                   { label: "البريد الالكتروني", key: "email" },
-                  { label: "رقم الهاتف", key: "phone" }
+                  { label: "رقم الهاتف", key: "phone" },
                 ].map((input) => (
-                  <motion.div 
+                  <motion.div
                     key={input.key}
-                    variants={itemVariants}
+                    variants={cardVariants}
                     className="relative w-full min-w-[200px] h-11"
                   >
                     <Input />
@@ -154,12 +129,12 @@ const ContactUs = () => {
             </motion.div>
 
             {/* Options */}
-            <motion.div variants={itemVariants}>
+            <motion.div variants={cardVariants}>
               <p className="mb-4 text-lg">اختر الموضوع</p>
               <div className="flex justify-between flex-wrap gap-3 ">
                 {["استفسار عام", "دعم فني", "اقتراحات", "أخرى"].map(
                   (option, index) => (
-                    <motion.div 
+                    <motion.div
                       key={index}
                       variants={subjectVariants}
                       whileHover={{ scale: 1.05 }}
@@ -197,7 +172,7 @@ const ContactUs = () => {
             </motion.div>
 
             {/* Message */}
-            <motion.div variants={itemVariants}>
+            <motion.div variants={cardVariants}>
               <div className="relative w-full min-w-[200px]">
                 <Textarea />
                 <Label>الرسالة</Label>
@@ -205,7 +180,7 @@ const ContactUs = () => {
             </motion.div>
 
             {/* Submit */}
-            <motion.div variants={itemVariants}>
+            <motion.div variants={cardVariants}>
               <Button
                 type="submit"
                 className="w-full lg:w-[200px] normal-case py-4 bg-dark text-white text-base font-normal rounded-xl"
