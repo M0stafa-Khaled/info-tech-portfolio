@@ -10,7 +10,8 @@ interface IProps {
 }
 
 const Sidebar = ({ links }: IProps) => {
-  const activeLink = useLocation().pathname.split("/").pop();
+  const activeLink = useLocation().pathname.split("/")[3];
+  console.log(activeLink);
   return (
     <aside className="hidden lg:block h-full overflow-hidden bg-dark border-l border-dark-blue">
       <div className="h-full min-w-[300px] overflow-y-auto custom-scrollbar py-9 flex flex-col justify-between">
@@ -28,7 +29,7 @@ const Sidebar = ({ links }: IProps) => {
                     <NavLink
                       to={link.path}
                       className={`block w-full text-center p-6 text-xl text-white transition-all duration-300 ${
-                        activeLink === link.path.split("/").pop() && "bg-blue"
+                        activeLink === link.path.split("/")[3] && "bg-blue"
                       }`}
                     >
                       {link.name}

@@ -16,16 +16,25 @@ interface IProps {
   selected: string;
   setSelected: (value: string) => void;
   label?: string;
+  className?: string;
 }
 
-const SelectMenu = ({ options, selected, setSelected, label }: IProps) => {
+const SelectMenu = ({
+  options,
+  selected,
+  setSelected,
+  label,
+  className,
+}: IProps) => {
   return (
     <Select
       dir="rtl"
       value={selected}
       onValueChange={(value) => setSelected(value)}
     >
-      <SelectAction className="w-full bg-dark text-white border-dark-blue h-auto py-4">
+      <SelectAction
+        className={`w-full bg-dark text-white border-dark-blue h-auto py-4 px-4 ${className}`}
+      >
         <SelectValue placeholder="اختر" />
       </SelectAction>
       <SelectContent className="bg-dark border-dark-blue">

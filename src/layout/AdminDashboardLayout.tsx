@@ -10,7 +10,7 @@ const AdminDashboardLayout = () => {
       <Sidebar links={DASHBOARD_NAV_LINKS} />
       {/* Main Content */}
       <main className="flex flex-1 h-full overflow-hidden bg-background">
-        <div className="container h-full overflow-y-auto custom-scrollbar">
+        <div className="container lg:px-16 h-full overflow-y-auto custom-scrollbar">
           <Navbar links={DASHBOARD_NAV_LINKS} />
           <div className="pt-[70px] lg:pt-0">
             <Outlet />
