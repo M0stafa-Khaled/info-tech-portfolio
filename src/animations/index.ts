@@ -3,7 +3,7 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0.3,
+      delayChildren: 0.2,
       staggerChildren: 0.2,
     },
   },
@@ -64,7 +64,7 @@ export const textVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: "easeOut",
     },
   },
@@ -76,7 +76,7 @@ export const imageVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.3,
       ease: "easeOut",
     },
   },
@@ -88,7 +88,7 @@ export const bottomVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.3,
       ease: "easeOut",
     },
   },
