@@ -24,6 +24,7 @@ import {
   SettingsAdminDashboard,
   UsersAdminDashboard,
 } from "../pages/dashboard/admin";
+import EditUser from "../pages/dashboard/admin/users/EditUser";
 
 const routes = createRoutesFromElements(
   <>
@@ -50,6 +51,7 @@ const routes = createRoutesFromElements(
       <Route index element={<HomeAdminDashboard />} />
       <Route path="categories" element={<Categories />} />
       <Route path="users" element={<UsersAdminDashboard />} />
+      <Route path="users/:id" element={<EditUser/>} />
       <Route path="projects" element={<ProjectsAdminDashboard />} />
       <Route path="projects/:id" element={<EditProjectAdminDashboard />} />
       <Route path="projects/add" element={<AddProjectAdminDashboard />} />

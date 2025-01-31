@@ -1,5 +1,5 @@
 export { default as HomeAdminDashboard } from "./HomeAdminDashboard";
-export { default as UsersAdminDashboard } from "./UsersAdminDashboard";
+export { default as UsersAdminDashboard } from "./users/UsersAdminDashboard";
 export { default as ContactsAdminDashboard } from "./ContactsAdminDashboard";
 export { default as ProjectsAdminDashboard } from "./projects/ProjectsAdminDashboard";
 export { default as SettingsAdminDashboard } from "./SettingsAdminDashboard";

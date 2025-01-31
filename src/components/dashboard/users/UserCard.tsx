@@ -3,13 +3,14 @@ import Button from "../../ui/Button";
 import { Link } from "react-router-dom";
 import Modal from "../../shared/Modal";
 interface UserProps {
+  id:number;
   name: string;
   job: string;
   role: string;
   image: string;
 }
 
-const UserCard: React.FC<UserProps> = ({ name, job, role, image }) => {
+const UserCard: React.FC<UserProps> = ({ id,name, job, role, image }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -38,7 +39,7 @@ const UserCard: React.FC<UserProps> = ({ name, job, role, image }) => {
           </div>
           <div className="w-full flex flex-col sm:flex-row justify-between gap-4">
             <Button className="bg-btn-primary hover:bg-btn-primary-hover w-full py-3 rounded-full text-white">
-              <Link to={``} className="py-3">
+              <Link to={`/dashboard/admin/users/${id}`} className="py-3">
                 تعديل
               </Link>
             </Button>

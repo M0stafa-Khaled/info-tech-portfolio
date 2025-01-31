@@ -1,4 +1,4 @@
-import UsersList from "../../../components/dashboard/users/UsersList";
+import UsersList from "../../../../components/dashboard/users/UsersList";
 
 const UsersAdminDashboard = () => {
   return (
