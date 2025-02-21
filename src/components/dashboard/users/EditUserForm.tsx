@@ -1,5 +1,5 @@
 import Button from "../../ui/Button";
-import FileUploader from "../../../components/dashboard/FileUploader";
+//import FileUploader from "../../../components/dashboard/FileUploader";
 
 interface IUser {
   user?: {
@@ -16,7 +16,7 @@ function EditUserForm({ user }: IUser) {
     <>
       <form className="flex flex-col gap-4">
         <div className="flex flex-col gap-y-4">
-          <FileUploader />
+          {/* <FileUploader /> */}
           <div className=" relative mt-2 text-muted text-sm">
             <label className=" absolute -top-3 ">الاسم</label>
             <input
