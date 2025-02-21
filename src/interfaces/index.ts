@@ -18,11 +18,11 @@ export interface IProject {
 
   rating: number;
   // ! not use in real data
-  developers: {
+  /*developers: {
     name: string;
     avatar: string;
     job: string;
-  }[];
+  }[];*/
 }
 export interface IOpinion {
   img: string;

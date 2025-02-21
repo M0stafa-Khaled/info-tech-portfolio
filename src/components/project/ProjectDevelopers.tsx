@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+/*import { motion } from "framer-motion";
 import DeveloperCard from "./DeveloperCard";
 import { cardVariants, containerVariants } from "../../animations";
 
@@ -33,4 +33,4 @@ const ProjectDevelopers = ({ developers }: IProps) => {
   );
 };
 
-export default ProjectDevelopers;
+export default ProjectDevelopers;*/

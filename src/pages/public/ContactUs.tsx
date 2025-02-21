@@ -64,7 +64,7 @@ const ContactUs = () => {
             </div>
             <div className="px-4 py-3 space-y-5">
               {[
-                { icon: <FaPhone size={24} />, text: "+966 50 123 4567" },
+                { icon: <FaPhone size={24} />, text: "01016440812" },
                 { icon: <FaEnvelope size={24} />, text: "info@infotech.eg" },
                 { icon: <FaMapMarkerAlt size={24} />, text: "القاهرة, مصر" },
               ].map((contact, index) => (

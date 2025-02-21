@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { CgArrowTopRightO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { IProject } from "../../interfaces";
-import ProjectDevelopers from "./ProjectDevelopers";
+//import ProjectDevelopers from "./ProjectDevelopers";
 import ProjectRating from "./ProjectRating";
 import { cardVariants } from "../../animations";
 import Skills from "../shared/Skills";
@@ -49,7 +49,7 @@ const ProjectDetails = ({ projectDetails }: IProps) => {
         {/* Technologies */}
         <Skills skills={projectDetails.technologies} />
         {/* Developers */}
-        <ProjectDevelopers developers={projectDetails.developers} />
+        
       </motion.div>
     </>
   );

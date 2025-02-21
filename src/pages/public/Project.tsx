@@ -1,6 +1,6 @@
 import BgImage from "../../components/BgImage";
 import projectImg from "../../assets/project-img.png";
-import avatar from "../../assets/about-avatar.png";
+//import avatar from "../../assets/about-avatar.png";
 import { motion } from "framer-motion";
 import ProjectDetails from "../../components/project/ProjectDetails";
 import { IProject } from "../../interfaces";
@@ -26,7 +26,7 @@ const Project = () => {
       "tailwind",
     ],
     rating: 4,
-    developers: [
+    /*developers: [
       {
         name: "محمد الحسني",
         avatar: avatar,
@@ -57,7 +57,7 @@ const Project = () => {
         avatar: avatar,
         job: "مهندس DevOps",
       },
-    ],
+    ],*/
   };
 
   return (
