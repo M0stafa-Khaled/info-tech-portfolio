@@ -8,7 +8,7 @@ const ProjectsList = ({ projects }: IProps) => {
   return (
     <div className="mt-9 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4">
       {/* Projects Cards */}
-      {projects.map((project: IProject) => (
+      {projects?.map((project: IProject) => (
         <ProjectCard key={project.id} project={project} />
       ))}
     </div>

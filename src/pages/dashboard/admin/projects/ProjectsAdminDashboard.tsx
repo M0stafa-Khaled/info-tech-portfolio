@@ -1,36 +1,43 @@
 import { Link } from "react-router-dom";
 import Button from "../../../../components/ui/Button";
-import { PROJECTS } from "../../../../constant";
 import ProjectsList from "../../../../components/dashboard/projects/ProjectsList";
 import SelectMenu from "../../../../components/ui/SelectMenu";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import filterProjects from "../../../../utils/filterProjects";
+import { useGetAllProjects } from "../../../../lib/react-query/projects";
+import ProjectCardSkeleton from "../../../../components/ui/ProjectCardSkeleton";
+import { toast } from "react-toastify";
+import SessionService from "../../../../utils/SessionService";
+import { PROJECTS_FILTER_OPTIONS } from "../../../../constant";
 
 const ProjectsAdminDashboard = () => {
-  const OPTIONS = [
-    { label: "كل المشاريع", value: "projects" },
-    { label: "المشاريع المخفية فقط", value: "projects_hidden" },
-    { label: "المشاريع المتاحة فقط", value: "projects_nothidden" },
-  ];
+  const token = SessionService.getToken();
 
   const [selected, setSelected] = useState("projects");
+
+  const { data: projects, isLoading, error } = useGetAllProjects(token!);
+
+  useEffect(() => {
+    if (error) toast.error("لقد حدث خطأ اثناء عرض المشاريع حاول لاحقا");
+  }, [error]);
+
   const filteredProjects = useMemo(() => {
     return filterProjects({
-      projects: PROJECTS,
+      projects: projects?.data || [],
       filter: selected,
       typeOfFilter: "hiddenProjects",
     });
-  }, [selected]);
+  }, [selected, projects?.data]);
 
   return (
-    <div className="my-9">
+    <div className="my-6">
       <div className="flex flex-col sm:flex-row gap-y-6">
         <h2 className="flex-1 text-3xl font-medium text-white">
           إدارة المشاريع
         </h2>
         <div className="sm:w-52 md:w-96">
           <SelectMenu
-            options={OPTIONS}
+            options={PROJECTS_FILTER_OPTIONS}
             selected={selected}
             setSelected={setSelected}
             className="rounded-full py-4"
@@ -55,7 +62,17 @@ const ProjectsAdminDashboard = () => {
           </Link>
         </Button>
       </div>
-      <ProjectsList projects={filteredProjects} />
+      {isLoading ? (
+        <div className="mt-9 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4">
+          <ProjectCardSkeleton />
+          <ProjectCardSkeleton />
+          <ProjectCardSkeleton />
+        </div>
+      ) : !projects?.data.length ? (
+        <h2 className="text-white text-xl lg:text-2xl my-6">لا يوجد مشاريع</h2>
+      ) : (
+        <ProjectsList projects={filteredProjects!} />
+      )}
     </div>
   );
 };

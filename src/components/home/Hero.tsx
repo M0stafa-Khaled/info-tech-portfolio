@@ -1,4 +1,3 @@
-import heroImg from "../../assets/hero.png";
 import { FiArrowLeftCircle } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
 import Button from "../ui/Button";
@@ -10,14 +9,12 @@ import {
   imageVariants,
   textVariants,
 } from "../../animations";
+import { HiOutlineDownload } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
-
-  const buttonGradientStyle = {
-    background: "linear-gradient(96.53deg, #142D6C 0%, #0F1523 43.85%)",
-  };
 
   return (
     <motion.section
@@ -54,26 +51,44 @@ const Hero = () => {
           </motion.h3>
         </motion.div>
         <motion.div className="flex justify-center" variants={imageVariants}>
-          <img src={heroImg} className="w-full max-w-md h-full" />
+          <img src="/hero.webp" className="w-full max-w-sm h-full" />
         </motion.div>
       </motion.div>
       <motion.div
         variants={bottomVariants}
         className="w-full flex flex-col items-center"
       >
-        <Button
-          style={buttonGradientStyle}
-          className="flex items-center gap-x-2 px-4 sm:px-6 md:px-9 py-2 sm:py-3 md:py-4 text-white text-sm md:text-xl border border-muted rounded-full normal-case font-medium"
-          onClick={() => {
-            window.scrollTo({
-              top: window.innerHeight,
-              behavior: "smooth",
-            });
-          }}
-        >
-          ابدأ الآن معنا{" "}
-          <FiArrowLeftCircle className="text-white h-4 md:h-6 w-4 md:w-6" />
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Button
+            style={{
+              background: "linear-gradient(96deg, #142D6C 43%, #0F1523 )",
+            }}
+            className="w-full sm:w-fit text-white border border-muted rounded-full normal-case font-medium"
+          >
+            <Link
+              to={""}
+              target="_blank"
+              className="px-4 py-3 flex items-center gap-x-2"
+            >
+              تحميل التطبيق
+              <HiOutlineDownload size={20} />
+            </Link>
+          </Button>
+          <Button
+            style={{
+              background: "linear-gradient(96deg, #0F1523 0%, #142D6C 43%)",
+            }}
+            className="w-full sm:w-fit text-white border border-muted rounded-full normal-case font-medium"
+          >
+            <Link
+              to={"https://api.whatsapp.com/send?phone=201016440812"}
+              target="_blank"
+              className="flex items-center gap-x-2 px-4 py-3"
+            >
+              ابدأ الآن معنا <FiArrowLeftCircle size={20} />
+            </Link>
+          </Button>
+        </div>
         <motion.div
           className="w-full flex flex-col justify-center items-center mt-6"
           variants={bottomVariants}

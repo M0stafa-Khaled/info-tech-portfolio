@@ -1,29 +1,20 @@
-import reactIcon from "../../assets/tech-reactjs.png";
-import nextjs from "../../assets/tech-nextjs.png";
-import expressjs from "../../assets/tech-express.png";
-import clerk from "../../assets/tech-clerk.png";
-import javascript from "../../assets/tech-javascript.png";
-import typescript from "../../assets/tech-typescript.png";
-import tailwindcss from "../../assets/tech-tailwindcss.png";
-import nodejs from "../../assets/tech-nodejs.png";
-import postgresql from "../../assets/tech-potgresql.png";
-import reactRouter from "../../assets/tech-react-router.png";
-import mongodb from "../../assets/tech-mongodb.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 const logos = [
-  reactIcon,
-  nextjs,
-  expressjs,
-  clerk,
-  javascript,
-  typescript,
-  tailwindcss,
-  nodejs,
-  postgresql,
-  reactRouter,
-  mongodb,
+  "/flutter.svg",
+  "/laravel.svg",
+  "/php.svg",
+  "/reactjs.svg",
+  "/redux.svg",
+  "/tailwindcss.svg",
+  "/typescript.svg",
+  "/nextjs.svg",
+  "/figma.svg",
+  "/angular.svg",
+  "/css3.svg",
+  "/javascript.svg",
+  "/dart.svg",
 ];
 
 const AnimatedScrollLogo = () => {
@@ -49,7 +40,6 @@ const AnimatedScrollLogo = () => {
         {logos.map((logo, idx) => (
           <SwiperSlide key={idx} className="flex justify-center items-center">
             <img
-              loading="lazy"
               src={logo}
               alt={`Tech logo ${idx + 1}`}
               className="h-6 md:h-8 lg:h-12 object-contain"

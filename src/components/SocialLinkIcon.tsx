@@ -10,6 +10,7 @@ const SocialLinkIcon = ({ link, icon }: IProps) => {
   return (
     <Link
       to={link}
+      target="_blank"
       className="flex justify-center items-center rounded-xl bg-dark-blue w-10 h-10"
     >
       {icon}

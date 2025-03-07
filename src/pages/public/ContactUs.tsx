@@ -1,29 +1,63 @@
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaPhone, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
 import BgImage from "../../components/BgImage";
-import { FiCheck } from "react-icons/fi";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import Label from "../../components/ui/Label";
 import Textarea from "../../components/ui/Textarea";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { cardVariants, containerVariants } from "../../animations";
+import { MESSAGE_INPUTS } from "../../constant";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import messageSchema from "../../validations/messageSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useSendMessage } from "../../lib/react-query/messages";
+import { toast } from "react-toastify";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AxiosError } from "axios";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 const ContactUs = () => {
-  const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
+  const {
+    settings: { phone, address, email },
+  } = useSelector((state: RootState) => state.settings);
+  const { mutateAsync: sendMessage, isPending } = useSendMessage();
 
-  // Animation Variants
-  const subjectVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 10,
-      },
-    },
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<z.infer<typeof messageSchema>>({
+    resolver: zodResolver(messageSchema),
+  });
+
+  const onSubmit = async (data: z.infer<typeof messageSchema>) => {
+    try {
+      const { message, status } = await sendMessage(data);
+      if (status !== "success") return toast.error(message);
+      toast.success(message);
+      reset();
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        const errorResponse = error.response?.data;
+        if (typeof errorResponse === "object" && errorResponse !== null) {
+          if ("errors" in errorResponse) {
+            const errors = errorResponse.errors;
+            Object.keys(errors).forEach((key) => {
+              if (Array.isArray(errors[key])) {
+                errors[key].forEach((errorMsg: string) => {
+                  toast.error(errorMsg);
+                });
+              }
+            });
+          }
+        }
+      } else {
+        toast.error("حدث خطأ أثناء ارسال الرسالة");
+      }
+    }
   };
 
   return (
@@ -39,9 +73,7 @@ const ContactUs = () => {
         className="text-center my-9 lg:mt-[72px] text-white"
       >
         <h1 className="text-4xl font-bold">اتصل بنا</h1>
-        <p className="text-lg p-4 text-muted">
-          أي سؤال أو ملاحظة؟ فقط اكتب لنا رسالة!
-        </p>
+        <p className="p-4 text-muted">أي سؤال أو ملاحظة؟ فقط اكتب لنا رسالة!</p>
       </motion.div>
       <motion.div
         variants={cardVariants}
@@ -51,22 +83,27 @@ const ContactUs = () => {
           {/* Contact Info */}
           <motion.div
             variants={cardVariants}
-            whileHover={{ scale: 1.02 }}
             className="bg-dark space-y-4 w-auto lg:min-w-max py-4 px-4 md:px-6 rounded-2xl"
           >
             <div className="px-4 py-3 space-y-2">
               <h3 className="text-xl md:text-[28px] font-semibold">
                 معلومات الاتصال
               </h3>
-              <p className="text-muted md:text-lg">
+              <p className="text-muted">
                 يمكنك التواصل معنا باستخدام هذه المعلومات
               </p>
             </div>
-            <div className="px-4 py-3 space-y-5">
+            <div className="px-4 py-3 space-y-3">
               {[
-                { icon: <FaPhone size={24} />, text: "01016440812" },
-                { icon: <FaEnvelope size={24} />, text: "info@infotech.eg" },
-                { icon: <FaMapMarkerAlt size={24} />, text: "القاهرة, مصر" },
+                { icon: <FaPhone size={24} />, text: phone || "+201016440812" },
+                {
+                  icon: <FaEnvelope size={24} />,
+                  text: email || "info@infotech.eg",
+                },
+                {
+                  icon: <FaMapMarkerAlt size={24} />,
+                  text: address || "القاهرة, مصر",
+                },
               ].map((contact, index) => (
                 <motion.div
                   key={index}
@@ -77,7 +114,7 @@ const ContactUs = () => {
                     type: "spring",
                     stiffness: 300,
                   }}
-                  className="flex items-center gap-3 text-sm md:text-lg"
+                  className="flex items-center gap-3"
                 >
                   <span>{contact.icon}</span>
                   <span>{contact.text}</span>
@@ -89,103 +126,68 @@ const ContactUs = () => {
           {/* Form */}
           <motion.form
             variants={cardVariants}
-            className="w-full rounded-lg flex flex-col gap-y-6"
-            onSubmit={(e) => e.preventDefault()}
+            className="w-full rounded-lg"
+            onSubmit={handleSubmit(onSubmit)}
           >
             {/* Inputs */}
-            <motion.div variants={cardVariants} className="flex flex-col gap-6">
-              {/* Inputs Row 1 */}
-              <div className="flex flex-col md:flex-row gap-4">
-                {[
-                  { label: "الاسم الاول", key: "firstName" },
-                  { label: "الاسم الثاني", key: "lastName" },
-                ].map((input) => (
+            {/* Inputs Row 1 */}
+            <motion.div
+              variants={cardVariants}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            >
+              {MESSAGE_INPUTS.map((input) => {
+                const inputName = input.name as keyof z.infer<
+                  typeof messageSchema
+                >;
+
+                return input.name === "message" ? (
+                  <motion.div key={input.name} variants={cardVariants}>
+                    <div className="relative w-full min-w-[200px]">
+                      <Textarea
+                        {...register(
+                          input.name as keyof z.infer<typeof messageSchema>
+                        )}
+                      />
+                      <Label>الرسالة</Label>
+                      {errors[inputName] && (
+                        <p className="text-red-500 text-xs mt-1">
+                          {errors[inputName]?.message as string}
+                        </p>
+                      )}
+                    </div>
+                  </motion.div>
+                ) : (
                   <motion.div
-                    key={input.key}
+                    key={input.name}
                     variants={cardVariants}
                     className="relative w-full min-w-[200px] h-11"
                   >
-                    <Input />
+                    <Input {...register(inputName)} />
                     <Label>{input.label}</Label>
+                    {errors[inputName] && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors[inputName]?.message as string}
+                      </p>
+                    )}
                   </motion.div>
-                ))}
-              </div>
-              {/* Inputs Row 2 */}
-              <div className="flex flex-col md:flex-row gap-4">
-                {[
-                  { label: "البريد الالكتروني", key: "email" },
-                  { label: "رقم الهاتف", key: "phone" },
-                ].map((input) => (
-                  <motion.div
-                    key={input.key}
-                    variants={cardVariants}
-                    className="relative w-full min-w-[200px] h-11"
-                  >
-                    <Input />
-                    <Label>{input.label}</Label>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Options */}
-            <motion.div variants={cardVariants}>
-              <p className="mb-4 text-lg">اختر الموضوع</p>
-              <div className="flex justify-between flex-wrap gap-3 ">
-                {["استفسار عام", "دعم فني", "اقتراحات", "أخرى"].map(
-                  (option, index) => (
-                    <motion.div
-                      key={index}
-                      variants={subjectVariants}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex gap-8 min-w-36"
-                    >
-                      <div className="inline-flex items-center">
-                        <label className="relative flex items-center cursor-pointer p-3 rounded-full">
-                          <input
-                            onChange={(e) => setSelectedSubject(e.target.value)}
-                            name="subject"
-                            type="radio"
-                            id={`subject-${index}`}
-                            className="peer relative appearance-none w-5 h-5 border rounded-full cursor-pointer before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-2/4 before:left-2/4 before:-translate-y-2/4 before:-translate-x-2/4 before:opacity-0 before:transition-opacity border-white bg-white p-0 transition-all hover:before:opacity-0"
-                            value={option}
-                            checked={selectedSubject === option}
-                          />
-                          <span className="absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity">
-                            <FiCheck size={14} className="text-gray-900" />
-                          </span>
-                        </label>
-                        <label
-                          htmlFor={`subject-${index}`}
-                          className="select-none cursor-pointer mt-px"
-                        >
-                          <p className="block antialiased font-sans text-base leading-relaxed font-normal text-muted">
-                            {option}
-                          </p>
-                        </label>
-                      </div>
-                    </motion.div>
-                  )
-                )}
-              </div>
-            </motion.div>
-
-            {/* Message */}
-            <motion.div variants={cardVariants}>
-              <div className="relative w-full min-w-[200px]">
-                <Textarea />
-                <Label>الرسالة</Label>
-              </div>
+                );
+              })}
             </motion.div>
 
             {/* Submit */}
             <motion.div variants={cardVariants}>
               <Button
                 type="submit"
-                className="w-full lg:w-[200px] normal-case py-4 bg-dark text-white text-base font-normal rounded-xl"
+                disabled={isPending}
+                className="mt-6 w-full lg:w-[200px] normal-case py-4 bg-dark text-white text-base font-normal rounded-xl flex justify-center items-center gap-3"
               >
                 إرسال الرسالة
+                {isPending && (
+                  <AiOutlineLoading3Quarters
+                    className="animate-spin"
+                    size={20}
+                  />
+                )}
               </Button>
             </motion.div>
           </motion.form>

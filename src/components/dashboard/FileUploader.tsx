@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDropzone, FileRejection } from "react-dropzone";
 import { UseFormRegisterReturn } from "react-hook-form";
-import imgUpload from "../../assets/file-upload.svg";
 
 interface IProps {
   onFileUpload: (file: File) => void;
@@ -9,14 +8,16 @@ interface IProps {
   maxSize?: number;
   name?: string;
   register?: UseFormRegisterReturn;
+  className?: string;
 }
 
-const ImageUpload = ({
+const FileUploader = ({
   onFileUpload,
   initialImage,
   maxSize = 5 * 1024 * 1024, // Default to 5MB
   name,
   register,
+  className,
 }: IProps) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [error, setError] = useState<string>("");
@@ -53,11 +54,11 @@ const ImageUpload = ({
       <div
         {...getRootProps()}
         {...(register && { ...register })}
-        className={`w-full h-64 max-w-sm border-2 border-dashed rounded-lg flex items-center border-blue-500 bg-blue-50 justify-center text-center cursor-pointer ${
+        className={`w-full h-64 sm:max-w-sm border-2 border-dashed rounded-lg flex items-center border-blue-500 bg-blue-50 justify-center text-center cursor-pointer ${className} ${
           isDragActive && "border-blue-500 bg-blue-50"
         }`}
       >
-        <input {...getInputProps()} name={name} className="hidden" />
+        <input {...getInputProps()} name={name} className="hidden" multiple />
         {selectedFile || initialImage ? (
           <div className="w-full h-full flex flex-col items-center">
             <img
@@ -70,8 +71,12 @@ const ImageUpload = ({
           </div>
         ) : (
           <div className="h-full w-full flex flex-col items-center justify-center py-6 px-4 gap-y-4">
-            <img src={imgUpload} alt="file-upload" />
-            <p className="text-gray-600">
+            <img
+              src="/file-upload.svg"
+              alt="file-upload"
+              className="max-w-16"
+            />
+            <p className="text-gray-600 text-xs">
               {isDragActive
                 ? "اسقط الصورة هنا"
                 : "اسحب واسقط الصورة هنا أو اضغط لاختيار ملف"}
@@ -84,4 +89,4 @@ const ImageUpload = ({
   );
 };
 
-export default ImageUpload;
+export default FileUploader;

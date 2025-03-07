@@ -1,25 +1,25 @@
 import { Link } from "react-router-dom";
 import { IProject } from "../../../interfaces";
 import Button from "../../ui/Button";
-import { useState } from "react";
-import Modal from "../../shared/Modal";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Badge } from "keep-react";
+import DeleteProjectButton from "./DeleteProjectModalButton";
 
 interface IProps {
   project: IProject;
 }
 const ProjectCard = ({ project }: IProps) => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="bg-background-gradient p-3 lg:p-4 rounded-2xl shadow-sm border border-dark-blue">
       <div className="h-full flex justify-between flex-col gap-3">
         {/* Image */}
-        <div className="bg-[#000F22]/40 rounded-2xl  flex justify-center items-center">
+        <div className="bg-[#000F22]/40 rounded-2xl h-56 sm:h-64 md:h-72 flex justify-center items-center">
           <img
-            src={project.images[0]}
+            src={`${import.meta.env.VITE_API_URL}/storage/${
+              project.images[0].image
+            }`}
             alt={project.title}
-            className="w-full md:max-w-md h-full object-cover"
+            className="w-full md:max-w-md h-full object-cover rounded-md"
           />
         </div>
         <div className="space-y-4">
@@ -42,14 +42,14 @@ const ProjectCard = ({ project }: IProps) => {
               </h3>
             </div>
             <p className="text-sm text-center text-muted line-clamp-2">
-              {project.description}
+              {project.descriptions}
             </p>
             <Badge
               variant="base"
               color="primary"
               className="!mt-2 text-primary-500 bg-primary-900 hover:bg-primary-900 hover:text-primary-500"
             >
-              {project.category}
+              {project.category.name}
             </Badge>
           </div>
 
@@ -63,33 +63,10 @@ const ProjectCard = ({ project }: IProps) => {
                 تعديل
               </Link>
             </Button>
-            <Button
-              onClick={() => setIsOpen(true)}
-              className="bg-danger hover:bg-danger-hover w-full rounded-full py-3 text-white"
-            >
-              حذف
-            </Button>
+            <DeleteProjectButton id={project.id} />
           </div>
         </div>
       </div>
-      <Modal
-        isOpen={isOpen}
-        closeModal={() => setIsOpen(false)}
-        title="حذف المشروع"
-        description="هل انت متاكد من حذف المشروع؟"
-      >
-        <div className="flex flex-col gap-y-3">
-          <Button className="border border-danger hover:bg-danger-hover w-fll rounded-xl text-danger hover:text-white py-4">
-            حذف
-          </Button>
-          <Button
-            onClick={() => setIsOpen(false)}
-            className="border border-btn-primary hover:bg-btn-primary-hover w-full rounded-xl text-blue hover:text-white py-4"
-          >
-            إلغاء
-          </Button>
-        </div>
-      </Modal>
     </div>
   );
 };

@@ -1,21 +1,28 @@
+import { useParams } from "react-router-dom";
 import ProjectForm from "../../../../components/dashboard/projects/ProjectForm";
-import { CATEGORIES } from "../../../../constant";
+import { useGetProjectById } from "../../../../lib/react-query/projects";
+import Loader from "../../../../components/Loader";
+import updateProjectSchema from "../../../../validations/updateProjectSchema";
 
 const EditProjectAdminDashboard = () => {
-  const project = {
-    id: "1",
-    title: "عنوان المشروع",
-    description: "وصف المشروع",
-    tools: "react nextjs tailwindcss",
-    url: "https://url.com",
-    category: CATEGORIES[2].value,
-    hidden: true,
-    images: [],
-  };
+  const { id } = useParams();
+  const { data: project, isLoading } = useGetProjectById(id!);
+
+  if (isLoading)
+    return (
+      <div className="my-9">
+        <Loader />
+      </div>
+    );
+
   return (
-    <div className="my-9">
+    <div className="my-6">
       <h2 className="text-3xl font-medium text-white">تعديل</h2>
-      <ProjectForm action="update" project={project} />
+      <ProjectForm
+        action="update"
+        project={project?.data}
+        projectSchema={updateProjectSchema}
+      />
     </div>
   );
 };

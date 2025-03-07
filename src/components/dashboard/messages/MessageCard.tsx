@@ -1,57 +1,45 @@
-import React from "react";
-import Button from "../../ui/Button";
+import { IMessage } from "../../../interfaces";
+import formatDateTime from "../../../utils/formatDate";
 
-interface MessageProps {
-  userName: string;
-  userImage: string;
-  message: string;
-  acceptMessage: () => void;
-  rejectMessage: () => void;
-  deleteMessage: () => void;
+interface IProps {
+  message: IMessage;
 }
 
-const MessageCard: React.FC<MessageProps> = ({
-  userName,
-  userImage,
-  message,
-  acceptMessage,
-  rejectMessage,
-  deleteMessage,
-}) => {
+const MessageCard = ({ message }: IProps) => {
   return (
-    <div className="bg-dark p-4 rounded-2xl mb-4 flex flex-col gap-y-6 max-w-3xl border border-dark-blue">
+    <div className="bg-dark p-4 rounded-2xl mb-4 flex flex-col gap-4 max-w-3xl border border-dark-blue">
       <div className="flex items-center gap-4">
-        <div className="w-16 h-16 rounded-full overflow-hidden">
-          <img
-            src={userImage}
-            alt={userName}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <h2 className="text-lg text-white">{userName}</h2>
+        <h2 className="text-white">
+          <span className="text-muted">الاسم: </span>
+          {message.firstname} {message.lastname}
+        </h2>
       </div>
-      <p className="text-white break-words leading-relaxed whitespace-normal">
-        {message}
-      </p>
-      <div className="flex flex-col sm:flex-row items-center gap-4">
-        <Button
-          onClick={acceptMessage}
-          className="bg-btn-primary text-white py-2 px-4 rounded-xl hover:bg-btn-primary-hover w-full sm:w-40"
-        >
-          قبول
-        </Button>
-        <Button
-          onClick={rejectMessage}
-          className="bg-danger hover:bg-danger-hover text-white py-2 px-4 rounded-xl w-full sm:w-40"
-        >
-          رفض
-        </Button>
-        <Button
-          onClick={deleteMessage}
-          className="bg-danger hover:bg-danger-hover text-white py-2 px-4 rounded-xl  w-full sm:w-40"
-        >
-          حذف
-        </Button>
+      <div className="space-y-2">
+        <p className="text-white">
+          <span className="text-muted text-sm">العنوان: </span>
+          {message.address}
+        </p>
+        <p className="text-white break-all">
+          <span className="text-muted text-sm">البريد الالكتروني: </span>
+          {message.email}
+        </p>
+        <p className="text-white">
+          <span className="text-muted text-sm">رقم الهاتف: </span>
+          {message.mobile}
+        </p>
+        <div className="space-y-1 !my-3">
+          <h6 className="text-white">
+            <span className="text-muted text-sm">عنوان الموضوع: </span>
+            {message.title}
+          </h6>
+          <p className="text-white break-words leading-relaxed whitespace-normal">
+            <span className="text-muted text-sm"> الرسالة: </span>
+            {message.message}
+          </p>
+        </div>
+        <p className="text-muted text-xs text-end px-4">
+          {formatDateTime(message.created_at)}
+        </p>
       </div>
     </div>
   );

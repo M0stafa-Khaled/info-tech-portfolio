@@ -18,7 +18,6 @@ const DeveloperCard = ({ avatar, name, job }: IProps) => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 300 }}
-          loading="lazy"
           src={avatar}
           alt={name}
           className="h-14 w-14 rounded-full"
@@ -32,4 +31,4 @@ const DeveloperCard = ({ avatar, name, job }: IProps) => {
   );
 };
 
-export default DeveloperCard;
+export default DeveloperCard

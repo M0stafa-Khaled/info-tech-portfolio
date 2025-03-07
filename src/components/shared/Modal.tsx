@@ -29,7 +29,7 @@ const Modal = ({
       <Transition appear show={isOpen}>
         <Dialog
           as="div"
-          className="relative z-10 focus:outline-none"
+          className="relative z-50 focus:outline-none"
           onClose={closeModal}
         >
           <div className="fixed bg-dark/90 backdrop-blur-[2px] inset-0 z-10 w-screen overflow-y-auto">

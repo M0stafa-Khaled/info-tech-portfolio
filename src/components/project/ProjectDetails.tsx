@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { CgArrowTopRightO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { IProject } from "../../interfaces";
-//import ProjectDevelopers from "./ProjectDevelopers";
-import ProjectRating from "./ProjectRating";
 import { cardVariants } from "../../animations";
 import Skills from "../shared/Skills";
 
@@ -16,40 +14,37 @@ const ProjectDetails = ({ projectDetails }: IProps) => {
       {/* Title and Link */}
       <motion.div
         variants={cardVariants}
-        className="py-6 px-4 lg:px-4 mt-6 lg:mt-9 space-y-4 bg-background-gradient rounded-2xl lg:rounded-3xl"
+        className="px-4 lg:px-4 mt-4 space-y-4 bg--gradient rounded-2xl lg:rounded-3xl"
       >
         <motion.div
           variants={cardVariants}
-          className="flex items-center flex-col lg:flex-row gap-x-9 gap-y-4"
+          className="flex items-center flex-col lg:flex-row gap-x-9 gap-y-2"
         >
-          <h1 className="text-center lg:text-right text-xl md:text-[28px] lg:text-4xl font-medium text-white">
-            {projectDetails.title}
+          <h1 className="text-center lg:text-right text-xl md:text-[28px] lg:text-2xl font-medium text-white">
+            {projectDetails?.title}
           </h1>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <div>
             <Link
-              to={""}
-              className="text-lg lg:text-xl text-yellow flex items-center gap-x-2 px-2 min-w-48 justify-center"
+              to={projectDetails.url}
+              className="text-lg lg:text-lg text-yellow flex items-center gap-x-2 px-2 min-w-48 justify-center lg:justify-start"
             >
               معاينة
               <span>
                 <CgArrowTopRightO className="h-5 w-5 text-yellow" size={20} />
               </span>
             </Link>
-          </motion.div>
+          </div>
         </motion.div>
-        {/* Rating */}
-        <ProjectRating rating={projectDetails.rating} />
         {/* Description */}
         <motion.p
           variants={cardVariants}
-          className="text-center lg:text-right text-muted leading-relaxed lg:text-lg"
+          className="text-center lg:text-right text-muted leading-relaxed"
         >
-          {projectDetails.description}
+          {projectDetails?.descriptions}
         </motion.p>
         {/* Technologies */}
-        <Skills skills={projectDetails.technologies} />
+        <Skills skills={projectDetails?.tool} />
         {/* Developers */}
-        
       </motion.div>
     </>
   );

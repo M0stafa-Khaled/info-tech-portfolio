@@ -1,42 +1,24 @@
-import { SetStateAction } from "react";
-import Button from "../../ui/Button";
+import { ICategory } from "../../../interfaces";
+import DeleteCategoryModalButton from "./DeleteCategoryModalButton";
+import EditCategoryButton from "./EditCategoryModalButton";
 
 interface IProps {
-  cate: {
-    value: string;
-    label: string;
-  };
-  setIsOpenEditModal: (value: SetStateAction<boolean>) => void;
-  setIsOpenDeleteModal: (value: SetStateAction<boolean>) => void;
+  category: ICategory;
 }
 
-const CategoryCard = ({
-  cate,
-  setIsOpenDeleteModal,
-  setIsOpenEditModal,
-}: IProps) => {
+const CategoryCard = ({ category }: IProps) => {
   return (
     <div
-      key={cate.value}
+      key={category.name}
       className="border border-muted px-4 py-3 bg-background-gradient rounded-2xl"
     >
       <h3 className="text-lg font-medium text-white text-center py-3">
-        {cate.label}
+        {category.name}
       </h3>
       {/* actions */}
       <div className="w-full flex flex-row justify-between gap-4 mt-3">
-        <Button
-          onClick={() => setIsOpenEditModal(true)}
-          className="bg-btn-primary hover:bg-btn-primary-hover w-full text-white rounded-full py-2"
-        >
-          تعديل
-        </Button>
-        <Button
-          onClick={() => setIsOpenDeleteModal(true)}
-          className="bg-danger hover:bg-danger-hover w-full text-white rounded-full py-2"
-        >
-          حذف
-        </Button>
+        <EditCategoryButton id={category.id} name={category.name} />
+        <DeleteCategoryModalButton id={category.id} />
       </div>
     </div>
   );

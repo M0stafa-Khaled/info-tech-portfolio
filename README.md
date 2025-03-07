@@ -30,12 +30,6 @@ info-tech/
 │   │       └── auth/
 │   │           └── authSlice.tsx  # Authentication Redux slice
 │   │
-│   ├── assets/                # Static assets
-│   │   └── images/            # Project images
-│   │      ├── logo.png
-│   │      ├── hero.png
-│   │      └── ... (various project and service images)
-│   │
 │   ├── components/            # Reusable React components
 │   │   ├── BgImage.tsx        # Background image component
 │   │   ├── Footer.tsx         # Site footer

@@ -1,56 +1,22 @@
-import React from "react";
+import { useGetAllMessages } from "../../../lib/react-query/messages";
+import SessionService from "../../../utils/SessionService";
+import Loader from "../../Loader";
 import MessageCard from "./MessageCard";
-import userImage from "../../../assets/user-msg-img.png";
-const messages = [
-  {
-    id: 1,
-    userName: "عبدالله محمد",
-    userImage: userImage,
-    message:
-      "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق",
-  },
-  {
-    id: 2,
-    userName: "عبدالله محمد",
-    userImage: userImage,
-    message:
-      "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق",
-  },
-  {
-    id: 3,
-    userName: "عبدالله محمد",
-    userImage: userImage,
-    message:
-      "اريد موقع صفحة هبوط وبرمجة تطبيق مكون من 6 شاشات والمقابل يحدد في الميتينج عندما نتفق",
-  },
-];
 
-const MessagesList: React.FC = () => {
-  const handleAccept = (id: number) => {
-    console.log(`Message with ID ${id} accepted`);
-  };
+const MessagesList = () => {
+  const token = SessionService.getToken();
+  const { data: messages, isLoading } = useGetAllMessages(token!);
 
-  const handleReject = (id: number) => {
-    console.log(`Message with ID ${id} rejected`);
-  };
-
-  const handleDelete = (id: number) => {
-    console.log(`Message with ID ${id} deleted`);
-  };
-
+  if (isLoading) return <Loader />;
   return (
     <div className="mt-9">
-      {messages.map((message) => (
-        <MessageCard
-          key={message.id}
-          userName={message.userName}
-          userImage={message.userImage}
-          message={message.message}
-          acceptMessage={() => handleAccept(message.id)}
-          rejectMessage={() => handleReject(message.id)}
-          deleteMessage={() => handleDelete(message.id)}
-        />
-      ))}
+      {!messages?.messages.length ? (
+        <p className="font-medium text-white text-lg">لا يوجد</p>
+      ) : (
+        messages?.messages.map((message) => (
+          <MessageCard key={message.id} message={message} />
+        ))
+      )}
     </div>
   );
 };

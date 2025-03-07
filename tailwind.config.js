@@ -1,6 +1,6 @@
 import { keepTheme } from "keep-react/keepTheme";
 
-const config =  {
+const config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     container: {
@@ -8,9 +8,9 @@ const config =  {
       padding: {
         DEFAULT: "1rem",
         sm: "2rem",
-        lg: "3rem",
-        xl: "6rem",
-        "2xl": "7rem",
+        lg: "4rem",
+        xl: "5rem",
+        "2xl": "6rem",
       },
     },
     extend: {

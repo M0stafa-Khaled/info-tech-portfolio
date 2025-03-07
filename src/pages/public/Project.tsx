@@ -1,77 +1,49 @@
 import BgImage from "../../components/BgImage";
-import projectImg from "../../assets/project-img.png";
-//import avatar from "../../assets/about-avatar.png";
 import { motion } from "framer-motion";
 import ProjectDetails from "../../components/project/ProjectDetails";
-import { IProject } from "../../interfaces";
 import ProjectImagesSlider from "../../components/project/ProjectImagesSlider";
 import { containerVariants } from "../../animations";
+import { useNavigate, useParams } from "react-router-dom";
+import { useGetProjectById } from "../../lib/react-query/projects";
+import Loader from "../../components/Loader";
+import { IImage, IProject } from "../../interfaces";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { AxiosError } from "axios";
 
 const Project = () => {
-  const projectDetails: IProject = {
-    id: 1,
-    title: "منصة التعلم الإلكتروني",
-    url: "",
-    description:
-      "منصة تعليمية ذكية تجمع بين أحدث تقنيات التعلم عن بعد وتصميم تفاعلي متميز.",
-    category: "واجهة أمامية",
-    hidden: false,
-    images: [projectImg, projectImg, projectImg, projectImg],
-    technologies: [
-      "react",
-      "typescript",
-      "express",
-      "node",
-      "mongodb",
-      "tailwind",
-    ],
-    rating: 4,
-    /*developers: [
-      {
-        name: "محمد الحسني",
-        avatar: avatar,
-        job: "مطور واجهة أمامية",
-      },
-      {
-        name: "أحمد الفارس",
-        avatar: avatar,
-        job: "مطور الخوادم",
-      },
-      {
-        name: "سارة العتيبي",
-        avatar: avatar,
-        job: "مصممة واجهة المستخدم",
-      },
-      {
-        name: "عبدالله الراشد",
-        avatar: avatar,
-        job: "مطور خوادم",
-      },
-      {
-        name: "ليلى السلمان",
-        avatar: avatar,
-        job: "مطورة برمجيات",
-      },
-      {
-        name: "خالد المطيري",
-        avatar: avatar,
-        job: "مهندس DevOps",
-      },
-    ],*/
-  };
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { data: projectDetails, isLoading, error } = useGetProjectById(id!);
+  useEffect(() => {
+    if (isNaN(+id!)) navigate("/404");
+    if (error) {
+      if (error instanceof AxiosError && error.response?.status === 404) {
+        toast.error(error.response.statusText || "Project not found");
+        navigate("/");
+      } else {
+        toast.error("لقد حدث خطأ ما حاول لاحقا");
+        navigate("/");
+      }
+    }
+  }, [navigate, error, id]);
+
+  if (isLoading) return <Loader />;
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="min-h-screen"
-    >
+    <motion.div initial="hidden" animate="visible" variants={containerVariants}>
       <BgImage />
-      <div className="container mt-9">
-        <ProjectImagesSlider images={projectDetails.images} />
-        {/* Project Details */}
-        <ProjectDetails projectDetails={projectDetails} />
+      <div className="container mt-2">
+        <div className="bg-background-gradient py-6 px-2 lg:px-6 rounded-2xl">
+          <div className="max-w-5xl mx-auto">
+            <ProjectImagesSlider
+              images={projectDetails?.data.images as IImage[]}
+              name={projectDetails?.data.title as string}
+            />
+          </div>
+          {/* Project Details */}
+          <ProjectDetails projectDetails={projectDetails?.data as IProject} />
+        </div>
       </div>
     </motion.div>
   );

@@ -5,7 +5,6 @@ const HomeServiceCard = ({ service }: { service: IService }) => {
     <div className="bg-background-gradient flex flex-col items-center justify-center py-10 px-4 lg:px-6 gap-2 rounded-2xl lg:rounded-3xl">
       <div className="flex flex-col items-center justify-center gap-2">
         <img
-          loading="lazy"
           src={service.img}
           alt={service.title}
           className="w-32 h-32"

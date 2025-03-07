@@ -1,28 +1,26 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import CookieService from "../../utils/cookieService";
+import SessionService from "../../utils/SessionService";
 import { ReactNode } from "react";
 
 const ProtectedRoute = ({
   children,
-  requiredRole,
-}: {
+}: // requiredRole,
+{
   children: ReactNode;
-  requiredRole: string;
+  requiredRole?: string;
 }) => {
-  const { isAuthenticated, role } = useSelector(
-    (state: RootState) => state.auth
-  );
-  const token = CookieService.getToken(); // * Get token from cookies
-
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const token = SessionService.getToken();
+  // const role = SessionService.getRole();
   if (!token || !isAuthenticated) {
     return <Navigate to="/admin" replace />;
   }
 
-  if (role !== requiredRole) {
-    return <Navigate to="/unauthorized" replace />;
-  }
+  // if (role !== requiredRole) {
+  //   return <Navigate to="/unauthorized" replace />;
+  // }
 
   return children;
 };

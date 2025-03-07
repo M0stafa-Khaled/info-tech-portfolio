@@ -3,7 +3,6 @@ import BgImage from "../../components/BgImage";
 import SectionTitle from "../../components/SectionTitle";
 import Button from "../../components/ui/Button";
 import { CgArrowTopRightO } from "react-icons/cg";
-import aboutImage from "../../assets/about.png";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
@@ -94,11 +93,7 @@ const About = () => {
               variants={imageVariants}
               className="w-full flex justify-center items-center"
             >
-              <img
-                loading="lazy"
-                src={aboutImage}
-                className="w-full max-w-sm lg:max-w-sm"
-              />
+              <img src="/about.webp" className="w-full max-w-sm lg:max-w-sm" />
             </motion.div>
           </div>
           {/* Button */}

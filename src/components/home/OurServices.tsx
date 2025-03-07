@@ -1,9 +1,3 @@
-import SectionTitle from "../SectionTitle";
-import HomeServiceCard from "./HomeServiceCard";
-import serviceCoding from "../../assets/service-coding.png";
-import serviceDesign from "../../assets/service-designing.png";
-import serviceSoftware from "../../assets/service-software-engineering.png";
-import serviceHosting from "../../assets/service-hosting.png";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import { CgArrowTopRightO } from "react-icons/cg";
@@ -11,6 +5,8 @@ import { IService } from "../../interfaces";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { buttonVariants, cardVariants, titleVariants } from "../../animations";
+import HomeServiceCard from "./HomeServiceCard";
+import SectionTitle from "../SectionTitle";
 
 const OurServices = () => {
   const ref = useRef(null);
@@ -25,25 +21,25 @@ const OurServices = () => {
       title: "تطوير الويب",
       description:
         "نقدم خدمات تطوير الويب المتكاملة باستخدام أحدث التقنيات والأدوات. نصمم مواقع ويب متجاوبة وسريعة وآمنة تلبي احتياجات عملك بدقة عالية.",
-      img: serviceCoding,
+      img: "/service-coding.webp",
     },
     {
       title: "التصميم",
       description:
         "نوفر حلول تصميم إبداعية وعصرية تجذب انتباه العملاء. نركز على التصميم الجذاب والوظيفي الذي يعكس هوية علامتك التجارية.",
-      img: serviceDesign,
+      img: "/service-designing.webp",
     },
     {
       title: "هندسة البرمجيات",
       description:
         "نقدم استشارات وحلول هندسة برمجية متكاملة. نساعدك في تطوير تطبيقات مبتكرة وفعالة تلبي متطلبات عملك بكفاءة.",
-      img: serviceSoftware,
+      img: "/service-software-engineering.webp",
     },
     {
       title: "الاستضافة",
       description:
         "نوفر خدمات استضافة موثوقة وآمنة مع أداء عالي. نضمن لك استضافة سريعة ومستقرة لمواقعك وتطبيقاتك.",
-      img: serviceHosting,
+      img: "/service-hosting.webp",
     },
   ];
 

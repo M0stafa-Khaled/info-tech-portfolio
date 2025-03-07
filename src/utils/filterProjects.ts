@@ -5,14 +5,17 @@ const filterProjects = ({
   filter,
   typeOfFilter,
 }: {
-  projects: IProject[];
+  projects: IProject[] | undefined;
   filter: string;
   typeOfFilter: "hiddenProjects" | "category";
 }) => {
   // Filter by category
+  if (!projects) return projects;
   if (typeOfFilter === "category") {
     if (filter === "الكل") return projects;
-    return projects.filter((project) => project.category.trim() === filter);
+    return projects.filter(
+      (project) => project.category.name.trim() === filter
+    );
   }
   // Filter hidden projects
   else {

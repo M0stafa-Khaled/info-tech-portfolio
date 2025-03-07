@@ -12,7 +12,6 @@ const ServiceCard = ({ service }: IProps) => {
       {/* Image */}
       <div className="w-full flex flex-col justify-center items-center">
         <img
-          loading="lazy"
           src={service.img}
           alt={service.title}
           className="w-72 h-52 object-contain"

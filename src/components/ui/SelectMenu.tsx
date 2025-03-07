@@ -7,12 +7,14 @@ import {
   SelectLabel,
   SelectValue,
 } from "keep-react";
+import { ICategory } from "../../interfaces";
+
+type Option = 
+  | ICategory 
+  | { label: string; value: string; id?: string | number };
 
 interface IProps {
-  options: {
-    value: string;
-    label: string;
-  }[];
+  options: Option[];
   selected: string;
   setSelected: (value: string) => void;
   label?: string;
@@ -26,6 +28,10 @@ const SelectMenu = ({
   label,
   className,
 }: IProps) => {
+  // Type guard to check if an option is an ICategory
+  const isCategory = (option: Option): option is ICategory => 
+    'name' in option;
+
   return (
     <Select
       dir="rtl"
@@ -42,13 +48,21 @@ const SelectMenu = ({
           <SelectLabel className="text-muted w-full text-end">
             {label}
           </SelectLabel>
-          {options.map(({ value, label }, idx) => (
+          {options?.map((option) => (
             <SelectItem
-              key={idx}
-              value={value}
+              key={
+                isCategory(option) 
+                  ? `category-${option.id}` 
+                  : `option-${option.value}`
+              }
+              value={
+                isCategory(option) 
+                  ? `${option.id}` 
+                  : option.value
+              }
               className="text-white w-full cursor-pointer justify-end"
             >
-              {label}
+              {isCategory(option) ? option.name : option.label}
             </SelectItem>
           ))}
         </SelectGroup>

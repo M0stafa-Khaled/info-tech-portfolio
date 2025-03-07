@@ -17,8 +17,8 @@ const Button = ({
     <button
       className={`p-0 duration-300 align-middle select-none font-sans text-center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85]
       ${className}`}
-      {...rest}
       type={type}
+      {...rest}
     >
       {children}
     </button>

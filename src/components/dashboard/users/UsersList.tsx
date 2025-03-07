@@ -1,78 +1,64 @@
-import React from "react";
-import UserCard from "./UserCard";
-import userImage from "../../../assets/user.png";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "keep-react";
+import { useGetAllUsers } from "../../../lib/react-query/users";
+import SessionService from "../../../utils/SessionService";
+import formatDateTime from "../../../utils/formatDate";
+import Loader from "../../Loader";
+const UsersList = () => {
+  const token = SessionService.getToken();
+  const { data: users, isLoading } = useGetAllUsers(token!);
 
-const users = [
-  {
-    id: 1,
-    name: " احمد عبسي",
-    job: "رجل اعمال",
-    role: "ادمن",
-    image: userImage,
-  },
-  {
-    id: 2,
-    name: " احمد عبسي",
-    job: "رجل اعمال",
-    role: "ادمن",
-    image: userImage,
-  },
-  {
-    id: 3,
-    name: " احمد عبسي",
-    job: "رجل اعمال",
-    role: "ادمن",
-    image: userImage,
-  },
-  {
-    id: 4,
-    name: " احمد عبسي",
-    job: "رجل اعمال",
-    role: "ادمن",
-    image: userImage,
-  },
-  {
-    id: 5,
-    name: " احمد عبسي",
-    job: "رجل اعمال",
-    role: "ادمن",
-    image: userImage,
-  },
-  {
-    id: 6,
-    name: " احمد عبسي",
-    job: "رجل اعمال",
-    role: "ادمن",
-    image: userImage,
-  },
-  {
-    id: 7,
-    name: " احمد عبسي",
-    job: "رجل اعمال",
-    role: "ادمن",
-    image: userImage,
-  },
-  {
-    id: 8,
-    name: " احمد عبسي",
-    job: "رجل اعمال",
-    role: "ادمن",
-    image: userImage,
-  },
-];
-const UsersList: React.FC = () => {
+  if (isLoading) return <Loader />;
   return (
-    <div className="mt-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      {users.map((user) => (
-        <UserCard
-          id={user.id}
-          name={user.name}
-          job={user.job}
-          role={user.role}
-          image={user.image}
-        />
-      ))}
-    </div>
+    <Table dir="rtl">
+      <TableHeader className="!bg-dark">
+        <TableRow className="!bg-dark">
+          <TableHead className="!bg-dark text-white text-center">
+            <div className="max-w-[250px] text-center">الاسم</div>
+          </TableHead>
+          <TableHead className="!bg-dark text-white text-center">
+            <div className="text-center">رقم الهاتف</div>
+          </TableHead>
+          <TableHead className="!bg-dark text-white text-center">
+            <div className="text-center">البريد الالكتروني</div>
+          </TableHead>
+          <TableHead className="!bg-dark text-white !text-center">
+            <div className="!text-center">وقت التسجيل</div>
+          </TableHead>
+          <TableHead className="!bg-dark text-white !text-center">
+            <div className="!text-center">وقت التحقق</div>
+          </TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody dir="rtl">
+        {users?.map((user) => (
+          <TableRow key={user.id}>
+            <TableCell className="text-center">
+              <div className="max-w-[250px] truncate">{user.name}</div>
+            </TableCell>
+            <TableCell className="text-center">{user.phone}</TableCell>
+            <TableCell className="text-center normal-case">
+              {user.email}
+            </TableCell>
+            <TableCell className="text-center">
+              {formatDateTime(user.created_at)}
+            </TableCell>
+            <TableCell className="text-center">
+              {user.email_verified_at
+                ? formatDateTime(user.email_verified_at)
+                : "لم يتم التحقق"}
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 };
+
 export default UsersList;

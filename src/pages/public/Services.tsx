@@ -1,4 +1,3 @@
-import servicesImage from "../../assets/service.png";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { imageVariants, textVariants } from "../../animations";
@@ -47,8 +46,7 @@ const Services: React.FC = () => {
             className="w-full flex justify-center"
           >
             <img
-              loading="lazy"
-              src={servicesImage}
+              src="/service.webp"
               alt="خدمات إنفو تك"
               className="w-full h-full max-w-md"
             />

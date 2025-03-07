@@ -1,12 +1,11 @@
 import SectionTitle from "../SectionTitle";
-import avatar from "../../assets/about-avatar.png";
 import OpinionCard from "./OpinionCard";
 import { IOpinion } from "../../interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { titleVariants } from "../../animations";
+import { swiperVariants, titleVariants } from "../../animations";
 
 const CustomerOpinions = () => {
   const ref = useRef(null);
@@ -17,61 +16,38 @@ const CustomerOpinions = () => {
 
   const Opinions: IOpinion[] = [
     {
-      img: avatar,
+      img: "/about-avatar.webp",
       rating: 5,
       description:
         "كانت تجربتي مع إنفو تك رائعة للغاية. لقد قدموا حلولًا مبتكرة وفعالة ساعدت شركتي على التحول الرقمي بسلاسة وكفاءة عالية.",
-      name: "محمد الحسني",
+      name: "احمد محمود",
       job: "المدير التنفيذي",
     },
     {
-      img: avatar,
+      img: "/about-avatar.webp",
       rating: 5,
       description:
         "فريق إنفو تك متميز في التصميم والتطوير. تجاوزوا توقعاتي بتصميم جذاب وتطبيق سريع الاستجابة يعكس هوية علامتي التجارية بشكل مثالي.",
-      name: "سارة العتيبي",
+      name: "مريم حسن",
       job: "مديرة التسويق",
     },
     {
-      img: avatar,
+      img: "/about-avatar.webp",
       rating: 5,
       description:
         "الدعم الفني المقدم من إنفو تك استثنائي. سرعة الاستجابة والحلول المبتكرة جعلتني أثق بهم كشريك استراتيجي لأعمالي الرقمية.",
-      name: "أحمد الفارس",
+      name: "أحمد عبدالله",
       job: "رائد أعمال",
     },
     {
-      img: avatar,
+      img: "/about-avatar.webp",
       rating: 5,
       description:
-        "تعاملت مع العديد من شركات التكنولوجيا، لكن إنفو تك تميزت بجودة العمل والابتكار. أوصي بهم بشدة لكل من يبحث عن حلول رقمية متكاملة.",
-      name: "ليلى السلمان",
-      job: "مستشارة إدارية",
-    },
-    {
-      img: avatar,
-      rating: 5,
-      description:
-        "نجاح مشروعنا يعود بشكل كبير إلى الدعم المتميز من فريق إنفو تك. لقد حولوا رؤيتنا إلى واقع ملموس بإبداع وإتقان.",
-      name: "عبدالله الراشد",
-      job: "مؤسس الشركة",
+        "فريق إنفو تك متميز في التصميم والتطوير. تجاوزوا توقعاتي بتصميم جذاب وتطبيق سريع الاستجابة يعكس هوية علامتي التجارية بشكل مثالي.",
+      name: "مريم حسن",
+      job: "مديرة التسويق",
     },
   ];
-
-  const swiperVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
 
   return (
     <section className="customer-opinions-section" ref={ref}>

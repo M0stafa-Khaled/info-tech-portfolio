@@ -1,9 +1,11 @@
-import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { IoClose, IoMenu } from "react-icons/io5";
-import logo from "../../assets/logo.png";
 import { motion, AnimatePresence } from "framer-motion";
-import Button from "../ui/Button";
+import LogoutButton from "./LogoutButton";
+import { menuIconVariants, navVariants } from "../../animations";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 interface IProps {
   links: {
@@ -13,49 +15,19 @@ interface IProps {
 }
 
 const Navbar = ({ links }: IProps) => {
+  const {
+    settings: { logo },
+  } = useSelector((state: RootState) => state.settings);
   const activeLink = useLocation().pathname.split("/").pop();
 
-  const [openNav, setOpenNav] = React.useState(false);
+  const [openNav, setOpenNav] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
-
-  const navVariants = {
-    hidden: {
-      opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-      },
-    },
-    visible: {
-      opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const menuIconVariants = {
-    hidden: {
-      scale: 0,
-      opacity: 0,
-    },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
 
   return (
     <header className="container pt-3 fixed w-full right-0 top-0 left-0 z-50">
@@ -93,7 +65,7 @@ const Navbar = ({ links }: IProps) => {
             to={links[0].path}
             className="text-white cursor-pointer font-medium text-2xl"
           >
-            <img src={logo} alt="logo" className="w-full h-8" />
+            <img src={logo || "/logo.webp"} alt="logo" className="w-full h-8" />
           </Link>
         </div>
         {/* Mobile menu */}
@@ -126,9 +98,7 @@ const Navbar = ({ links }: IProps) => {
                     </li>
                   ))}
                 </ul>
-                <Button className="border text-xl border-[#F44250] text-[#F44250] hover:border-[#ff0000] hover:text-[#ff0000] rounded-xl w-full py-3">
-                  تسجيل الخروج
-                </Button>
+                <LogoutButton />
               </div>
             </motion.div>
           )}

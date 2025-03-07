@@ -1,5 +1,4 @@
 import SectionTitle from "../SectionTitle";
-import aboutImage from "../../assets/home-about.png";
 import { CgArrowTopRightO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
@@ -61,8 +60,7 @@ const AboutUs = () => {
               animate={isInView ? "visible" : "hidden"}
             >
               <img
-                src={aboutImage}
-                loading="lazy"
+                src="/home-about.webp"
                 className="w-full max-w-sm lg:max-w-md"
               />
             </motion.div>
