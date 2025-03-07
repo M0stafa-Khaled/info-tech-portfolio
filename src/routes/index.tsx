@@ -27,7 +27,7 @@ import {
 
 const routes = createRoutesFromElements(
   <>
-    <Route path="/" element={<RootLayout />}>
+    <Route path="/" element={<RootLayout />} errorElement={<NotFound />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="projects" element={<Projects />} />
@@ -47,6 +47,7 @@ const routes = createRoutesFromElements(
           <AdminDashboardLayout />
         </ProtectedRoute>
       }
+      errorElement={<NotFound />}
     >
       <Route index element={<Users />} />
       <Route path="employees" element={<Employees />} />
