@@ -67,7 +67,7 @@ const OurProjects = () => {
         </motion.div>
       )}
 
-      {!error && projects?.data.length ? (
+      {!projects?.data.length ? null : (
         <motion.div
           className="flex justify-center mt-[18px] lg:mt-[36px]"
           variants={buttonVariants}
@@ -86,7 +86,7 @@ const OurProjects = () => {
             </Link>
           </Button>
         </motion.div>
-      ) : null}
+      )}
     </section>
   );
 };
