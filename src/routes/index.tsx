@@ -24,10 +24,11 @@ import {
   SettingsAdminDashboard,
   Users,
 } from "../pages/dashboard/admin";
+import Error from "../pages/Error";
 
 const routes = createRoutesFromElements(
   <>
-    <Route path="/" element={<RootLayout />} errorElement={<NotFound />}>
+    <Route path="/" element={<RootLayout />} errorElement={<Error />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="projects" element={<Projects />} />
@@ -47,7 +48,7 @@ const routes = createRoutesFromElements(
           <AdminDashboardLayout />
         </ProtectedRoute>
       }
-      errorElement={<NotFound />}
+      errorElement={<Error />}
     >
       <Route index element={<Users />} />
       <Route path="employees" element={<Employees />} />
